@@ -1,0 +1,196 @@
+= Probability Theory =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Introduction ==
+Contributions to measure theory by Borel provided a shift in perspective of probability. Countable unions played a key role in Borel's theory. Kolmogorov's genius was in applying Borel's theory to formalize the axioms of probability, laying the foundation stone for modern probability theory.
+
+== Sample Space ==
+We begin with two universally accepted entities: Random experiment, outcome (denoted by stem:[\omega]). The source of randomness is in the outcome, because it is the outcome that makes the experiment random.
+
+The sample space (denoted by stem:[\Omega]) of a random experiment is the set of all possible outcomes of the random experiment. Example: tossing a coin once.
+
+* If our interest is in the face that shows, then stem:[\Omega = \{H,T\}].
+* If our interest is in the velocity with which the coin lands on ground, then stem:[\Omega=[0,\infty) = \mathbb{R}_+].
+* If our interest is in the number of times coin flips in air, then stem:[\Omega= \mathbb{N} \cup \{0\}], where stem:[\mathbb{N}=\{1,2,3,\dots\}].
+
+Sample space need not always be the same for a given experiment. It is particular to the interest that one has in the experiment.
+
+Example: Toss a coin stem:[n] times, for some stem:[n < \infty]: +
+Interest: Faces that show up. stem:[\Omega=\{H,T\}^n], which is the set of strings consisting of stem:[H] and stem:[T] of length stem:[n]. For instance, stem:[\{H,T\}^3 = \{\texttt{HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}\}]. Here one experiment itself is tossing a coin 3 times.
+
+Example: Toss a coin infinitely many times: +
+Interest: Faces that show up. stem:[\Omega=\{H,T\}^\infty], which is the set of strings consisting of stem:[H] and stem:[T] of length stem:[\infty]. Here one experiment itself is tossing a coin infinite times.
+
+== Event ==
+Informally, an event is a subset of outcomes "of interest" to us. Example: Toss a coin 3 times; interest is in faces that show up. Event A of interest: at least 2 heads show up. Then, stem:[A = \{ HHH, HHT, HTH, THH \}]. 
+
+If an outcome stem:[\omega \in A] occurs, we say that the event A occurs. Conversely, if an event A has occurred: one of its outcome must have occurred.
+
+An empty set is also an event. This denotes that the experiment did not produce any output. Generally, this will not happen in practice. But for theoretical purposes, we include it as an event and say that this event will never occur.
+
+== Algebra ==
+If we are interested in an event stem:[A] occurred, we may also be interested in stem:[A] did not occur. If there are two events stem:[A] and stem:[B], we may be interested in knowing at least one of the two have occurred, both have occurred, etc.
+
+Mathematicians formalized a collection of all events which are of interest to us, satisfying certain properties. This collection is known as *Algebra* or *Field*.
+
+====
+Let stem:[\Omega] be a sample space. A collection stem:[\mathcal{A}] of subsets of stem:[\Omega] is called an algebra if it satisfies the following properties:
+
+. stem:[\Omega \in \mathcal{A}].
+. stem:[A \in \mathcal{A} \Rightarrow A^c \in \mathcal{A} ] (closure under complements).
+. stem:[A, B \in \mathcal{A} \Rightarrow A \cup B \in \mathcal{A} ].
++
+Property 3 implies, by mathematical induction, that
+
+[stem]
+++++
+\large
+A_1, A_2, \dots, A_n  \in \mathcal{A} \Rightarrow \bigcup_{i=1}^n A_i \in \mathcal{A} \text{ for all } n \in \mathbb{N} \text{ (closure under finite unions)}
+++++
+====
+
+NOTE: As an analogy, algebra is a basket of oranges (events). There is no seed (elementary outcomes) explicitly in the basket. Each element in an algebra is a set, not individual outcomes. It has subsets of stem:[\Omega].
+
+Given these 3 properties, we can also show that an algebra is always closed under finite intersections.
+
+[stem]
+++++
+\large
+A_1, A_2, \dots, A_n  \in \mathcal{A} \Rightarrow \bigcap_{i=1}^n A_i \in \mathcal{A} \text{ for all } n \in \mathbb{N} \text{ (closure under finite intersections)}
+++++
+
+*Proof:*
+
+If stem:[A_1, A_2, \dots, A_n  \in \mathcal{A}], then stem:[A_1^c, A_2^c, \dots, A_n^c  \in \mathcal{A}]. Then by property 3, we can say that their unions stem:[\bigcup_{i=1}^n A_i^c] also belong to the algebra. By De Morgan's law:
+
+[stem]
+++++
+\large
+\left( \bigcap_{i=1}^n A_i \right)^c =  \bigcup_{i=1}^n A_i^c
+++++
+
+[stem]
+++++
+\large
+\left( \bigcap_{i=1}^n A_i \right)^c \in \mathcal{A} \Rightarrow \bigcap_{i=1}^n A_i \in \mathcal{A}
+++++
+
+Example:
+
+Say our experiment is throwing a 6-sided dice and we are interested in the face that shows up. stem:[\Omega = \{1,2,3,4,5,6\}].
+
+. The smallest possible algebra that we can ever construct is stem:[\mathcal{A} = \{\phi, \Omega \}]. This algebra has 2 elements.
+. In the worst case, we can include all possible subsets of stem:[\Omega] and form an algebra. stem:[\mathcal{A} = 2^\Omega], which is the collection of all subsets of stem:[\Omega]. stem:[2^\Omega] is just the notation for power set of stem:[\Omega]. This is the biggest possible algebra that we can ever construct. This algebra has 64 elements.
++
+If stem:[\Omega = \{1,2,3\}], then stem:[2^\Omega = \left\{ \phi, \Omega, \{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\} \right\}]. This has stem:[2^n] elements where stem:[n] is the number of elements in the sample space.
+. Let's construct an algebra given a set stem:[\left\{ \phi, \Omega, \{1\}, \{2,3\}  \right\}].
++
+[stem]
+++++
+\large
+\mathcal{A} = \left\{ \phi, \Omega, \{1\}, \{2,3\}, \{1,2,3\}, \{4,5,6\}, \{2,3,4,5,6\}, \{1,4,5,6\}  \right\}
+++++
++
+This algebra has 8 elements.
+
+Any algebra (having finite number of elements) should necessarily have a power of 2 number of elements in it (i.e,) it should have stem:[2^k] elements for some stem:[k]. An algebra will be finite when stem:[\Omega] is a finite set.
+
+== stem:[\sigma-] Algebra ==
+This concept of algebra fell short of what actually needed in practice. Let's consider an experiment of tossing a coin until first head shows up, so stem:[\Omega = \{H, TH, TTH, TTTH, \dots\}]. We don't know how many tosses we need to do upfront. The algebra will be:
+
+[stem]
+++++
+\large
+\begin{align*}
+\mathcal{A} = & \left\{ \phi, \Omega, \{H\}, \{TH\}, \{TTH\}, \{TTTH\}, \dots  \right. \\
+&\left. \quad \{H, TH\}, \{H, TTH\}, \{H, TTTH\}, \dots \right. \\
+&\left. \quad \{H, TH, TTH\}, \{H, TH, TTTH\}, \dots \right. \\
+&\left. \quad \{H, TH, TTH, TTTH\}, \dots \right\}
+\end{align*}
+++++
+
+We first start with sets of single outcome, putting each element of stem:[\Omega] in a set. Then we union these to get sets with two outcomes. Then we union these to get sets with three outcomes and so on. If we keep doing this we get an algebra. Note that all the elements of stem:[\mathcal{A}] are finite, because we find them by union of finite sets.
+
+Say event of interest stem:[A]: the number of tosses is even. So stem:[A = \{TH, TTTH, \dots\}].
+
+On constructing a set satisfying all the three properties of an algebra, we never get event stem:[A \Rightarrow A \notin \mathcal{A}]. Because event stem:[A] can never be expressed interms of finite union of elements from algebra stem:[\mathcal{A}]. Take as many elements (a finite number of elements) of stem:[\mathcal{A}] and union them, we can never get event stem:[A]. The problem is that we are including only finite unions. We want union of infinitely many sets to get event stem:[A].
+
+Borel came up with the concept of countably infinite unions. Algebra by definition doesn't include infinite unions. He extended algebra to include infinite unions.
+
+====
+*Formal Definition of stem:[\sigma-] algebra (stem:[\sigma-] field):*
+
+Let stem:[\Omega] be a sample space. A collection stem:[\mathcal{F}] of subsets of stem:[\Omega] is called a stem:[\sigma-] algebra if it satisfies the following properties:
+
+. stem:[\Omega \in \mathcal{F}].
+. stem:[A \in \mathcal{F} \Rightarrow A^c \in \mathcal{F} ] (closure under complements).
+. stem:[A_1, A_2, \dots \in \mathcal{F} \Rightarrow \bigcup_{i=1}^\infty A_i \in \mathcal{F}] (closure under countably infinite unions).
+====
+
+stem:[\sigma-] algebra includes infinite collection of sets and their unions as well. Note here stem:[A_i]'s need not be distinct. They can be the same, overlapping, or distinct.
+
+*Remarks:*
+
+. Elements of a stem:[\sigma-] algebra are called events.
+. An event stem:[A \in \mathcal{F}] is also referred to as an stem:[\mathcal{F}-] measurable set.
+. Every stem:[\sigma-] algebra is also an algebra, but the converse is not true. To prove that stem:[\sigma-] algebra is also an algebra, we need to prove that if stem:[A, B \in \mathcal{F}] then stem:[A \cup B \in \mathcal{F}].
++
+Consider stem:[A_1 = A, A_2=B, A_i = \phi \, \forall i\geq3]. Then stem:[\bigcup_{i=1}^\infty A_i = A_1 \cup A_2 \in \mathcal{F} ].
++
+So a stem:[\sigma-] algebra is much more than an algebra (i.e.,) it has much more elements compared to an algebra. Conversely, an algebra may not be a stem:[\sigma-] algebra.
++
+Note that the algebra stem:[\mathcal{A} = \left\{ \phi, \Omega, \{1\}, \{2,3\}, \{1,2,3\}, \{4,5,6\}, \{2,3,4,5,6\}, \{1,4,5,6\}  \right\}] is also a stem:[\sigma-] algebra. We can take infinite sets (with replacement) and the result will still be equivalent to taking union of finite sets.
+
+. The pair stem:[(\Omega, \mathcal{F})] is called a measurable space.
+
+NOTE: Algebra and stem:[\sigma-] algebra are more or less the same when we deal with a finite sample space. When stem:[\Omega = \mathbb{N}, \Omega = \mathbb{R}], the power of stem:[\sigma-] algebra kicks in.
+
+*Refresher:*
+
+There are infinitely many elements in the set stem:[\mathbb{N}= \{1,2,3,\dots\}] and stem:[\mathbb{R}=(-\infty, \infty)]. And we know that and stem:[\mathbb{R}] is bigger in size. So there is a different notion of infinity in our mind because these sets are at different level of infinities. The infinity of stem:[\mathbb{N}] is called as countable infinity and the infinity of stem:[\mathbb{R}] is called as uncountable infinity.
+
+A set stem:[S] is said to be countably infinite if there exist a function stem:[f: S \rightarrow \mathbb{N}] which is one-to-one and onto (i.e.,) every element in stem:[S] is associated with a unique natural number and vice-versa. This says that the stem:[S] has as many elements as there are in natural numbers.
+
+Example: 
+
+* Let stem:[S = \{2,4,6,\dots\}] - set of even natural numbers. This set is also a countably infinite set. This set is a subset of stem:[\mathbb{N}] but still has infinitely many elements and it exactly has the same infinite number of elements as stem:[\mathbb{N}].
++
+So stem:[f:S \rightarrow \mathbb{N}, f(x) = \frac{x}{2}]. The element 2 will be mapped to 1, 4 to 2, 6 to 3 and so on.
+
+* Let stem:[S = \{1,3,5,\dots\}] - set of odd natural numbers. This set is also a countably infinite set. This set is a subset of stem:[\mathbb{N}] but still has infinitely many elements and it exactly has the same infinite number of elements as stem:[\mathbb{N}].
++
+So stem:[f:S \rightarrow \mathbb{N}, f(x) = \frac{x+1}{2}]. The element 1 will be mapped to 1, 3 to 2, 5 to 3 and so on.
+
+So when we say stem:[A_1, A_2, A_3, \dots] as a countably infinite collection of sets, then set stem:[A_1] can be associated with 1, stem:[A_2] with 2, and so on. There are as many sets as there are natural numbers.
+
+== Probability Measure ==
+To every set present in the stem:[\sigma-] algebra, we assign a number between 0 and 1 (both inclusive). The numbers are not assigned to individual elementary outcomes, *they are assigned to events.* We assign the numbers in such a way that the following properties are satisfied.
+
+====
+Fix a measurable space stem:[(\Omega, \mathcal{F})]: a sample space and any stem:[\sigma-] algebra.
+
+A function stem:[P: \mathcal{F} \rightarrow [0,1\]] is called a probability measure if the following properties are satisfied:
+
+. stem:[P(\phi) = 0].
+. stem:[P(\Omega) = 1].
+. If stem:[A_1, A_2, \dots] is a countable (infinite) collection of mutually disjoint sets, with stem:[A_i \in \mathcal{F}] for each stem:[i\in \mathbb{N}] and stem:[A_i \cap A_j = \phi ] for all stem:[i \ne j], then
++
+[stem]
+++++
+\large
+P \left( \bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty P(A_i)
+++++
+
+The triplet stem:[(\Omega, \mathcal{F}, P)] is called a probability space.
+====
+
+These are called as axioms of probability.
+
+We can talk about the probability of a set only if the set is in the stem:[\sigma-] algebra. Here stem:[\bigcup_{i=1}^\infty A_i] is also a set in the stem:[\sigma-] algebra, so we can talk about its probability.
+
+
