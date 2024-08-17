@@ -142,9 +142,9 @@ stem:[\sigma-] algebra includes infinite collection of sets and their unions as 
 +
 Consider stem:[A_1 = A, A_2=B, A_i = \phi \, \forall i\geq3]. Then stem:[\bigcup_{i=1}^\infty A_i = A_1 \cup A_2 \in \mathcal{F} ].
 +
-So a stem:[\sigma-] algebra is much more than an algebra (i.e.,) it has much more elements compared to an algebra. Conversely, an algebra may not be a stem:[\sigma-] algebra.
+So a stem:[\sigma-] algebra is much more than an algebra (i.e.,) it has much more elements compared to an algebra. Conversely, an algebra may not be a stem:[\sigma-] algebra. In general, an algebra is a subset of a sigma-algebra.
 +
-Note that the algebra stem:[\mathcal{A} = \left\{ \phi, \Omega, \{1\}, \{2,3\}, \{1,2,3\}, \{4,5,6\}, \{2,3,4,5,6\}, \{1,4,5,6\}  \right\}] is also a stem:[\sigma-] algebra. We can take infinite sets (with replacement) and the result will still be equivalent to taking union of finite sets.
+Note that the algebra stem:[\mathcal{A} = \left\{ \phi, \Omega, \{1\}, \{2,3\}, \{1,2,3\}, \{4,5,6\}, \{2,3,4,5,6\}, \{1,4,5,6\}  \right\}] is also a stem:[\sigma-] algebra. We can take infinite sets (with replacement) and the result will still be equivalent to taking union of finite sets. Every finite algebra (algebra containing finitely many sets) is also a sigma-algebra.
 
 . The pair stem:[(\Omega, \mathcal{F})] is called a measurable space.
 
@@ -189,8 +189,8 @@ P \left( \bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty P(A_i)
 The triplet stem:[(\Omega, \mathcal{F}, P)] is called a probability space.
 ====
 
-These are called as axioms of probability.
+These are called as axioms of probability. These definitions don't tell us what numbers to assign to events, it is up to us to collect events that are interested to us and define a function that assign numbers to those events. The definitions just tell us the rules such a function must satisfy for it to be a probability function. 
 
-We can talk about the probability of a set only if the set is in the stem:[\sigma-] algebra. Here stem:[\bigcup_{i=1}^\infty A_i] is also a set in the stem:[\sigma-] algebra, so we can talk about its probability.
+We can talk about the probability of a set only if the set is in the stem:[\sigma-] algebra. Here in property 3, stem:[\bigcup_{i=1}^\infty A_i] is also a set in the stem:[\sigma-] algebra, so we can talk about its probability.
 
 

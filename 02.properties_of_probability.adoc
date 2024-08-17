@@ -1,0 +1,356 @@
+= Properties of Probability Measure =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Property 1 ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. For any two disjoint sets stem:[A, B \in \mathcal{F}],
+
+[stem]
+++++
+\large
+P(A \cup B) = P(A) + P(B)
+++++
+
+All the sets stem:[A, B, A \cup B] are in the stem:[\sigma-] algebra, so we can talk about their probability. Let stem:[A_1=A, A_2 = B, A_i =\phi \, \forall i\geq3]. All these sets are disjoint sets, for example stem:[A_i \cap A_1 = \phi].
+
+[stem]
+++++
+\large
+\begin{align*}
+\bigcup_{i=1}^\infty A_i & = A \cup B \\
+P \left( \bigcup_{i=1}^\infty A_i \right) & = \sum_{i=1}^\infty P(A_i) && \text{ by axiom 3} \\
+\\
+P(A \cup B) & = P(A) + P(B) + \sum_{i=3}^\infty P(A_i) \\
+& = P(A) + P(B) && \text{ since } P(\phi) = 0
+\end{align*}
+++++
+
+== Property 2 ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. For any stem:[n \in \mathbb{N}] and a collection of mutually disjoint sets stem:[B_1, B_2, \dots, B_n \in \mathcal{F}],
+
+[stem]
+++++
+\large
+P\left( \bigcup_{i=1}^n B_i \right) = \sum_{i=1}^n P(B_i)
+++++
+
+All the sets stem:[B_1, B_2, \dots, B_n, \text{ and } \bigcup_{i=1}^n B_i] are in the stem:[\sigma-] algebra, so we can talk about their probability. This is just an extension of the previous result.
+
+When the sets stem:[B_1, B_2, \dots, B_n] are mutually disjoint, every finite subset of them is disjoint (i.e.,) stem:[P(B_1 \cap B_2 \cap \dots \cap B_n)=0] for any stem:[n]. 
+
+== Property 3 ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. For any set stem:[A \in \mathcal{F}],
+
+[stem]
+++++
+\large
+P(A^c) = 1- P(A)
+++++
+
+The sets stem:[A, A^c] are in the stem:[\sigma-] algebra, so we can talk about their probability.
+
+stem:[A] and stem:[A^c] are disjoint sets stem:[A \cap A^c = \phi] and stem:[A \cup A^c = \Omega]. ,
+
+[stem]
+++++
+\large
+\begin{align*}
+P(A \cup A^c) & = P(\Omega)  \\
+P(A) + P(A^c) & = 1 && \text{ By property 1 and axiom 2}
+\end{align*}
+++++
+
+== Property 4 - Monotonicity Property ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. For any two sets stem:[A, B \in \mathcal{F}] such that stem:[A \subseteq B], then stem:[P(A) \leq P(B)]. Probability is a monotone function.
+
+image::.\images\monotonicity.png[align='center']
+
+The sets stem:[A] and stem:[B-A] are disjoints from each other, stem:[A \cap (B-A) = \phi]. And stem:[A \cup (B-A) = B]. So
+
+[stem]
+++++
+\large
+\begin{align*}
+P \left( A \cup (B-A) \right) & = P(B) \\
+P(A) + P(B-A) & = P(B) && \text{ By property 1} \\
+P(A) & \leq P(B) && \text{ as } P(B-A) \geq 0
+\end{align*}
+++++
+
+So stem:[P(B)] is at least as large as stem:[P(A)]. In other words, stem:[P(A)] can be at most stem:[P(B)].
+
+And also note that the set stem:[B-A] is present in the stem:[\sigma-] algebra. As stem:[(B-A) = (B \cap A^c), B \text{ and } A^c] are present in the stem:[\sigma-] algebra. And by the fact that if we take any two sets from the stem:[\sigma-] algebra, it's intersection should also be present in the stem:[\sigma-] algebra, we can say that stem:[(B \cap A^c)] is also present in the stem:[\sigma-] algebra.
+
+This shows that if stem:[A, B \in \mathcal{F}], then stem:[(A-B)] and stem:[(B-A)] are also present in the stem:[\sigma-] algebra.
+
+*Corollary:*
+
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. For any two sets stem:[A, B \in \mathcal{F}] such that stem:[A \subseteq B], then stem:[P(B-A) = P(B) - P(A)]. From the above derivation, we can directly see this.
+
+== Property 5 - Addition Rule ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. For *any* (disjoint, overlapping, identical, etc.) two sets stem:[A, B \in \mathcal{F}],
+
+[stem]
+++++
+\large
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+++++
+
+If we are given two sets that are either disjoint or overlapping, we can represent their union as:
+
+image::.\images\addition_rule.png[align='center']
+
+We can write these as three disjoint sets:
+
+[stem]
+++++
+\large
+\begin{align*}
+(A \cup B) & = \left(A - (A \cap B) \right) \cup (A \cap B) \cup \left(B - (A \cap B) \right) \\
+P(A \cup B) & =  P \bigl( \left(A - (A \cap B) \right) \cup (A \cap B) \cup \left(B - (A \cap B) \right) \bigr) \\
+& =  P\left(A - (A \cap B) \right) + P(A \cap B) + P\left(B - (A \cap B) \right) && \text{ By property 2}\\
+& =  P(A) - P(A \cap B) + P(A \cap B) + P(B) - P(A \cap B) && \text{ As } A \cap B \subseteq B \text{ and } A \cap B \subseteq A \\
+& = P(A) + P(B) - P(A \cap B)
+\end{align*}
+++++
+
+== Property 6 - Inclusion-Exclusion ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. For *any* (disjoint, overlapping, identical, etc.) stem:[n \in \mathbb{N}] and sets stem:[A_1, A_2, \dots, A_n \in \mathcal{F}],
+
+[stem]
+++++
+\large
+P\left(\bigcup_{i=1}^n A_i \right) = \sum_{i=1}^n P(A_i) - \sum_{i < j} P(A_i \cap A_j) + \sum_{i < j < k} P(A_i \cap A_j \cap A_k) - \dots + (-1)^{n+1} P\left(\bigcap_{i=1}^n A_i \right)
+++++
+
+This can be proved by mathematical induction. And note this property holds only for any finite stem:[n].
+
+For any 3 sets stem:[A, B, C \in \mathcal{F}],
+
+[stem]
+++++
+\large
+P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)
+++++
+
+== Property 6 - Continuity of Probability Measure 1 ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. If we take countably infinite collection of sets that are growing in size (at least non-decreasing) i.e., stem:[A_2] should be at least as big as stem:[A_1] and so on: stem:[A_1 \subseteq A_2 \subseteq A_3 \subseteq  \dots ] where stem:[A_i \in \mathcal{F}] for each stem:[i \in \mathbb{N}], then
+
+[stem]
+++++
+\large
+P\left(\bigcup_{i=1}^\infty A_i \right) = P\left( \lim_{n \rightarrow \infty} A_n \right) = \lim_{n \rightarrow \infty} P(A_n)
+++++
+
+image::.\images\continuity.png[align='center']
+
+Here the sets stem:[A_1, A_2, \dots] are non-decreasing, they can also stay the same (i.e.,) all stem:[A_i]'s can be equal.
+
+In general, if we have a sequence of sets stem:[\{A_n\}_{n=1}^\infty] such that stem:[A_1 \subseteq A_2 \subseteq \dots], then the limit of this sequence is the union of all the sets in the sequence.
+
+[stem]
+++++
+\large
+\lim_{n \rightarrow \infty} A_n = \bigcup_{n=1}^\infty A_n
+++++
+
+Then by the monotonicity property, stem:[P(A_1) \leq P(A_2) \leq P(A_3) \leq \dots]. Probabilities have to lie between 0 and 1. We have a sequence of probabilities increasing, it has to hit a limit because the probability is bounded above by 1. So the sequence should have a limit. The limit of all these probability values is equal to the probability of the limit set (limit of the sequence of sets).
+
+[stem]
+++++
+\large
+\lim_{n \rightarrow \infty} P(A_n) = P\left( \lim_{n \rightarrow \infty} A_n \right)
+++++
+
+Conversely, in practice it is impossible for us to compute the countable unions. So finding the probability of the resulting set is out of reach. But this property gives us a way to compute the probability of the limit set. We can compute the probability of each stem:[A_n] and take the limit.
+
+In general, we say that a function stem:[f] is continuous at stem:[x_0] if for any sequence approaching stem:[x_0] (either from right or left) stem:[\lim_{n \rightarrow \infty} x_n = x_0] (stem:[x_n] is a sequence of points approaching stem:[x_0]), the corresponding function values are also approaching the value of the function at stem:[x_0], stem:[\lim_{n \rightarrow \infty} f(x_n) = f(x_0)]. So when a function is continuous at stem:[x_0], we say
+
+[stem]
+++++
+\large
+\begin{align*}
+\lim_{n \rightarrow \infty} f(x_n)  & = f(x_0) \\
+\lim_{n \rightarrow \infty} f(x_n)  & = f\left(\lim_{n \rightarrow \infty} x_n \right) 
+\end{align*}
+++++
+
+So when a function is continuous, we can freely pull the limits inside and outside the function as above. And the above property with probability function tells us the same, 
+
+[stem]
+++++
+\large
+P\left( \lim_{n \rightarrow \infty} A_n \right) = \lim_{n \rightarrow \infty} P(A_n)
+++++
+
+Thus we say stem:[P] is continuous and this property is called as continuity of probability property. Note we cannot do this for any arbitrary sets, the mentioned sets should be growing in size.
+
+*Proof:*
+
+Let stem:[B_1 = A_1, \, B_2 = A_2 - A_1, \, B_3 = A_3 -A_2, \dots].
+
+image::.\images\continuity_2.png[align='center']
+
+So we can write:
+
+[stem]
+++++
+\large
+\begin{align*}
+A_1 & = B_1 \\
+A_1 \cup A_2 = A_2 & = B_1 \cup B_2 \\
+A_1 \cup A_2 \cup A_3 = A_3 & = B_1 \cup B_2 \cup B_3 \\
+\dots \\
+\bigcup_{i=1}^n A_i = A_n & = \bigcup_{i=1}^n B_i \, && \forall n \geq 1 \\
+\bigcup_{i=1}^\infty A_i = \lim_{n \rightarrow \infty } A_n & = \bigcup_{i=1}^\infty B_i && \text{ holds for countable unions as well} \\
+P\left( \bigcup_{i=1}^\infty A_i \right) & = P\left(\bigcup_{i=1}^\infty B_i \right) \\
+P\left( \lim_{n \rightarrow \infty } A_n \right) & = \sum_{i=1}^\infty P(B_i) && B_i\text{'s are disjoint sets} \\
+& = \lim_{n \rightarrow \infty} \sum_{i=1}^n P(B_i) && \text{by definition 1*} \\
+& = \lim_{n \rightarrow \infty} \left[ P(B_1) + \sum_{i=2}^n P(A_i - A_{i-1}) \right] \\
+& = \lim_{n \rightarrow \infty} \left[ P(A_1) + \sum_{i=2}^n P(A_i) - P(A_{i-1}) \right] && \text{ by monotonicity property 2*}\\
+& = \lim_{n \rightarrow \infty} P(A_n)
+\end{align*}
+++++
+
+* stem:[(1^\ast)] Infinite sum is just the limit of finite sums.
+* stem:[(2^\ast)] stem:[A_{i-1}] is the subset of stem:[A_i].
+
+== Property 7 - Continuity of Probability Measure 2 ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. If we take countably infinite collection of sets that are shrinking in size (at least non-increasing) i.e., stem:[A_2] should be at most as big as stem:[A_1] and so on: stem:[A_1 \supseteq A_2 \supseteq A_3 \supseteq  \dots ] where stem:[A_i \in \mathcal{F}] for each stem:[i \in \mathbb{N}], then
+
+[stem]
+++++
+\large
+P\left(\bigcap_{i=1}^\infty A_i \right) = P\left( \lim_{n \rightarrow \infty} A_n \right) = \lim_{n \rightarrow \infty} P(A_n)
+++++
+
+image::.\images\continuity_3.png[align='center']
+
+We can assign stem:[B_1 = A_1^c, B_2 = A_2^c, B_3 = A_3^c, \dots]. So stem:[B_1 \subseteq B_2 \subseteq B_3 \subseteq \dots]. And we can use the previous result and prove the property.
+
+As the sets are shrinking, we don't always end up with an empty set. Thus the result stem:[P\left(\bigcap_{i=1}^\infty A_i \right)] is not always 0. For example, 
+
+* As a trivial case if stem:[A_i=A] for all stem:[i], where stem:[A] is some non-empty set, then the intersection of all stem:[A_i]'s is simply equal to stem:[A], which is clearly non-empty.
+* As a concrete example, consider the sequence stem:[[0.5 - \frac{1}{n}, 0.5 + \frac{1}{n}\]]. So stem:[A_1 = [-0.5, 1.5\], A_2 = [0,1\], \dots]. Intersection of all such sets will be stem:[\{0.5\}], which is clearly non-empty.
+
+== Property 8 - Union Bound ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. For any stem:[A_1, A_2, \dots \in \mathcal{F}],
+
+[stem]
+++++
+\large
+P\left(\bigcup_{i=1}^\infty A_i \right) \leq \sum_{i=1}^\infty P(A_i)
+++++
+
+If stem:[A_i]'s are disjoint, the inequality becomes equality. But here stem:[A_i]'s can be any arbitrary sets.
+
+image::.\images\continuity_4.png[align='center']
+
+*Proof:* Let
+
+[stem]
+++++
+\large
+\begin{align*}
+B_1 & = A_1 \\
+B_2 & = A_2 - A_1 \\
+B_3 & = A_3 - (A_2 \cup A_1) \\
+B_4 & = A_4 - (A_3 \cup A_2 \cup A_1) \\
+\dots \\
+B_n & = A_n - \bigcup_{i=1}^{n-1} A_i \\
+\end{align*}
+++++
+
+stem:[B_i]'s are disjoint sets. And even for a collection of arbitrary sets this holds:
+
+[stem]
+++++
+\large
+\begin{align*}
+\bigcup_{i=1}^\infty A_i  & = \bigcup_{i=1}^\infty B_i  \\
+P\left( \bigcup_{i=1}^\infty A_i \right) & = P\left(\bigcup_{i=1}^\infty B_i \right) \\
+& = \sum_{i=1}^\infty P(B_i) && B_i\text{'s are disjoint sets} \\
+& \leq \sum_{i=1}^\infty P(A_i) && \text{ by monotonicity property *}\\
+\end{align*}
+++++
+
+stem:[^\ast] We see that stem:[B_2] is stem:[A_2] with stem:[A_1] part removed, hence stem:[B_2] is a subset of stem:[A_2]. This follows and we see that stem:[B_i] is a subset of stem:[A_i], then by the monotonicity property stem:[P(B_i) \leq P(A_i)].
+
+*Corollary:*
+
+As a special case of the union bound, we can specialize it to two or finite stem:[n] sets:
+
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. For any two sets stem:[A, B \in \mathcal{F}],
+
+[stem]
+++++
+\large
+P(A \cup B) \leq P(A) + P(B)
+++++
+
+More generally, for any stem:[n \in \mathbb{N}] and sets stem:[A_1, A_2, \dots, A_n \in \mathcal{F}],
+
+[stem]
+++++
+\large
+P\left(\bigcup_{i=1}^n A_i \right) \leq \sum_{i=1}^n P(A_i)
+++++
+
+When we don't have any control over structure (disjoint, overlapping, etc.) of the sets stem:[A_1, A_2, \dots], its union stem:[A_1 \cup A_2 \cup \dots] and its probability, it is a good choice to upper bound that probability by stem:[P(A_1) + P(A_2) + \dots]. Note that this sum of individual probabilities may result in stem:[\+\infty]. Since it is an infinite sum of non-negative numbers, it can be stem:[+\infty]. The result is a loose upper bound in this case.
+
+When we know something about their structure, say the sets stem:[A_1, A_2, \dots] are mutually disjoint, then this inequality becomes equality.
+
+== Probability Assignment - Examples ==
+Given a stem:[\sigma-] algebra, we can assign a number between 0 and 1 (both inclusive) to each set in stem:[\sigma-] algebra satisfying the three axioms of probability.
+
+. Experiment: Tossing a coin. Our interest is in the face that shows up, then stem:[\Omega = \{H,T\}]. stem:[\mathcal{F} = 2^\Omega = \{\phi, \Omega, \{H\}, \{T\}\}]. For instance, we can assign the following numbers:
++
+[stem]
+++++
+\large
+\{\phi, \Omega, \{H\}, \{T\}\} \rightarrow \{0,1,p, (1-p)\} \text{ resp.}
+++++
++
+We have to assign stem:[(1-p)] to stem:[\{T\}] because stem:[\{T\} = \{H\}^c]. So by the property stem:[P(\{H\}^c) = 1- P(\{H\})], the probability of stem:[\{T\}] should be stem:[(1-p)].
+
++
+As a special case, we can assign stem:[P(\{H\}) = 0], so stem:[P(\{T\}) = 1]. Here we can see that:
++
+* We have a non empty set with probability 0 and,
+* A set that is not stem:[\Omega] with probability 1.
++
+TIP: So probability of a set equal to 0 doesn't mean that the set is empty. Similarly, probability of a set equal to 1 doesn't mean that the set is stem:[\Omega].
+
+. Experiment: Rolling a die in which we want to identify whether the outcome results in a prime number or not. Then stem:[\Omega = \{1,2,3,4,5,6\}]. So our stem:[\mathcal{F} = \{\phi, \{\Omega\}, \{1,4,6\}, \{2,3,5\}\}]. One of the valid assignments of probability will be stem:[\{0,1,0.5,0.5\}] respectively.
+
+. Say we are interested in the event stem:[\{1\}] and stem:[\{2,3\}]. Then our stem:[\mathcal{F} = \{\phi, \{\Omega\}, \{1\}, \{2,3\}, \{1,2,3\}, \{4,5,6\}, \{2,3,4, 5, 6\}, \{1,4,5,6\}\}]. So our probability assignments can be:
+
+[stem]
+++++
+\large
+\begin{align*}
+P(\phi) & = 0 \\
+P(\Omega) & = 1 \\
+P(\{1\}) & = \frac{1}{6} \rightarrow P(\{2,3,4, 5, 6\}) = \frac{5}{6}  \\
+P(\{2,3\}) & = 0 \rightarrow P(\{1,2,3\}) = \frac{1}{6} \rightarrow P(\{4,5,6\})  = \frac{5}{6} \rightarrow P(\{1,4,5,6\})  = 1
+\end{align*}
+++++
+
+====
+*IMPORTANT*
+
+What does a probability of an event 0 mean?
+
+* In practice, when an event doesn't occur sufficiently many times on carrying out the random experiment close to infinite times, say stem:[n=10000] times, then we assign a probability of a very small number close to 0 to that event. For example, say we got only one head out of stem:[n] coin tosses. So stem:[P(\{H\}) = \frac{1}{n}].
+* In theory by definition, probability are assigned after carrying out the random experiment infinite times. So as stem:[n \rightarrow \infty], the probability of the event will be exactly 0. So stem:[P(\{H\}) = \lim_{n \rightarrow \infty} \frac{1}{n} = 0].
+
+So probability of an event 0 doesn't mean that the event never occurs, it just means that the limiting proportion of times the event occurs is 0. A probability of 0 indicates that an event `almost never` takes place, whereas a probability of 1 indicates than an event `almost certainly` takes place.
+
+* stem:[P(A)=0 \nRightarrow A=\phi]
+* stem:[P(A)=1 \nRightarrow A=\Omega]
+====
+
