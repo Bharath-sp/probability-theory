@@ -1,0 +1,232 @@
+= Conditional Probability Measure =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Definition ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Given stem:[B \in \mathcal{F}] such that stem:[P(B)>0], define a new probability measure
+
+[stem]
+++++
+\large
+P_B: \mathcal{F} \rightarrow [0,1] \text{ via } P_B(A) := \frac{P(A \cap B)}{P(B)} , \, A \in \mathcal{F}
+++++
+
+Then stem:[P_B] is a valid probability measure on stem:[(\Omega, \mathcal{F})], and is called the conditional probability measure conditioned on event stem:[B]. The notation stem:[P_B(A)] is more commonly denoted as stem:[P(A|B)]. And note stem:[(A|B)] is not an event.
+
+IMPORTANT: To talk about conditional probability conditioned on event stem:[B], the stem:[P(B)] must be greater than 0 in the first place.
+
+The new probability measure stem:[P_B] now assigns a new probability to the sets in stem:[\mathcal{F}], which will be different from the probability assigned by our original stem:[P]. So we need to ensure that stem:[P_B] is a valid probability measure.
+
+NOTE: The intersection of two events is the same as the joint probability, stem:[P(A \cap B) = P(A,B)].
+
+*Bounds of stem:[P_B]:*
+
+For any set stem:[A \in \mathcal{F}],
+
+* Lower bound: We know stem:[P(B) > 0] and stem:[P(A \cap B) \geq 0] as it is a probability. So stem:[P_B(A) \geq 0].
+* Upper bound: We know stem:[(A \cap B)] is a subset of stem:[B], then by monotonicity property, stem:[P(A \cap B) \leq P(B)]. So stem:[P_B(A) \leq 1].
+
+So the number that the conditional probability measure assigns to any event in stem:[\mathcal{F}] will lie in the range stem:[[0,1\]].
+
+And stem:[P_B] should satify the three axioms of probability to be a valid probability measure:
+
+. stem:[P_B(\phi) = 0]:
++
+stem:[P_B(\phi) = \frac{P(\phi \cap B)}{P(B)} = \frac{P(\phi)}{P(B)} = 0] as stem:[P(\phi)] is zero.
+
+. stem:[P_B(\Omega) = 1]:
++
+stem:[P_B(\Omega) = \frac{P(\Omega \cap B)}{P(B)} = \frac{P(B)}{P(B)} = 1].
+
+. For any mutually disjoint collection of sets stem:[A_1, A_2, \dots \in \mathcal{F}],
++
+[stem]
+++++
+\large
+P_B \left( \bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty P_B(A_i)
+++++
++
+*Proof:*
++
+[stem]
+++++
+\large
+\begin{align*}
+P_B \left( \bigcup_{i=1}^\infty A_i \right) & = \frac{P\left( (\bigcup_{i=1}^\infty A_i) \cap B \right)}{P(B)} \\
+& = \frac{P\left( \bigcup_{i=1}^\infty (A_i \cap B) \right)}{P(B)} && \text{ (1)} \\
+& = \frac{ \sum_{i=1}^\infty P(A_i \cap B) }{P(B)} && \text{ (2)} \\
+& = \sum_{i=1}^\infty P_B(A_i)
+\end{align*}
+++++
++
+* (1) We have used the distributive property of intersection over union: stem:[A_1 \cap (A_2 \cup A_3) = (A_1 \cap A_2) \cup (A_1 \cap A_3)]. It holds for countably infinite sets as well. This result is also true for non-disjoint sets.
+* (2) Since stem:[A_1, A_2, \dots] are mutually disjoint, stem:[(A_1 \cap B), (A_2 \cap B), \dots] are also mutually disjoint.
+
+Hence stem:[P_B] is a valid probability measure on stem:[(\Omega, \mathcal{F})]. It assigns a new probability to the sets in stem:[\mathcal{F}]. And we can see stem:[P_B(B)=1], it assign a probability of 1 to event stem:[B].
+
+== New Probability Space ==
+
+In our original probability space stem:[(\Omega, \mathcal{F}, P)], the probability of event stem:[B] and other sets can be a different number. In our conditioned probability space stem:[(\Omega, \mathcal{F}, P_B)], the probabilities of the sets are re-arranged:
+
+* stem:[P_B(B)] gets a probability of 1.
+* Any superset stem:[A \in \mathcal{F}] of stem:[B] gets a probability of 1, because stem:[P(A \cap B) = P(B)] if stem:[A] is a superset of stem:[B].
+
+== Conditional Probability - Properties ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Fix stem:[B \in \mathcal{F}] such that stem:[0 < P(B) <1]. Then, for any stem:[A \in \mathcal{F}],
+
+[stem]
+++++
+\large
+P(A) = P(A|B) \cdot P(B) + P(A|B^c) \cdot P(B^c)
+++++
+
+NOTE: We have mentioned stem:[0 < P(B) <1 \Rightarrow P(B) >0 \text { and } P(B^c) >0 ].
+
+*Proof:*
+
+[stem]
+++++
+\large
+\begin{align*}
+& \frac{P(A \cap B)}{P(B)} \cdot P(B) + \frac{P(A \cap B^c)}{P(B^c)} \cdot P(B^c) \\
+& = P(A \cap B) + P(A \cap B^c) \\
+& = P \left((A \cap B) \cup (A \cap B^c) \right) && \text{(1)} \\
+& = P \left( A \cap (B \cup B^c)\right) && \text{(2)}\\
+& = P(A \cap \Omega) = P(A)
+\end{align*}
+++++
+
+* (1) Since stem:[B] and stem:[B^c] are disjoint, stem:[A \cap B] and stem:[A \cap B^c] are also disjoint.
+* (2) Distributive property of intersection over union.
+
+=== Law of Total Probability ===
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[B_1, B_2, \dots \in \mathcal{F}] be a partition of stem:[\Omega] i.e., stem:[B_i \cap B_j = \phi \text{ for all } i \ne j] and stem:[\bigcup_{i=1}^\infty B_i = \Omega]. And stem:[P(B_i) > 0 \, \forall i \in \mathbb{N}]. Then, for stem:[A \in \mathcal{F}],
+
+[stem]
+++++
+\large
+P(A) = \sum_{i=1}^\infty P(A|B_i) \cdot P(B_i)
+++++
+
+image::.\images\law_total_prob.png[align='center']
+
+This kind of break up stem:[P(A|B_4) \cdot P(B_4)] is possible only when stem:[P(B_4) > 0], else we can just talk about stem:[P(A \cap B_4)].
+
+*Proof:*
+
+[stem]
+++++
+\large
+\begin{align*}
+& \sum_{i=1}^\infty P(A|B_i) \cdot P(B_i) \\
+& = \sum_{i=1}^\infty \frac{P(A \cap B_i)}{P(B_i)} \cdot P(B_i) \\
+& = \sum_{i=1}^\infty P(A \cap B_i) \\
+& = P \left( \bigcup_{i=1}^\infty (A \cap B_i) \right) && \text{since $B_i$'s are mutually disjoint} \\
+& = P \left( A \cap \bigcup_{i=1}^\infty B_i \right) && \text{distributive property} \\
+& = P(A \cap \Omega) = P(A)
+\end{align*}
+++++
+
+=== Bayes Theorem ===
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[B_1, B_2, \dots \in \mathcal{F}] be a partition of stem:[\Omega] i.e., stem:[B_i \cap B_j = \phi \text{ for all } i \ne j] and stem:[\bigcup_{i=1}^\infty B_i = \Omega]. And stem:[P(B_i) > 0 \, \forall i \in \mathbb{N}]. For any stem:[A \in \mathcal{F}] such that stem:[P(A) > 0],
+
+[stem]
+++++
+\large
+P(B_i|A) = \frac{P(A|B_i) \cdot P(B_i)}{\sum_{j=1}^\infty P(A|B_j) \cdot P(B_j)}
+++++
+
+*Proof:*
+
+[stem]
+++++
+\large
+\begin{align*}
+P(B_i|A) & = \frac{P(A|B_i) \cdot P(B_i)}{\sum_{j=1}^\infty P(A|B_j) \cdot P(B_j)} \\
+P(B_i|A) & = \frac{P(A|B_i) \cdot P(B_i)}{P(A)} && \text{ by definition} \\
+P(B_i|A) \cdot P(A) & = P(A|B_i) \cdot P(B_i) && \text{ since} P(A) >0 \\
+P(B_i \cap A) & = P(A \cap B_i)
+\end{align*}
+++++
+
+=== Decomposition Rule for Conditional Probabilities ===
+This rule is also called as chain rule.
+
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[A_1, A_2, \dots \in \mathcal{F}]. Then,
+
+[stem]
+++++
+\large
+\begin{align*}
+P\left( \bigcap_{i=1}^\infty A_i \right) & = P(A_1) \cdot P(A_2 |A_1) \cdot P(A_3| A_1 \cap A_2) \dots \\
+& = P(A_1) \cdot \prod_{i=2}^\infty P \left( A_i \,\Bigg| \, \bigcap_{j=1}^{i-1} A_j \right)
+\end{align*}
+++++
+
+provided each of the conditional probabilities on the right-hand side is defined.
+
+* Given stem:[P(B) > 0 \,:\, P(B \cap A) = P(B) \cdot P(A|B)].
+* Given stem:[P(C), P(B \cap C) > 0 \,:\, P(C \cap B \cap A) = P(C) \cdot P(B|C) \cdot P(A | B \cap C)].
+
+[stem]
+++++
+\large
+\begin{align*}
+\text{For finite sets:  } P\left(\bigcap_{i=1}^n A_i \right) & = P(A_1) \cdot P(A_2 |A_1) \cdot P(A_3 |A_1 \cap A_2) \cdot \dots \cdot P\left( A_n \, \Bigg| \, \bigcap_{i=1}^{n-1} A_i \right) \\
+& = P(A_1) \cdot \prod_{i=2}^n P \left( A_i \,\Bigg| \, \bigcap_{j=1}^{i-1} A_j \right)
+\end{align*}
+++++
+
+provided each of the conditional probabilities on the right-hand side is defined.
+
+*Proof:*
+
+For finite stem:[n] sets: Assume all the conditional probabilities on the right-hand side is defined.
+
+[stem]
+++++
+\large
+\begin{align*}
+& P(A_1) \cdot \frac{P(A_2 \cap A_1)}{P(A_1)} \cdot \frac{P(A_3 \cap A_1 \cap A_2)}{P(A_1 \cap A_2)} \cdot \dots \cdot P\left( A_n \, \Bigg| \, \bigcap_{i=1}^{n-1} A_i \right) \\
+& = P\left(\bigcap_{i=1}^n A_i \right) \, \text{  as terms cancel out}
+\end{align*}
+++++
+
+For countable infinite sets: Assume all the conditional probabilities on the right-hand side is defined.
+
+[stem]
+++++
+\large
+P\left( \bigcap_{i=1}^\infty A_i \right) = P\left( \lim_{n \to \infty} \bigcap_{i=1}^n A_i \right)
+++++
+
+Let's define stem:[B_n = \bigcap_{i=1}^n A_i].
+
+[stem]
+++++
+\large
+\begin{align*}
+B_1 & = A_1 \\
+B_2 & = A_1 \cap A_2 \\
+B_3 & = A_1 \cap A_2 \cap A_3 \\
+\dots
+\end{align*}
+++++
+
+And we see that stem:[B_1, B_2, \dots] are sets that are shrinking in size (at least non-increasing). So
+
+[stem]
+++++
+\large
+\begin{align*}
+P\left( \lim_{n \to \infty} \bigcap_{i=1}^n A_i \right) & = P\left( \lim_{n \to \infty} B_n \right) \\
+& = \lim_{n \to \infty} P(B_n) && \text{ by continuity of probability property} \\
+& = \lim_{n \to \infty} P\left(\bigcap_{i=1}^n A_i \right) \\
+& = \lim_{n \to \infty} P(A_1) \cdot \prod_{i=2}^n P \left( A_i \,\Bigg| \, \bigcap_{j=1}^{i-1} A_j \right) && \text{ by the proof for finite sets} \\
+& = P(A_1) \cdot \prod_{i=2}^\infty P \left( A_i \,\Bigg| \, \bigcap_{j=1}^{i-1} A_j \right)
+\end{align*}
+++++

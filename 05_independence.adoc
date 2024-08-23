@@ -1,0 +1,132 @@
+= Independence of Events =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Definition - Two Sets ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Events stem:[A, B \in \mathcal{F}] are said to be independent if
+
+[stem]
+++++
+\large
+P(A \cap B) = P(A) \cdot P(B)
+++++
+
+We write stem:[A \mathrel{\unicode{x2AEB}} B] as a shorthand notation to denote that stem:[A] and stem:[B] are independent of each other.
+
+*Remarks:*
+
+. The definition of independence doesn't involve conditional probabilities. We can define independence even when the criteria of conditional probability doesn't hold.
+. But if the criteria stem:[P(B)>0] is also true, then stem:[A \mathrel{\unicode{x2AEB}} B \Longleftrightarrow P(A|B) = P(A)].
+
+=== Examples ===
+
+*Example 1:*
+
+Suppose stem:[A, B \in \mathcal{F}] and stem:[P(A)=0]. Is stem:[A \mathrel{\unicode{x2AEB}} B]?
+
+We need to verify stem:[P(A \cap B) = P(A) \cdot P(B)].
+
+* RHS: Since stem:[P(A)=0 \Rightarrow P(A) \cdot P(B) =0].
+* LHS: stem:[A \cap B] is a subset of stem:[A]. Then by monotonicity property, stem:[P(A \cap B) \leq P(A)]. Since stem:[P(A)=0, P(A \cap B)] should be less than or equal to 0. As probability can never be less than 0, LHS is also 0.
+
+Hence stem:[A \mathrel{\unicode{x2AEB}} B].
+
+*Example 2:*
+
+Suppose stem:[A, B \in \mathcal{F}] and stem:[P(A)=1]. Is stem:[A \mathrel{\unicode{x2AEB}} B]?
+
+We need to verify stem:[P(A \cap B) = P(A) \cdot P(B)].
+
+* RHS: Since stem:[P(A)=1 \Rightarrow P(A) \cdot P(B) =P(B)].
+* LHS: stem:[A \cup B] is a superset of stem:[A]. Then by monotonicity property, stem:[P(A \cup B) \geq P(A)]. Since stem:[P(A)=1, P(A \cup B)] should be greater than or equal to 1. As probability can never be greater than 1, stem:[P(A \cup B) = 1].
+
++
+stem:[P(A \cup B) = P(A) + P(B) - P(A \cap B) \Rightarrow 1 = 1 + P(B) - P(A \cap B) \Rightarrow P(A \cap B) = P(B) ]. Hence LHS = RHS.
+
+*Example 3:*
+
+Suppose stem:[A \mathrel{\unicode{x2AEB}} B]. Prove that stem:[A^c \mathrel{\unicode{x2AEB}} B] and stem:[A \mathrel{\unicode{x2AEB}} B^c].
+
+We need to show stem:[P(A^c \cap B) = P(A^c) \cdot P(B)].
+
+* LHS: We know that stem:[(A^c \cap B) = B - (A \cap B)],
++
+[stem]
+++++
+\large
+\begin{align*}
+P(A^c \cap B) & = P(B - (A \cap B)) \\
+& = P(B) - P(A \cap B) && (A \cap B) \text{ is a subset of } B
+\end{align*}
+++++
+
+* RHS: stem:[P(A^c) \cdot P(B)],
++
+[stem]
+++++
+\large
+\begin{align*}
+P(A^c) \cdot P(B) & = (1-P(A)) \cdot P(B) \\
+& = P(B) - P(A) \cdot P(B) \\
+& = P(B) - P(A \cap B) && \text{ as } A \mathrel{\unicode{x2AEB}} B
+\end{align*}
+++++
+
+Hence LHS = RHS. Similarly, we can show the other result as well.
+
+*Example 4:*
+
+Suppose stem:[A \in \mathcal{F}]. Can stem:[A] and stem:[A^c] be independent?
+
+[stem]
+++++
+\large
+\begin{align*}
+A \mathrel{\unicode{x2AEB}} A^c  & \Longleftrightarrow P(A \cap A^c)=P(A) \cdot P(A^c) \\
+& \Longleftrightarrow 0 = P(A) (1- P(A)) \\
+& \Longleftrightarrow P(A) \in \{0,1\} \text{ as one of the terms should be 0}
+\end{align*}
+++++
+
+Any set in sigma-algebra with probability 0 or 1 will be independent of it's complement.
+
+*Example 5:*
+
+Suppose stem:[A \in \mathcal{F}]. Can stem:[A] be independent of itself?
+
+[stem]
+++++
+\large
+\begin{align*}
+A \mathrel{\unicode{x2AEB}} A  & \Longleftrightarrow P(A \cap A)=P(A) \cdot P(A) \\
+& \Longleftrightarrow P(A) =[P(A)]^2 \\
+& \Longleftrightarrow P(A) (1- P(A)) = 0 \\
+& \Longleftrightarrow P(A) \in \{0,1\} 
+\end{align*}
+++++
+
+Any set in sigma-algebra with probability 0 or 1 will be independent of itself.
+
+====
+If a set in stem:[\sigma-] algebra has probability 0 or 1, we can say:
+
+. It is independent of every other event.
+. It is independent of it's complement.
+. It is independent of itself.
+====
+
+
+== Definition - Finite and Countably Infinite Sets ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Events stem:[A_1, A_2, \dots, A_n \in \mathcal{F}] are said to be independent if for all stem:[\mathcal{I}_0 \subseteq \{1,2,\dots,n\}],
+
+[stem]
+++++
+\large
+P\left(\bigcap_{i \in \mathcal{I}_0} A_i \right) = \prod_{i \in \mathcal{I}_0} P(A_i)
+++++
+
+More generally, let stem:[\mathcal{I}] be an arbitrary index set (it can be a set of natural numbers, whole numbers, or real numbers also). A collection of events stem:[\{A_i: i \in \mathcal{I}\}] is independent if for every finite subset stem:[\mathcal{I}_0 \subseteq \mathcal{I}], the collection of events stem:[\{A_i: i \in \mathcal{I}_0\}] is independent.

@@ -132,12 +132,13 @@ Let stem:[\Omega] be a sample space. A collection stem:[\mathcal{F}] of subsets 
 . stem:[A_1, A_2, \dots \in \mathcal{F} \Rightarrow \bigcup_{i=1}^\infty A_i \in \mathcal{F}] (closure under countably infinite unions).
 ====
 
-stem:[\sigma-] algebra includes infinite collection of sets and their unions as well. Note here stem:[A_i]'s need not be distinct. They can be the same, overlapping, or distinct.
+stem:[\sigma-] algebra includes countably infinite collection of sets and their unions as well. Note here stem:[A_i]'s need not be distinct. They can be the same, overlapping, or distinct.
 
 *Remarks:*
 
 . Elements of a stem:[\sigma-] algebra are called events.
 . An event stem:[A \in \mathcal{F}] is also referred to as an stem:[\mathcal{F}-] measurable set.
+. The stem:[\sigma-] algebra is closed under finite and countably infinite intersections as well, by De-Morgan's law.
 . Every stem:[\sigma-] algebra is also an algebra, but the converse is not true. To prove that stem:[\sigma-] algebra is also an algebra, we need to prove that if stem:[A, B \in \mathcal{F}] then stem:[A \cup B \in \mathcal{F}].
 +
 Consider stem:[A_1 = A, A_2=B, A_i = \phi \, \forall i\geq3]. Then stem:[\bigcup_{i=1}^\infty A_i = A_1 \cup A_2 \in \mathcal{F} ].
@@ -152,9 +153,11 @@ NOTE: Algebra and stem:[\sigma-] algebra are more or less the same when we deal 
 
 *Refresher:*
 
-There are infinitely many elements in the set stem:[\mathbb{N}= \{1,2,3,\dots\}] and stem:[\mathbb{R}=(-\infty, \infty)]. And we know that and stem:[\mathbb{R}] is bigger in size. So there is a different notion of infinity in our mind because these sets are at different level of infinities. The infinity of stem:[\mathbb{N}] is called as countable infinity and the infinity of stem:[\mathbb{R}] is called as uncountable infinity.
+There are infinitely many elements in the set stem:[\mathbb{N}= \{1,2,3,\dots\}] and stem:[\mathbb{R}=(-\infty, \infty)]. And we know that stem:[\mathbb{R}] is bigger in size. So there is a different notion of infinity because these sets are at different level of infinities. The infinity of stem:[\mathbb{N}] is called as countable infinity and the infinity of stem:[\mathbb{R}] is called as uncountable infinity.
 
-A set stem:[S] is said to be countably infinite if there exist a function stem:[f: S \rightarrow \mathbb{N}] which is one-to-one and onto (i.e.,) every element in stem:[S] is associated with a unique natural number and vice-versa. This says that the stem:[S] has as many elements as there are in natural numbers.
+We can compare the size of two sets only if they have finite elements. When sets have infinite elements, it is not so easy to compare their sizes. So we must use the concept of bijection to compare the sets cardinality when they have infinite elements.
+
+A set stem:[S] is said to be countably infinite if there exist a function stem:[f: S \rightarrow \mathbb{N}] which is one-to-one and onto (i.e.,) every element in stem:[S] is associated with a unique natural number and vice-versa (bijection). This says that the stem:[S] has as many elements as there are in natural numbers.
 
 Example: 
 

@@ -1,0 +1,89 @@
+= Probability Measures on Discrete Spaces =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Discrete Sample Spaces ==
+Let stem:[\Omega] be a non-empty, discrete (finite or countably infinite) sample space. Then, stem:[\Omega] can be represented as stem:[\Omega = \{\omega_1, \omega_2, \dots\}]. In this case, we simply take our stem:[\sigma-] algebra as stem:[\mathcal{F}= 2^\Omega] (this is the biggest sigma algbra that we can ever have).
+
+*Probability assignment for discrete sample space:*
+
+Given stem:[(\Omega, \mathcal{F})], we define stem:[P: \mathcal{F} \rightarrow [0,1\]] as
+
+[stem]
+++++
+\large
+P(A) = \sum_{\omega \in A} P(\{\omega\}), \, A \in \mathcal{F}
+++++
+
+First assign probabilities to those sets in stem:[\mathcal{F}] that have single element (i.e.,) stem:[P(\{\omega_1\}), P(\{\omega_2\}), \dots ], while making sure that the assignment satisfies stem:[\sum_{\omega \in \Omega} P(\{\omega\}) =1].
+
+Then we can get the probability of *any* set stem:[A \in \mathcal{F}] by just summing the probabilities of each element of stem:[A]. For example, if stem:[A = \{\omega_1, \omega_3, \omega_5\}], then stem:[P(A) = P(\{\omega_1\}) + P(\{\omega_3\}) + P(\{\omega_5\})].
+
+== Examples ==
+
+*Experiment 1:*
+
+Tossing a coin. Our interest is in the face that shows, then stem:[\Omega = \{H,T\}]. So stem:[\mathcal{F} = \{\phi, \Omega, \{H\}, \{T\}\}]. Assign probabilities to the singleton sets such that their probabilities add up to 1.
+
+* stem:[P(\{H\}) = p, \, p \in [0,1\]]
+* stem:[P(\{T\}) = (1-p)]
+
+This kind of stem:[P] is known as Bernoulli measure.
+
+*Experiment 2:*
+
+Say our sample space is stem:[\Omega = \mathbb{N}], so stem:[\mathcal{F} = 2^\Omega], which is a never-ending collection of sets.
+
+[stem]
+++++
+\large
+\begin{align*}
+\mathcal{F} = & \left\{ \phi, \Omega, \{1\}, \{2\}, \{3\}, \{4\}, \dots  \right. \\
+&\left. \quad \{1, 2\}, \{1, 3\}, \{1, 4\}, \dots \right. \\
+&\left. \quad \{2, 3\}, \{2, 4\}, \dots \right. \\
+&\left. \quad \{1,2,3\}, \dots \right\}
+\end{align*}
+++++
+
+Assign probabilities to the singleton sets stem:[P(\{k\})] such that their probabilities add up to 1, stem:[\sum_{k=1}^\infty P(\{k\}) = 1]. We need to give a probability to infinite numbers such that their sum equals 1.
+
+One such way is to give probability in geometric sequence fashion, stem:[\frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \dots]. And we know that stem:[\sum_{k=1}^\infty \frac{1}{2^k} = 1]. So we assign stem:[P(\{k\}) = \frac{1}{2^k}, \, k \in \mathbb{N}]. Now we can find the probability of any set in stem:[\mathcal{F}] by simply adding the the probabilities of each of its element. For instance, stem:[P(\{2,3\}) = P(\{2\}) + P(\{3\}) = \frac{1}{4} + \frac{1}{8}  = \frac{3}{8}].
+
+In general, 
+
+[stem]
+++++
+\large
+P(\{k\}) = p(1-p)^{k-1}, \, p \in (0,1] \text{ and } k \in \Omega
+++++
+
+This kind of stem:[P] is known as Geometric measure.
+
+*Experiment 3:*
+
+Say our sample space is stem:[\Omega = \mathbb{N} \cup \{0\}], so stem:[\mathcal{F} = 2^\Omega], which is a never-ending collection of sets.
+
+[stem]
+++++
+\large
+\begin{align*}
+\mathcal{F} = & \left\{ \phi, \Omega, \{0\}, \{1\}, \{2\}, \{3\}, \{4\}, \dots  \right. \\
+&\left. \quad \{0, 1\}, \{0, 2\}, \{0, 3\}, \dots \right. \\
+&\left. \quad \{1, 2\}, \{1, 3\}, \dots \right. \\
+&\left. \quad \{0,1,2\}, \dots \right\}
+\end{align*}
+++++
+
+We can assign 
+
+[stem]
+++++
+\large
+P(\{k\}) = e^{-\lambda} \frac{\lambda^k}{k!}, \, \lambda > 0 \text{ and } k \in \Omega
+++++
+
+This kind of stem:[P] is known as Poisson measure.

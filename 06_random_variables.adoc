@@ -1,0 +1,109 @@
+= Random Variables =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Introduction ==
+Most of the time we don't really care about the underlying sample space, but we are interested only in some numerical function of the sample space.
+
+== Definition ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. A function stem:[X: \Omega \rightarrow \mathbb{R}] is called a random variable with respect to stem:[\mathcal{F}] if
+
+[stem]
+++++
+\large
+\{\omega \in \Omega: X(\omega) \leq x\} \in \mathcal{F} \,\, \forall x \in \mathbb{R}
+++++
+
+A function that maps each elementary outcome in the sample space to a real number such that the collection of all the elementary outcomes which gets mapped to a number stem:[x \in \mathbb{R}] is an element of the stem:[\sigma-] algebra. Such a function is called as random variable with respect to the given stem:[\mathcal{F}].
+
+image::.\images\random_variable_1.png[align='center', 600, 400]
+
+*Remarks:*
+
+. A random variable is neither random nor a variable; it is a deterministic function. The only source of randomness in probability theory is in the output stem:[\omega] of the experiment. A random variable stem:[X] just maps this stem:[\omega] to a number according to a defined deterministic function. There is no randomness in mapping stem:[\omega] to a number. But we still say stem:[X] is random, because the input given to it is random. Just because the input to the function is random, it's output also looks random.
+
+. The definition of a random variable is closely tied to the underlying stem:[\sigma-] algebra stem:[\mathcal{F}].
+. If stem:[X] is a random variable with respect to stem:[\mathcal{F}], it is called an stem:[\mathcal{F}-] measurable function.
+. The definition of a random variable doesn't involve stem:[P].
+
+=== Examples ===
+
+*Example 1:*
+
+Let stem:[\Omega = \{1,2,3,4,5,6\}] and stem:[\mathcal{F}=\{\phi, \Omega\}]. Let stem:[X(\omega) = \omega]. Is stem:[X] a random variable with respect to stem:[\mathcal{F}]? If not, what functions stem:[X] are random variables with respect to stem:[\mathcal{F}]?
+
+image::.\images\random_variable_2.png[align='center', 300, 300]
+
+We need to show that for any stem:[ x \in \mathbb{R}], the collection stem:[\{\omega \in \Omega: X(\omega) \leq x\}] is an element of the sigma algebra.
+
+* Say stem:[x=7]: stem:[\{\omega \in \Omega: X(\omega) \leq 7\} = \Omega], which is an element of the sigma algebra.
+* Say stem:[x=4]: stem:[\{\omega \in \Omega: X(\omega) \leq 4\} = \{1,2,3,4\}], which is not an element of the sigma algebra.
+
+Hence, this function stem:[X] is not a random variable for the given sigma algebra.
+
+Let's take a constant function, stem:[X(\omega)=c \,\, \forall \omega \in \Omega]. Then,
+
+[stem]
+++++
+\large
+\{\omega \in \Omega: X(\omega) \leq x\} = \begin{cases}
+        \phi & \text{if } x < c\\
+        \Omega & \text{if } x \geq c
+    \end{cases}
+++++
+
+So, any constant function is a random variable for the given sigma algebra. And it turns out that only constant functions are random variables for the given sigma algebra. Since our stem:[\sigma-] algebra is very small, the type of functions that can be RV is restricted.
+
+*Example 2:*
+
+Let stem:[\Omega = \{1,2,3,4,5\}] and stem:[\mathcal{F}=\{\phi, \Omega, A, A^c\}] for a fixed stem:[A \subseteq \Omega] and it is non-empty. What functions stem:[X] are random variables with respect to stem:[\mathcal{F}]?
+
+For concreteness, let's take stem:[A=\{1,2,3\}]. And let's take a piece-wise constant function, 
+
+* stem:[X(\omega)=c_1 \text{ if } \omega \in \{1,2,3\} = A].
+* stem:[X(\omega)=c_2 \text{ if } \omega \in \{4,5\} = A^c].
+
+image::.\images\random_variable_3.png[align='center', 400, 300]
+
+But not necessarily that stem:[c_1 < c_2]. It can also be stem:[c_1 > c_2 \text{ or } c_1=c_2]. Then,
+
+[stem]
+++++
+\large
+\{\omega \in \Omega: X(\omega) \leq x\} = \begin{cases}
+        \phi & \text{if } x < c_1\\
+        A & \text{if } c_1 \leq x < c_2 \\
+        \Omega & \text{if } x \geq c_2 
+    \end{cases}
+++++
+
+All the elements are in stem:[\mathcal{F}]. Hence stem:[X] is a random variable.
+
+*Example 3:*
+
+Let stem:[\Omega = \{1,2,3,4,5\}] and stem:[\mathcal{F}=\sigma \left( \{ \{1\}, \{2,3\} \} \right)]. What functions stem:[X] are random variables with respect to stem:[\mathcal{F}]?
+
+stem:[\mathcal{F}= \{\phi, \Omega, \{1\}, \{2,3\}, \{1,2,3\}, \{4,5\}, \{1,4,5\}, \{2,3,4,5\} \}].
+
+IMPORTANT: If we can identify one largest partition of stem:[\Omega] (the largest number of sets that together form a partition of stem:[\Omega]) and map elements of each partition to a constant, then all such functions will be a random variable.
+
+The largest partition that we can form here is stem:[\{ \{1\}, \{2,3\}, \{4,5\} \}] which consists of 3 sets. All functions that map a constant stem:[c_1] to 1, a constant stem:[c_2] to 2, 3, and a constant stem:[c_3] to 4,5 are all random variables. stem:[c_1, c_2, c_3] can be in any order, they can also be equal.
+
+In general,
+
+* All functions that are constants on each set in the maximal partition of stem:[\Omega] are random variables.
+* For a given stem:[\sigma-] algebra, every function doesn't need to be a random variable. The larger the stem:[\sigma-] algebra, the more class of functions we can allow to be random variables.
+
+*Example 4:*
+
+Let stem:[\Omega] be any sample space (can also be a countably finite set - a set of natural numbers stem:[\Omega = \mathbb{N}]) and stem:[\mathcal{F}=2^\Omega]. What functions stem:[X] are random variables with respect to stem:[\mathcal{F}]?
+
+It turns out that every function is a random variable with respect to this stem:[\mathcal{F}]. The set stem:[\{\omega \in \Omega: X(\omega) \leq x\}] is always a subset of stem:[\Omega] for any stem:[x]. Since we have all the possible subsets in our sigma algebra, all possible functions are random variables.
+
+When stem:[\Omega =  \{1,2,3,4,5\}] and stem:[\mathcal{F}=2^\Omega]. The largest partition that we can form here is stem:[\{ \{1\}, \{2\}, \{3\}, \{4\}, \{5\} \}]. We can assign a constant to each of these, which is essentially saying that we can map each element to any number. So it makes any function as a random variable.
+
+As we have the richest sigma algebra here, we are able to allow all the possible functions to be random variables.
