@@ -1,0 +1,242 @@
+= Discrete Random Variables =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Definition ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+A random variable stem:[X: \Omega \rightarrow \mathbb{R}] is said to be discrete if there exists a countable set stem:[E \subset \mathbb{R}], say stem:[E = \{e_1, e_2, \dots\}], such that stem:[\sum_{i=1}^\infty P(\{X=e_i\})=1].
+
+image::.\images\discrete_rvs_1.png[align='center', 500, 300]
+
+Where stem:[\Omega_1] is a set of some stem:[\omega]'s, stem:[\Omega_2] is a set of some other stem:[\omega]'s, stem:[\dots], such that they form a countable infinite partition of stem:[\Omega]. And note that the collection of stem:[\omega]'s that map to stem:[e_i] will be mutually disjoint with the collection of stem:[\omega]'s that map to stem:[e_j], where stem:[i \ne j].
+
+stem:[X] is discrete if we are able to find points stem:[E = \{e_1, e_2, \dots\}] in stem:[\mathbb{R}] which are at most countably infinite, such that the set of all those stem:[\omega]'s that map to those points, i.e., the union of stem:[\Omega_1, \Omega_2, \dots] has a probability of 1.
+
+That doesn't mean the set formed is stem:[\Omega]. There can be a set of stem:[\omega]'s in stem:[\Omega] which maps to those between these points, i.e., stem:[X] can still take values between these discrete points, but the probability of that set will be 0.
+
+* The set of stem:[\omega]'s in the light orange part in stem:[\Omega] in the above image has probability 1. Only those stem:[\omega]'s that belong to one of the stem:[\Omega_i]'s will occur with probability 1. So one of the stem:[e_i]'s will occur with probability 1.
+* The set of stem:[\omega]'s in the light blue part in stem:[\Omega] has probability 0. These stem:[\omega]'s will occur with probability 0.
+
+[stem]
+++++
+\large
+\begin{align*}
+P(\{ X \in E\}) & = \sum_{i=1}^\infty P(\{ X = e_i\}) = 1 \\
+P(\{ X \in B\}) & = \sum_{i: e_i \in B} P(\{ X = e_i\}), B \subseteq \mathbb{R}
+\end{align*}
+++++
+
+== Probability Mass Function ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+For any random variable (discrete or continuous or mixed) stem:[X: \Omega \rightarrow \mathbb{R}], the function stem:[p_X: \mathbb{R} \rightarrow [0,1\]] defined as,
+
+[stem]
+++++
+\large
+p_X(x) = P(\{X=x\}), \, x \in \mathbb{R},
+++++
+
+is called a probability mass function (PMF) of stem:[X]. We can always define a PMF for any type of random variable.
+
+*stem:[X] is a random variable, show that the set stem:[\{X=x\}] is in our sigma algebra to talk about its probability:*
+
+By definition of RV, we know that all the sets of form stem:[\{X \leq x\} \, \forall x \in \mathbb{R}] belong to our sigma algebra. Then a set of the form stem:[\{X \leq x - \epsilon_1\} ] should also be present for any stem:[\epsilon_1]. Let the set be stem:[A_1].
+
+Let stem:[\{\epsilon_n\}_{n=1}^\infty] be any sequence of non-increasing, non-negative real numbers stem:[\epsilon_1 \geq \epsilon_2 \geq \dots \text{ all } \geq 0] and stem:[\lim_{n \to \infty} \epsilon_n = 0].
+
+If stem:[A_1, A_2, \dots \in \mathcal{F}], then its countable union stem:[\bigcup_{i=1}^\infty A_i \in \mathcal{F}]. And we know that,
+
+[stem]
+++++
+\large
+\bigcup_{i=1}^\infty A_i = \bigcup_{i=1}^\infty \{X \leq x - \epsilon_i\} = \{X < x\}
+++++
+
+Which means sets of the form stem:[\{X < x\}] are also present in stem:[\mathcal{F}] for any stem:[x \in \mathbb{R}]. Then if sets stem:[\{X < x\}] and stem:[\{X \leq x\}] are present in stem:[\mathcal{F}], and as stem:[\{X < x\}] is a subset of stem:[\{X \leq x\}], its set difference:
+
+[stem]
+++++
+\large
+\{X \leq x\} - \{X < x\} = \{X=x\} \in \mathcal{F}
+++++
+
+For any random variable stem:[X], we can always define a PMF. But at all those stem:[x] where stem:[F_X] is continuous, the PMF stem:[P(\{X=x\})] will be 0. The PMF will have value only at the jump points, i.e., at all stem:[x] where stem:[F_X] is discontinuous.
+
+image::.\images\pmf_01.png[align='center', 700, 400]
+
+CDF and PMF of a random variable stem:[X]. Both are functions from stem:[\mathbb{R} \rightarrow [0,1\]]. They should be defined for whole stem:[\mathbb{R}] always.
+
+* CDF: stem:[F_X(x) = P(\{X \leq x\})]
+* PMF: stem:[p_X(x) = P(\{X = x\})]
+
+We see that the set stem:[\{X = x\}] is a subset of stem:[\{X \leq x\}], by monotonicity property, the PMF is always less than or equal to the CDF:
+
+[stem]
+++++
+\large
+p_X(x) \leq F_X(x) \, \forall x \in \mathbb{R}
+++++
+
+NOTE: We can define the PMF for any random variable, but it may not give information for all the rvs. The PMF gives information only for discrete random variables. For continuous random variables, the PMF will be 0 for all stem:[x \in \mathbb{R}].
+
+For a discrete random variable stem:[X] taking values in the countable set stem:[E = \{e_1, e_2, \dots\}], we said
+
+[stem]
+++++
+\large
+\sum_{i=1}^\infty P(\{ X = e_i\}) = 1 \Rightarrow \sum_{i=1}^\infty p_X(e_i) = 1
+++++
+
+== CDF in terms of PMF ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X: \Omega \rightarrow \mathbb{R}] be a discrete random variable taking values in the countable set stem:[E = \{e_1, e_2, \dots\} \subset \mathbb{R}]. Then,
+
+[stem]
+++++
+\large
+F_X(x) = \sum_{i: e_i \leq x} P(\{ X = e_i\}) = \sum_{i: e_i \leq x} p_X(e_i) \, \text{ for all } x \in \mathbb{R}.
+++++
+
+== Examples of Discrete Random Variables ==
+
+A CDF specifies a random variable completely in the probabilistic sense. So to get a full probabilistic description of a random variable, we should look at its CDF. But a discrete random variable can also be completely described by its PMF. Because given PMF we can compute the CDF and vice-versa.
+
+So to describe a discrete random variable, we need to specify the set stem:[E = \{e_1, e_2, \dots\}] and stem:[p_X(e_i) \text{ for all } e_i] such that stem:[\sum_{i=1}^\infty p_X(e_i) = 1].
+
+=== Bernoulli ===
+
+stem:[X \sim \text{Bernoulli}(p)], stem:[p \in [0,1\]]
+
+[stem]
+++++
+\large
+E = \{0,1\}, \,\,\,  p_X(x) = \begin{cases}
+        p, & x=1,\\
+        1-p, & x=0, \\
+        0, & \text{otherwise}.
+    \end{cases}
+++++
+
+image::.\images\bernoulli_cdf.png[align='center', 600, 400]
+
+The value of the jump is the PMF value.
+
+=== Uniform ===
+
+stem:[X \sim \text{unif}(\{1,2,\dots,n\})] for some fixed stem:[n \in \mathbb{N}].
+
+[stem]
+++++
+\large
+E = \{1,2,\dots, n\}, \,\,\,  p_X(x) = \begin{cases}
+        \frac{1}{n}, & x \in \{1,2,\dots, n\},\\
+        0, & \text{otherwise}.
+    \end{cases}
+++++
+
+image::.\images\uniform_cdf.png[align='center', 600, 400]
+
+=== Geometric ===
+
+stem:[X \sim \text{Geometric}(p), \hspace{1cm} p \in (0,1\]]
+
+[stem]
+++++
+\large
+E = \mathbb{N}, \hspace{1cm}  p_X(x) = \begin{cases}
+        p (1-p)^{x-1}, & x \in \mathbb{N},\\
+        0, & \text{otherwise}.
+    \end{cases}
+++++
+
+=== Binomial ===
+
+stem:[X \sim \text{Binomial}(n,p)] for some fixed stem:[n \in \mathbb{N} \cup \{0\}] and stem:[p \in [0,1\]]
+
+[stem]
+++++
+\large
+E = \{0,1,\dots,n\}, \hspace{2cm}  p_X(x) = \begin{cases}
+        {n \choose x} p^x (1-p)^{n-x}, & x \in \{0,1,\dots,n\},\\
+        0, & \text{otherwise}.
+    \end{cases}
+++++
+
+=== Poisson ===
+
+stem:[X \sim \text{Poisson}(\lambda), \hspace{1cm} \lambda>0]
+
+[stem]
+++++
+\large
+E = \{0,1,2\dots,\}, \hspace{1cm}  p_X(x) = \begin{cases}
+        e^{-\lambda} \frac{\lambda^x}{x!}, & x \in \{0,1,2\dots\},\\
+        0, & \text{otherwise}.
+    \end{cases}
+++++
+
+== Problem: Function of a Random variable ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Suppose stem:[X] is a discrete random variable defined with respect to stem:[\mathcal{F}] and having the PMF
+
+[stem]
+++++
+\large
+p_X(100) = 0.65;  \hspace{1cm} p_X(-10) = 0.35
+++++
+
+Let stem:[Y= \max\{X,0\}]. Show that stem:[Y] is a random variable with respect to stem:[\mathcal{F}]. Sketch the CDFs of stem:[X] and stem:[Y].
+
+The PMF and CDF of stem:[X] is:
+
+image::.\images\pmf_cdf_of_x.png[align='center', 800, 400]
+
+And given a function stem:[Y : \Omega \rightarrow \mathbb{R}] defined as stem:[Y(\omega) = \max\{X(\omega),0\} ] for all stem:[\omega \in \Omega]. To show that the function stem:[Y] is a random variable, we should show that:
+
+[stem]
+++++
+\large
+\{\omega \in \Omega: Y(\omega) \leq y\} \in \mathcal{F} \,\,\, \forall y \in \mathbb{R}
+++++
+
+From given,
+
+[stem]
+++++
+\large
+\begin{align*}
+\{\omega \in \Omega: Y(\omega) \leq y\} & = \{\omega \in \Omega: \max\{X(\omega),0\} \leq y\} \\
+& = \{\omega \in \Omega: X(\omega) \leq y\} \cap \{\omega \in \Omega: 0 \leq y\} && \text{both elements should be } \leq y
+\end{align*}
+++++
+
+* The first set is in the sigma-algebra for all stem:[y \in \mathbb{R}] by definition because stem:[X] is a random variable.
+* The second set stem:[\{\omega \in \Omega: 0 \leq y\}] results in either stem:[\{\phi\}] if stem:[y < 0] or stem:[\{\Omega\}] if stem:[y \geq 0]. Both are elements of stem:[\mathcal{F}].
+* If two sets are present in stem:[\mathcal{F}], their interesection is also present in stem:[\mathcal{F}].
+
+Hence, stem:[Y] is a random variable. The CDF of stem:[Y] can be derived as:
+
+[stem]
+++++
+\large
+\begin{align*}
+F_Y(y) & = P(\{Y \leq y\}) \\
+& = P(\{\omega \in \Omega: Y(\omega) \leq y\}) \\
+& = P(\{X(\omega) \leq y\} \cap \{ 0 \leq y\}) \\
+\\
+& = \begin{cases}
+        P(\{X \leq y\}), & y \geq 0 \\
+        0, & y < 0
+    \end{cases}
+\end{align*}
+++++
+
+image::.\images\cdf_of_y.png[align='center']

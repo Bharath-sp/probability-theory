@@ -40,7 +40,7 @@ P\left( \bigcup_{i=1}^n B_i \right) = \sum_{i=1}^n P(B_i)
 
 All the sets stem:[B_1, B_2, \dots, B_n, \text{ and } \bigcup_{i=1}^n B_i] are in the stem:[\sigma-] algebra, so we can talk about their probability. This is just an extension of the previous result.
 
-When the sets stem:[B_1, B_2, \dots, B_n] are mutually disjoint, every finite subset of them is disjoint (i.e.,) stem:[P(B_1 \cap B_2 \cap \dots \cap B_n)=0] for any stem:[n]. 
+When the sets stem:[B_1, B_2, \dots, B_n] are mutually disjoint, every finite subset of them is disjoint (i.e.,) stem:[B_1 \cap B_2 \cap \dots \cap B_n=\phi] for any stem:[n]. 
 
 == Property 3 ==
 Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. For any set stem:[A \in \mathcal{F}],
@@ -246,7 +246,7 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. For any stem:[A_1, A_2,
 P\left(\bigcup_{i=1}^\infty A_i \right) \leq \sum_{i=1}^\infty P(A_i)
 ++++
 
-If stem:[A_i]'s are disjoint, the inequality becomes equality. But here stem:[A_i]'s can be any arbitrary sets.
+If the sum of individual probabilities exceed 1, the upper bound will be just 1. If stem:[A_i]'s are disjoint, the inequality becomes equality. But here stem:[A_i]'s can be any arbitrary sets.
 
 image::.\images\continuity_4.png[align='center']
 
@@ -325,9 +325,9 @@ As a special case, we can assign stem:[P(\{H\}) = 0], so stem:[P(\{T\}) = 1]. He
 +
 TIP: So probability of a set equal to 0 doesn't mean that the set is empty. Similarly, probability of a set equal to 1 doesn't mean that the set is stem:[\Omega].
 
-. Experiment: Rolling a die in which we want to identify whether the outcome results in a prime number or not. Then stem:[\Omega = \{1,2,3,4,5,6\}]. So our stem:[\mathcal{F} = \{\phi, \{\Omega\}, \{1,4,6\}, \{2,3,5\}\}]. One of the valid assignments of probability will be stem:[\{0,1,0.5,0.5\}] respectively.
+. Experiment: Rolling a die in which we want to identify whether the outcome results in a prime number or not. Then stem:[\Omega = \{1,2,3,4,5,6\}]. So our stem:[\mathcal{F} = \{\phi, \Omega\, \{1,4,6\}, \{2,3,5\}\}]. One of the valid assignments of probability will be stem:[\{0,1,0.5,0.5\}] respectively.
 
-. Say we are interested in the event stem:[\{1\}] and stem:[\{2,3\}]. Then our stem:[\mathcal{F} = \{\phi, \{\Omega\}, \{1\}, \{2,3\}, \{1,2,3\}, \{4,5,6\}, \{2,3,4, 5, 6\}, \{1,4,5,6\}\}]. So our probability assignments can be:
+. Say we are interested in the event stem:[\{1\}] and stem:[\{2,3\}]. Then our stem:[\mathcal{F} = \{\phi, \Omega, \{1\}, \{2,3\}, \{1,2,3\}, \{4,5,6\}, \{2,3,4, 5, 6\}, \{1,4,5,6\}\}]. So our probability assignments can be:
 
 [stem]
 ++++

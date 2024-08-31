@@ -1,0 +1,189 @@
+= Multiple Random Variables =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Definition ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Given random variables stem:[X: \Omega \rightarrow \mathbb{R}] and stem:[Y: \Omega \rightarrow \mathbb{R}] with respect to the same stem:[\mathcal{F}], their joint CDF stem:[F_{X,Y}: \mathbb{R}^2 \rightarrow[0,1\] ] is defined as
+
+[stem]
+++++
+\large
+F_{X,Y}(x,y) = P(\{X \leq x\} \cap \{Y \leq y\} ), \,\, x,y \in \mathbb{R}
+++++
+
+We know that,
+
+* stem:[X] is a random variable, so stem:[\{\omega \in \Omega : X(\omega) \leq x\} \in \mathcal{F}] for all stem:[x \in \mathbb{R}].
+* stem:[Y] is a random variable, so stem:[\{\omega \in \Omega : Y(\omega) \leq y\} \in \mathcal{F}] for all stem:[y \in \mathbb{R}].
+* So their intersection will also be in the sigma-algebra. Hence, we can talk about its probability.
+
+*Notation:*
+
+* stem:[\{X \leq x\} \cap \{Y \leq y\} = \{X \leq x, Y \leq y\}].
+* stem:[P(\{X \leq x\} \cap \{Y \leq y\} ) = P(X \leq x, Y \leq y)].
+
+NOTE: The joint random variable stem:[(X,Y)] is a function from stem:[\Omega \rightarrow \mathbb{R}^2] with respect to stem:[\mathcal{F}]. The actual definition of the joint random variable involves the notion of Borel sigma algebra, Borel subsets, etc. So it is not stated here.
+
+== Properties of Joint CDF ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X: \Omega \rightarrow \mathbb{R}] and stem:[Y: \Omega \rightarrow \mathbb{R}] be random variables with respect to the same stem:[\mathcal{F}] with joint CDF stem:[F_{X,Y}]
+
+*Limits of Joint CDF:* 
+
+[stem]
+++++
+\large
+\lim_{x,y \to -\infty} F_{X,Y}(x,y) = 0, \,\,\, \lim_{x,y \to +\infty} F_{X,Y}(x,y) = 1
+++++
+
+*Monotonicity:*
+
+If stem:[x_1 \leq x_2] and stem:[y_1 \leq y_2], then stem:[F_{X,Y}(x_1,y_1) \leq F_{X,Y}(x_2,y_2)]. It is a non-decreasing function.
+
+Proof:
+
+Given stem:[x_1 \leq x_2] and stem:[y_1 \leq y_2], show stem:[F_{X,Y}(x_1,y_1) \leq F_{X,Y}(x_2,y_2)]. For single random variable case,
+
+* stem:[x_1 \leq x_2 \Rightarrow \{X \leq x_1\} \subseteq \{X \leq x_2\}].
+* stem:[y_1 \leq y_2 \Rightarrow \{Y \leq y_1\} \subseteq \{Y \leq y_2\}].
+
+Then stem:[\{X \leq x_1\} \cap \{Y \leq y_1\} \subseteq \{X \leq x_2\} \cap \{Y \leq y_2\} ], because if stem:[A \subseteq B] and stem:[C \subseteq D], then stem:[A \cap C \subseteq B \cap D]. Then by monotonicity property, we can say that stem:[F_{X,Y}(x_1,y_1) \leq F_{X,Y}(x_2,y_2)].
+
+*Right and top-continuity:*
+
+stem:[F_{X,Y}] is always continuous from the right and top, i.e., for all stem:[x,y \in \mathbb{R}],
+
+[stem]
+++++
+\large
+\lim_{u \downarrow 0, v \downarrow 0} F_{X,Y}(x + u, y+v) = F_{X,Y}(x,y)
+++++
+
+image::.\images\joint_cdf_01.png[align='center', 500, 300]
+
+As we approach stem:[(x,y)] from the blue space, the joint CDF will be continuous.
+
+*Marginal CDFs from Joint CDF:*
+
+[stem]
+++++
+\large
+\begin{align*}
+\lim_{y \to \infty} F_{X,Y}(x,y) & = F_X(x) \text{ for all } x \in \mathbb{R} \\
+\lim_{x \to \infty} F_{X,Y}(x,y) & = F_Y(y) \text{ for all } y \in \mathbb{R}
+\end{align*}
+++++
+
+Proof:
+
+stem:[\lim_{y \to \infty} F_{X,Y}(x,y) = F_X(x) \text{ for all } x \in \mathbb{R}]
+
+Let stem:[\{y_n\}_{n=1}^\infty] be any sequence of real numbers such that stem:[y_1 \leq y_2 \leq \dots] and stem:[\lim_{n \to \infty} y_n = +\infty]. Now, we need to show stem:[\lim_{n \to \infty} F_{X,Y}(x,y_n) = F_X(x) ].
+
+[stem]
+++++
+\large
+\begin{align*}
+\lim_{n \to \infty} F_{X,Y}(x,y_n) & = \lim_{n \to \infty} P \left( \underbrace{\{X \leq x\} \cap \{Y \leq y_n\}}_{A_n} \right)  \\
+\end{align*}
+++++
+
+stem:[A_n \subseteq A_{n+1} \text{ for all } n] because stem:[y_n \leq y_{n+1} \text{ for all } n].
+
+[stem]
+++++
+\large
+\begin{align*}
+\lim_{n \to \infty} P(A_n) & = P \left(\lim_{n \to \infty} A_n \right) &&\text{by continuity property}\\
+& = P \left(\bigcup_{n=1}^\infty A_n \right) \\
+& = P \left(\bigcup_{n=1}^\infty \{X \leq x\} \cap \{Y \leq y_n\}  \right) \\
+& = P \left(\{X \leq x\} \cap \left( \bigcup_{n=1}^\infty \{Y \leq y_n\} \right) \right) &&\text{first term doesn't have } n \\
+& = P \left(\{X \leq x\} \cap \Omega \right) \\
+& = P (\{X \leq x\}) = F_X(x)
+\end{align*}
+++++
+
+Conversely if we are given the individual CDFs, it is impossible to construct the joint CDF.
+
+== Joint CDF of More Than 2 Variables ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Fix stem:[n>2], and let stem:[X_1, X_2, \dots, X_n] be random variables with respect to the same stem:[\mathcal{F}]. The joint CDF of stem:[X_1, \dots, X_n] is a function stem:[F_{X_1, \dots, X_n}: \mathbb{R}^n \rightarrow [0,1\]] defined as
+
+[stem]
+++++
+\large
+F_{X_1, \dots, X_n}(x_1, \dots, x_n) = P\left( \bigcap_{i=1}^n \{X_i \leq x_i\} \right), \,\, x_1, \dots, x_n \in \mathbb{R}
+++++
+
+Given the joint CDF, we can get the individual CDF of a particular random variable by letting all the other rvs to stem:[+\infty].
+
+== Independence of Random Variables ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Two random variables stem:[X: \Omega \rightarrow \mathbb{R}] and stem:[Y: \Omega \rightarrow \mathbb{R}] defined with respect to the same stem:[\mathcal{F}] are said to be independent if
+
+[stem]
+++++
+\large
+F_{X,Y}(x,y) = F_X(x) \cdot F_Y(y) \hspace{1cm} \forall x,y \in \mathbb{R}
+++++
+
+We know that 
+
+* stem:[F_{X,Y}(x,y)] is a probability given to the event stem:[\{X \leq x\} \cap \{Y \leq y\} ] for any stem:[x,y \in \mathbb{R}].
+* stem:[F_X(x)] is a probability given to the event stem:[\{X \leq x\}] for any stem:[x \in \mathbb{R}].
+* stem:[F_Y(y)] is a probability given to the event stem:[\{Y \leq y\} ] for any stem:[y \in \mathbb{R}].
+
+Two random variables stem:[X] and stem:[Y] are independent if the events stem:[\{X \leq x\}] and stem:[\{Y \leq y\}] are independent for all stem:[x,y \in \mathbb{R}].
+
+[stem]
+++++
+\large
+P(\{X \leq x\} \cap \{Y \leq y\}) = P(\{X \leq x\}) \cdot P(\{Y \leq y\})
+++++
+
+A collection of random variables stem:[X_1, \dots, X_n], all defined with respect to the same stem:[\mathcal{F}] are said to be independent if
+
+[stem]
+++++
+\large
+F_{X_1, \dots, X_n}(x_1, \dots, x_n) = F_{X_1}(x_1) \cdot \dots \cdot F_{X_n}(x_n) \hspace{1cm} \forall x_1, \dots, x_n \in \mathbb{R}
+++++
+
+*Can a random variable be independent of itself?*
+
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X: \Omega \rightarrow \mathbb{R}] be a random variable defined with respect to stem:[\mathcal{F}]. Can stem:[X] be independent of itself?
+
+For stem:[X] to be independent, we need to show:
+
+[stem]
+++++
+\large
+\begin{align*}
+F_{X,X}(x,x) & = F_X(x) \cdot F_X(x) \hspace{1cm} \forall x \in \mathbb{R} \\
+F_X(x) & = [F_X(x)]^2 \\
+F_X(x) - [F_X(x)]^2 & = 0 \\
+F_X(x) (1 - F_X(x) ) & = 0 \\
+F_X(x) & \in \{0,1\}  \hspace{1cm} \forall x \in \mathbb{R} 
+\end{align*}
+++++
+
+If the CDF of a random variable stem:[X] takes a value of 0 or 1 for all stem:[x \in \mathbb{R}], then stem:[X] is said to be independent of itself.
+
+image::.\images\independent_rv.png[align='center', 500, 300]
+
+Which essentially means the CDF can have jump only at one point, say stem:[c \in \mathbb{R}], and the jump value should be equal to 1, stem:[P(\{X=c\})=1]. So the random variable has to be a discrete rv taking only one value with probability 1.
+
+Therefore, the random variable has to be a constant function with probability 1 i.e., it can still take different values, but with probability 0.
+
+image::.\images\independent_rv_2.png[align='center']

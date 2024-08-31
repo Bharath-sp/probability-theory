@@ -1,0 +1,143 @@
+= Continuous Random Variables =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Definition ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+A random variable stem:[X: \Omega \rightarrow \mathbb{R}] is said to be continuous if there exists a function stem:[f_X: \mathbb{R} \rightarrow [0,\infty)] such that
+
+[stem]
+++++
+\large
+F_X(x) = \int_{-\infty}^x f_x(t) dt, \hspace{1cm} \forall x \in \mathbb{R}.
+++++
+
+*Remarks:*
+
+* If the CDF of stem:[X] is continuous, then the random variable stem:[X: \Omega \rightarrow \mathbb{R}] is called as a continuous random variable.
+* The function stem:[f_X] in the definition is called the probability density function (PDF) of the random variable stem:[X]. When we integrate the PDF for the whole range, it should be 1: stem:[\int_{-\infty}^\infty f_X(t) dt =1].
++
+This follows from the property of the CDF:
++
+[stem]
+++++
+\large
+\lim_{x \to +\infty} F_X(x) = 1 \Rightarrow \lim_{x \to +\infty} \int_{-\infty}^x f_x(t) dt = 1.
+++++
+
+* For a continuous random variable stem:[X], its PDF stem:[f_X] provides the full probabilistic description of stem:[X].
+* The PDF doesn't need to be right-continuous.
+
+The CDF of stem:[X] is the probability of an event stem:[\{X \leq x\}], the PMF is also a probability of an event stem:[\{X = x\}], but PDF is not a probability, it is just a non-negative function stem:[f_X: \mathbb{R} \rightarrow [0,\infty)]. The PDF can take values greater than 1.
+
+* CDF: stem:[F_X: \mathbb{R} \rightarrow [0,1\]]
+* PMF: stem:[p_X: \mathbb{R} \rightarrow [0,1\]]
+* PDF: stem:[f_X: \mathbb{R} \rightarrow [0,\infty)]
+
+NOTE: A PDF doesn't have the interpretation of a probability. Only integrals of PDF have interpretation of a probabilities.
+
+== Examples of Continuous Random Variables ==
+
+To specify a continuous random variable, it is enough to specify it's PDF. Because we can compute the CDF given the PDF and vice-versa.
+
+=== Uniform ===
+
+stem:[X \sim \text{Uniform}([0,1\])],
+
+[stem]
+++++
+\large
+f_X(x) = \begin{cases}
+        1, & x \in [0,1],\\
+        0, & \text{otherwise}.
+    \end{cases}
+++++
+
+image::.\images\uniform_cont_rv.png[align='center', 800, 500]
+
+
+[stem]
+++++
+\large
+\begin{align*}
+\text{For } x < 0 & : \, \int_{-\infty}^x f_X(t) dt = 0 \\
+\text{For } 0 \leq x < 1 &: \, \int_{-\infty}^x f_X(t) dt = \int_{0}^x dt = x \\
+\text{For } x \geq 1 &: \, \int_{-\infty}^x f_X(t) dt = \int_{0}^1 dt = 1
+\end{align*}
+++++
+
+So the CDF is,
+
+[stem]
+++++
+\large
+F_X(x) = \begin{cases}
+        0, & x < 0,\\
+        x, & 0 \leq x < 1, \\
+        1, & x \geq 1
+    \end{cases}
+++++
+
+=== Exponential ===
+
+stem:[X \sim \text{Exponential}(\lambda)] for some fixed stem:[\lambda > 0],
+
+[stem]
+++++
+\large
+f_X(x) = \begin{cases}
+        \lambda e^{-\lambda x}, & x \geq 0,\\
+        0, & \text{otherwise}.
+    \end{cases}
+++++
+
+image::.\images\exp_cont_rv.png[align='center', 800, 500]
+
+[stem]
+++++
+\large
+\begin{align*}
+\text{For } x < 0 & : \, \int_{-\infty}^x f_X(t) dt = 0 \\
+\text{For } x \geq 0 &: \, \int_{-\infty}^x f_X(t) dt = \int_{0}^x \lambda e^{-\lambda t} dt = 1 - e^{-\lambda x}
+\end{align*}
+++++
+
+So the CDF is,
+
+[stem]
+++++
+\large
+F_X(x) = \begin{cases}
+        1 - e^{-\lambda x}, & x \geq 0,\\
+        0, & x < 0
+    \end{cases}
+++++
+
+=== Gaussian ===
+
+stem:[X \sim \text{Gaussian}(\mu, \sigma^2)] for some fixed stem:[\mu \in \mathbb{R}, \sigma > 0],
+
+[stem]
+++++
+\large
+f_X(x) = \frac{1}{\sigma \sqrt{2\pi}} \text{exp} \left( - \frac{(x-\mu)^2}{2\sigma^2} \right), \,\, x \in \mathbb{R}
+++++
+
+image::.\images\gaussian_rv.png[align='center', 700, 400]
+
+Here the value of stem:[\frac{1}{\sigma \sqrt{2\pi}}] can be greater than 1.
+
+=== Normal ===
+
+stem:[X \sim \text{Normal} = \text{Gaussian}(0,1)]
+
+[stem]
+++++
+\large
+f_X(x) = \frac{1}{\sqrt{2\pi}} \text{exp} \left( \frac{-x^2}{2} \right), \,\, x \in \mathbb{R}
+++++

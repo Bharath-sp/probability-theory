@@ -9,6 +9,14 @@
 == Introduction ==
 Most of the time we don't really care about the underlying sample space, but we are interested only in some numerical function of the sample space.
 
+*Example:*
+
+* Consider we have 10 machines. We need to find how many machines are working fine and how many are bad. In this case, we are not interested in which machine is bad and which is fine, rather we just need to know, how many (in total) are bad.
+
+* In a game of cricket, Let's say Team A scored 156 on 20 overs and Team B- 145 in 20 overs. Here we interested only in the final score (total amount), not on "What happened in 30th ball out of 120 balls".
+
+So in order to study certain random experiments, it is required to quantify the events.
+
 == Definition ==
 Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. A function stem:[X: \Omega \rightarrow \mathbb{R}] is called a random variable with respect to stem:[\mathcal{F}] if
 
@@ -28,7 +36,7 @@ image::.\images\random_variable_1.png[align='center', 600, 400]
 
 . The definition of a random variable is closely tied to the underlying stem:[\sigma-] algebra stem:[\mathcal{F}].
 . If stem:[X] is a random variable with respect to stem:[\mathcal{F}], it is called an stem:[\mathcal{F}-] measurable function.
-. The definition of a random variable doesn't involve stem:[P].
+. The definition of a random variable doesn't involve probability stem:[P].
 
 === Examples ===
 
@@ -89,7 +97,7 @@ Let stem:[\Omega = \{1,2,3,4,5\}] and stem:[\mathcal{F}=\sigma \left( \{ \{1\}, 
 
 stem:[\mathcal{F}= \{\phi, \Omega, \{1\}, \{2,3\}, \{1,2,3\}, \{4,5\}, \{1,4,5\}, \{2,3,4,5\} \}].
 
-IMPORTANT: If we can identify one largest partition of stem:[\Omega] (the largest number of sets that together form a partition of stem:[\Omega]) and map elements of each partition to a constant, then all such functions will be a random variable.
+IMPORTANT: If we can identify one largest partition of stem:[\Omega] (the largest number of sets that together form a partition of stem:[\Omega]) in stem:[\mathcal{F}] and map elements of each partition to a constant, then all such functions will be a random variable.
 
 The largest partition that we can form here is stem:[\{ \{1\}, \{2,3\}, \{4,5\} \}] which consists of 3 sets. All functions that map a constant stem:[c_1] to 1, a constant stem:[c_2] to 2, 3, and a constant stem:[c_3] to 4,5 are all random variables. stem:[c_1, c_2, c_3] can be in any order, they can also be equal.
 
@@ -107,3 +115,235 @@ It turns out that every function is a random variable with respect to this stem:
 When stem:[\Omega =  \{1,2,3,4,5\}] and stem:[\mathcal{F}=2^\Omega]. The largest partition that we can form here is stem:[\{ \{1\}, \{2\}, \{3\}, \{4\}, \{5\} \}]. We can assign a constant to each of these, which is essentially saying that we can map each element to any number. So it makes any function as a random variable.
 
 As we have the richest sigma algebra here, we are able to allow all the possible functions to be random variables.
+
+== Cumulative Distribution Function ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Given a random variable stem:[X: \Omega \rightarrow \mathbb{R}] with respect to stem:[\mathcal{F}], its cumulative distribution function (CDF) stem:[F_X: \mathbb{R} \rightarrow [0,1\]] is defined as,
+
+[stem]
+++++
+\large
+F_X(x) = P\left( \{\omega \in \Omega: X(\omega) \leq x\} \right) = P\left( \{X \leq x\} \right), \, x \in \mathbb{R}
+++++
+
+*Remarks on notation:*
+
+* stem:[\{\omega \in \Omega: X(\omega) \leq x\} = \{X \leq x\}]. Here stem:[X] is a function and stem:[x] is a real number.
+* stem:[P\left( \{\omega \in \Omega: X(\omega) \leq x\} \right) = P\left( \{X \leq x\} \right) = P(X \leq x)].
+* Every random variable will have a valid CDF.
+
+=== Properties of CDF ===
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[X: \Omega \rightarrow \mathbb{R}] be a random variable with respect to stem:[\mathcal{F}] with CDF stem:[F_X]:
+
+*Limits of CDF:* 
+
+stem:[\lim_{x \to -\infty} F_X(x) = 0, \, \lim_{x \to +\infty} F_X(x) = 1].
+
+To show this, let stem:[\{x_n\}_{n=1}^\infty] be any sequence of real numbers such that stem:[x_1 \geq x_2 \geq \dots] and stem:[\lim_{n \to \infty} x_n = -\infty]. Now, we need to show stem:[\lim_{n \to \infty} F_X(x_n) = 0].
+
+[stem]
+++++
+\large
+\begin{align*}
+\lim_{n \to \infty} F_X(x_n) & = \lim_{n \to \infty} P(\underbrace{\{X \leq x_n\}}_{A_n})  \\
+\end{align*}
+++++
+
+stem:[A_1 =\{X \leq x_1\}, A_2 =\{X \leq x_2\}, \dots  ]. We can see that stem:[A_1 \supseteq A_2 \supseteq \dots] because stem:[x_1 \geq x_2 \geq \dots].
+
+[stem]
+++++
+\large
+\begin{align*}
+\lim_{n \to \infty} P(A_n) & = P\left(\lim_{n \to \infty} A_n \right) && \text{ by continuity of probability} \\
+& = P \left( \bigcap_{n=1}^\infty A_n \right) \\
+& = P \left( \bigcap_{n=1}^\infty \{X \leq x_n\} \right) \\
+& = P(\phi) = 0
+\end{align*}
+++++
+
+If stem:[\bigcap_{n=1}^\infty A_n] results in a non-empty set, let's take an element stem:[\omega_0] from that set. This means that stem:[\omega_0 \in \Omega] is present in all stem:[\{\omega \in \Omega: X(\omega) \leq x_n\} ], which means stem:[X(\omega_0) \leq x_1, X(\omega_0) \leq x_2, \dots] for all stem:[x_n].
+
+But stem:[X(\omega_0)] is one real number. After some point, stem:[x_n] will go below this number as stem:[n \to \infty], which means stem:[X(\omega_0) \nleq x_n] after some stem:[n]. So stem:[\omega_0] cannot belong to stem:[A_n] after some point. Therefore, there will be no stem:[\omega_0] which is present in all stem:[\{X \leq x_n\}]. Hence, their countable intersection will be an empty set.
+
+image::.\images\cdf_limit.png[align='center', 500, 200]
+
+With the same exact reasoning, we can prove stem:[\lim_{x \to +\infty} F_X(x) = 1].
+
+*Monotonicity:*
+
+If stem:[x \leq y], then stem:[F_X(x) \leq F_X(y)]. It is a non-decreasing function.
+
+Proof:
+
+We know that stem:[F_X(x) = P\left( \{\omega \in \Omega: X(\omega) \leq x\} \right)]. Suppose stem:[w_o \in \Omega] is such that stem:[w_o \in \{\omega \in \Omega: X(\omega) \leq x\}].
+
+[stem]
+++++
+\large
+\begin{align*}
+& \Rightarrow X(\omega_0) \leq x \\
+& \Rightarrow X(\omega_0) \leq y && \text{since } x \leq y \\
+& \Rightarrow w_o \in \{\omega \in \Omega: X(\omega) \leq y\} \\
+\end{align*}
+++++
+
+We showed that any stem:[w_o \in \{\omega \in \Omega: X(\omega) \leq x\}] is an element of the set stem:[\{\omega \in \Omega: X(\omega) \leq y\}]. Hence,
+
+[stem]
+++++
+\large
+\begin{align*}
+\{\omega \in \Omega: X(\omega) \leq x\} & \subseteq \{\omega \in \Omega: X(\omega) \leq y\} \\
+\{X \leq x\} & \subseteq \{X \leq y\} \\
+P(\{X \leq x\}) & \leq P(\{X \leq y\}) && \text{by monotonicity property} \\
+F_X(x) & \leq F_X(y)
+\end{align*}
+++++
+
+*Right-continuity:*
+
+stem:[F_X] is always right-continuous, i.e., for all stem:[x \in \mathbb{R}],
+
+[stem]
+++++
+\large
+\lim_{\epsilon \downarrow 0} F_X(x + \epsilon) = F_X(x)
+++++
+
+The CDF is a function on the real line stem:[\mathbb{R}]. It doesn't need to be a continuous function, it can have jumps. The value that the CDF takes at a jump point, say stem:[x_1], is equal to the value that is obtained by approaching the CDF from the right of the jump point.
+
+image::.\images\cdf_01.png[align='center', 500, 300]
+
+* stem:[\epsilon \to 0] means that stem:[\epsilon] is approaching 0 from any direction.
+* stem:[\epsilon \downarrow 0] means that stem:[\epsilon] is approaching 0 from the right. Start from the positive side and reduce to 0.
+* stem:[\epsilon \uparrow 0] means that stem:[\epsilon] is approaching 0 from the left. Start from the negative side and increases to 0.
+
+*Proof:*
+
+Let stem:[\{\epsilon_n\}_{n=1}^\infty] be any sequence of non-increasing, non-negative real numbers stem:[\epsilon_1 \geq \epsilon_2 \geq \dots \text{ all } \geq 0] and stem:[\lim_{n \to \infty} \epsilon_n = 0]. We need to show,
+
+[stem]
+++++
+\large
+\lim_{n \to \infty} F_X(x + \epsilon_n) = F_X(x)
+++++
+
+We know by definition,
+
+[stem]
+++++
+\large
+\lim_{n \to \infty} F_X(x + \epsilon_n) = \lim_{n \to \infty} P \left( \underbrace{\{ \omega \in \Omega: X(\omega) \leq x + \epsilon_n  \}}_{A_n}\right)
+++++
+
+stem:[A_1 = \{X \leq x + \epsilon_1\}, A_2 = \{X \leq x + \epsilon_2\}, \dots ]. And we see stem:[A_1, A_2, \dots] are non-increasing sets, i.e., stem:[A_1 \supseteq A_2 \supseteq A_3 \dots] because stem:[\epsilon_1 \geq \epsilon_2 \geq \dots].
+
+image::.\images\cdf_limit_2.png[align='center']
+
+[stem]
+++++
+\large
+\begin{align*}
+\lim_{n \to \infty} P (A_n) & =  P( \lim_{n \to \infty} A_n) && \text{ by continuity of probability} \\
+& = P \left( \bigcap_{n=1}^\infty A_n \right) \\
+& = P \left( \bigcap_{n=1}^\infty \{ \omega \in \Omega: X(\omega) \leq x + \epsilon_n  \} \right) \\
+& = P \left( \{ \omega \in \Omega: X(\omega) \leq x \} \right) = F_X(x)
+\end{align*}
+++++
+
+These properties are sufficient and necessary to come up with a CDF. Any CDF will satisfy these four properties and any function which satisfies these four properties will be the CDF of some random variable.
+
+=== Corollaries ===
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[X: \Omega \rightarrow \mathbb{R}] be a random variable with respect to stem:[\mathcal{F}] with CDF stem:[F_X].
+
+*Left-limit of CDF:*
+
+What happens when we approach stem:[x] from left: For any stem:[x \in \mathbb{R}],
+
+[stem]
+++++
+\large
+\lim_{\epsilon \downarrow 0} F_X(x - \epsilon) = P(\{X < x\})
+++++
+
+*Proof:*
+
+Let stem:[\{\epsilon_n\}_{n=1}^\infty] be any sequence of non-increasing, non-negative real numbers stem:[\epsilon_1 \geq \epsilon_2 \geq \dots \text{ all } \geq 0] and stem:[\lim_{n \to \infty} \epsilon_n = 0]. We need to show,
+
+[stem]
+++++
+\large
+\lim_{n \to \infty} F_X(x - \epsilon_n) = \lim_{n \to \infty} P \left( \underbrace{\{ \omega \in \Omega: X(\omega) \leq x - \epsilon_n  \}}_{A_n}\right)
+++++
+
+stem:[A_1 = \{X \leq x - \epsilon_1\}, A_2 = \{X \leq x - \epsilon_2\}, \dots ]. And we see stem:[A_1, A_2, \dots] are non-decreasing sets, i.e., stem:[A_1 \subseteq A_2 \subseteq A_3 \dots] because stem:[\epsilon_1 \geq \epsilon_2 \geq \dots].
+
+[stem]
+++++
+\large
+\begin{align*}
+\lim_{n \to \infty} P (A_n) & =  P( \lim_{n \to \infty} A_n) && \text{ by continuity of probability} \\
+& = P \left( \bigcup_{n=1}^\infty A_n \right) \\
+& = P \left( \bigcup_{n=1}^\infty \{ X \leq x - \epsilon_n  \} \right) \\
+& = P \left( \{ \omega \in \Omega: X(\omega) < x \} \right) = P(\{X < x\})
+\end{align*}
+++++
+
+Note that stem:[\bigcup_{n=1}^\infty \{ X \leq x - \epsilon_n  \}] will result in stem:[\{X < x\}] and not stem:[\{X \leq x\}].
+
+Suppose that the countable union under study is stem:[\{X \leq x\}]. Let stem:[\omega_0] be one of the elements of this event such that stem:[X(\omega_0) = x].
+(If there is no such stem:[\omega_0], then the countable union would be simply stem:[\{X < x\}]).
+
+Because stem:[\omega_0] is in the countable union, it should be the case that stem:[\omega_0] is in at least one of the stem:[A_n]'s. That is, there exists some natural number stem:[N] such that stem:[X(\omega_0) \leq x - \epsilon_{N}].
+
+However, this is not possible, because we are saying that stem:[X(\omega_0)=x] and stem:[X(\omega_0) \leq x - \epsilon_{N}]. So, there cannot be any stem:[\omega_0] in the countable union for which stem:[X(\omega_0) = x]. Therefore, the countable union must be stem:[\{X < x\}].
+
+*Continuity of CDF:*
+
+We say that the CDF is continuous at stem:[x] when the left limit and the right limit are the same and it equals the function value stem:[F_X(x)].
+
+* The limit of the CDF at stem:[x] from the right is always stem:[F_X(x)].
+* The limit of the CDF at stem:[x] from the left is stem:[P(\{X < x\}]. It equals stem:[F_X(x)] if and only if the probability that stem:[X] takes that point stem:[x] is 0, stem:[P(\{X=x\})=0].
+
+stem:[F_X] is continuous at a point stem:[x \in \mathbb{R}] if and only if stem:[P(\{X=x\})=0].
+
+*Proof:*
+
+. Given stem:[F_X] is continuous at stem:[x], we should show stem:[P( \{X =x \} ) = 0].
++
+[stem]
+++++
+\large
+\lim_{\epsilon \downarrow 0} F_X(x - \epsilon) = \lim_{\epsilon \downarrow 0} F_X(x + \epsilon) = F_X(x)
+++++
++
+From above we know that, stem:[P(\{X < x \}) = P(\{X \leq x \}) = F_X(x)]
++
+[stem]
+++++
+\large
+\begin{align*}
+P(\{X \leq x \}) & = P(\{X < x \} \cup \{X =x \}  ) \\
+F_X(x) & = P(\{X < x \}) + P( \{X =x \}  )  &&\text{ as they are disjoint sets} \\
+F_X(x) & = F_X(x) + P( \{X =x \} )  &&\text{by definition } P(\{X < x \}) = F_X(x) \\
+& \Rightarrow P( \{X =x \} ) = 0
+\end{align*}
+++++
+
+. Given stem:[P( \{X =x \} ) = 0], we should show stem:[F_X] is continuous at stem:[x]. We always know that,
++
+[stem]
+++++
+\large
+\begin{align*}
+F_X(x) & = P(\{X \leq x \}) \\
+F_X(x) & = P(\{X < x \}) + P( \{X =x \}  )  &&\text{ as they are disjoint sets} \\
+F_X(x) & = P(\{X < x \}) + 0 \\
+& \Rightarrow \lim_{\epsilon \downarrow 0} F_X(x - \epsilon) = F_X(x)
+\end{align*}
+++++
++
+As the left limit and the right limit of the CDF equals the function value at stem:[x], stem:[F_X] is continuous at stem:[x].
++
+IMPORTANT: Wherever the CDF is continuous, at any stem:[x \in \mathbb{R}], the probability that stem:[X] takes stem:[x] is 0, stem:[P(\{X=x\})=0].
+
