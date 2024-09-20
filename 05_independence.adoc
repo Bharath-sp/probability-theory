@@ -53,30 +53,21 @@ Suppose stem:[A \mathrel{\unicode{x2AEB}} B]. Prove that stem:[A^c \mathrel{\uni
 
 We need to show stem:[P(A^c \cap B) = P(A^c) \cdot P(B)].
 
-* LHS: We know that stem:[(A^c \cap B) = B - (A \cap B)],
-+
+We know that stem:[(A^c \cap B) = B - (A \cap B)],
+
 [stem]
 ++++
 \large
 \begin{align*}
 P(A^c \cap B) & = P(B - (A \cap B)) \\
-& = P(B) - P(A \cap B) && (A \cap B) \text{ is a subset of } B
-\end{align*}
-++++
-
-* RHS: stem:[P(A^c) \cdot P(B)],
-+
-[stem]
-++++
-\large
-\begin{align*}
-P(A^c) \cdot P(B) & = (1-P(A)) \cdot P(B) \\
+& = P(B) - P(A \cap B) && (A \cap B) \text{ is a subset of } B \\
 & = P(B) - P(A) \cdot P(B) \\
-& = P(B) - P(A \cap B) && \text{ as } A \mathrel{\unicode{x2AEB}} B
+& = (1-P(A)) \cdot P(B) \\
+& = P(A^c) \cdot P(B) 
 \end{align*}
 ++++
 
-Hence LHS = RHS. Similarly, we can show the other result as well.
+Similarly, we can show the other result as well.
 
 *Example 4:*
 

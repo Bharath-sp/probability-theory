@@ -58,12 +58,12 @@ If stem:[A_1, A_2, \dots \in \mathcal{F}], then its countable union stem:[\bigcu
 \bigcup_{i=1}^\infty A_i = \bigcup_{i=1}^\infty \{X \leq x - \epsilon_i\} = \{X < x\}
 ++++
 
-Which means sets of the form stem:[\{X < x\}] are also present in stem:[\mathcal{F}] for any stem:[x \in \mathbb{R}]. Then if sets stem:[\{X < x\}] and stem:[\{X \leq x\}] are present in stem:[\mathcal{F}], and as stem:[\{X < x\}] is a subset of stem:[\{X \leq x\}], its set difference:
+Which means sets of the form stem:[\{X < x\}] are also present in stem:[\mathcal{F}] for any stem:[x \in \mathbb{R}]. Then its complement stem:[\{X \geq x\}] are also present in stem:[\mathcal{F}]. Then,
 
 [stem]
 ++++
 \large
-\{X \leq x\} - \{X < x\} = \{X=x\} \in \mathcal{F}
+\{X \leq x\} \cap \{X \geq x\} = \{X=x\} \in \mathcal{F}
 ++++
 
 For any random variable stem:[X], we can always define a PMF. But at all those stem:[x] where stem:[F_X] is continuous, the PMF stem:[P(\{X=x\})] will be 0. The PMF will have value only at the jump points, i.e., at all stem:[x] where stem:[F_X] is discontinuous.

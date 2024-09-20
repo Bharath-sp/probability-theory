@@ -1,0 +1,132 @@
+= Jointly Discrete Random Variables =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Definition ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Random variables stem:[X: \Omega \rightarrow \mathbb{R}] and stem:[Y: \Omega \rightarrow \mathbb{R}] defined with respect to the same stem:[\mathcal{F}] are said to be jointly discrete if stem:[X] and stem:[Y] are individually discrete random variables.
+
+* stem:[X] takes value in a countable set stem:[E_1] with probability 1.
+* stem:[Y] takes value in a countable set stem:[E_2] with probability 1.
+* stem:[E_1 \times E_2] is the collection of all points that stem:[(X,Y)] takes.
+
+image::.\images\joint_discrete_01.png[align='center', 500, 300]
+
+If stem:[X] and stem:[Y] are individually discrete random variables, then stem:[(X,Y)] is always a (jointly) discrete random variable. And we know, stem:[(X,Y): \Omega \rightarrow \mathbb{R}^2]. And they have a joint PMF.
+
+== Joint PMF ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+The joint PMF of jointly discrete random variables stem:[X: \Omega \rightarrow \mathbb{R}] and stem:[Y: \Omega \rightarrow \mathbb{R}] defined with respect to the same stem:[\mathcal{F}] is a function stem:[p_{X,Y} : \mathbb{R}^2 \rightarrow [0,1\]] defined as:
+
+[stem]
+++++
+\large
+p_{X,Y}(x,y) = P(\{X=x\} \cap \{Y=y\})  \hspace{1cm} x,y \in \mathbb{R}
+++++
+
+Note:
+
+[stem]
+++++
+\large
+\begin{align*}
+P( \{(X,Y) \in E_1 \times E_2\}) & = \sum_{x \in E_1} \sum_{y \in E_2} p_{X,Y}(x,y) = 1 \\
+P( \{(X,Y) \in B\}) & = \sum_{ (x,y) \in B \, \cap \, (E_1 \times E_2)} p_{X,Y}(x,y) \text{  where } B \subseteq \mathbb{R}^2
+\end{align*}
+++++
+
+Meaning of double summation: An element stem:[x] is chosen from stem:[E_1]. Then for the selected stem:[x], stem:[y] is ran through all the elements in stem:[E_2].
+
+=== Properties ===
+
+. Fix a stem:[x \in E_1]:
++
+image::.\images\joint_discrete_02.png[align='center', 400, 300]
++
+Then, stem:[p_X(x) = \sum_{y \in E_2} p_{X,Y}(x,y), \hspace{1cm} x \in \mathbb{R}].
+
+. Fix a stem:[y \in E_2]:
++
+Then, stem:[p_Y(y) = \sum_{x \in E_1} p_{X,Y}(x,y), \hspace{1cm} y \in \mathbb{R}].
+
+== Conditional PMF ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X, Y] be jointly discrete random variables defined with respect to the same stem:[\mathcal{F}]. Fix stem:[y \in \mathbb{R}] such that stem:[p_Y(y) = P(\{Y=y\}) > 0].
+
+The conditional PMF of stem:[X], conditioned on the event stem:[\{Y=y\}], is a function stem:[p_{X | Y =y} : \mathbb{R} \rightarrow [0,1\]] defined as
+
+[stem]
+++++
+\large
+p_{X | Y =y}(x) = \frac{P(\{X=x\} \cap \{Y=y\})}{P(\{Y=y\})} = \frac{p_{X,Y}(x,y)}{p_Y(y)}  \hspace{1cm} x \in \mathbb{R}
+++++
+
+defined for all stem:[y \in \mathbb{R}] such that stem:[p_Y(y) = P(\{Y=y\}) > 0].
+
+* Here we are looking for stem:[p_{X | Y =y}(x) = P(\{X=x\} | \{Y=y\})].
+
+* We should talk about the conditional PMF of a random variable, conditioned on an event involving another random variable. Here the event conditioned on is stem:[\{Y=y\}].
+
+* Fix a stem:[y \in E_2] such that stem:[p_Y(y) = P(\{Y=y\}) > 0], take out the whole row in the above grid, re-define the probability of all the dots i.e., events of the form stem:[\{X=x\} \cap \{Y=y\}] by "dividing its original probability by stem:[ P(\{Y=y\})]". The re-defined probabilities of all the elements in the row sums up to 1.
+
+image::.\images\joint_cond_pmf.png[align='center', 700, 400]
+
+Furthermore, for any event stem:[A \in \mathcal{F}],
+
+[stem]
+++++
+\large
+P(\{X \in A\} \,|\, \{Y=y\}) = \sum_{x \in A} p_{X|Y=y}(x).
+++++
+
+== Independence of Two Discrete Random variables ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X: \Omega \rightarrow \mathbb{R}] and stem:[Y: \Omega \rightarrow \mathbb{R}] be discrete random variables with respect to the same stem:[\mathcal{F}]. The following statements are equivalent.
+
+. stem:[X \mathrel{\unicode{x2AEB}} Y].
+. stem:[\{X=x\} \mathrel{\unicode{x2AEB}} \{Y=y\}] for all stem:[x,y \in \mathbb{R}].
+. stem:[p_{X,Y}(x,y) = p_X(x) \cdot p_Y(y)] for all stem:[x,y \in \mathbb{R}].
+. For all stem:[y \in \mathbb{R}] such that stem:[p_Y(y) > 0],
++
+[stem]
+++++
+\large
+p_{X | Y =y}(x) =  \frac{p_{X,Y}(x,y)}{p_Y(y)} = p_X(x)  \hspace{1cm} \forall x \in \mathbb{R}.
+++++
++
+The conditional PMF of stem:[X] is same as the unconditional PMF of stem:[X].
+
+To show that four statements are equivalent, we need to take all the possible two statements and prove that one implies two and two implies the one. Or we have to show 1 implies 2, 2 implies 3, 3 implies 4, and 4 implies 1 (both clock and anti-clock wise direction).
+
+Show that 2 implies 1:
+
+Given stem:[\{X=x\} \mathrel{\unicode{x2AEB}} \{Y=y\}] for all stem:[x,y \in \mathbb{R}], show stem:[\{X \leq x\} \mathrel{\unicode{x2AEB}} \{Y \leq y\}] for all stem:[x,y \in \mathbb{R}].
+
+* stem:[X] is discrete: stem:[P(\{X \in E_1\}) = 1] for some stem:[E_1 =\{e_1, e_2, \dots\}].
+* stem:[Y] is discrete: stem:[P(\{Y \in E_2\}) = 1] for some stem:[E_2 =\{f_1, f_2, \dots\}].
+
+[stem]
+++++
+\large
+\begin{align*}
+P( \{X \leq x\} \cap \{Y \leq y\} ) & = \sum_{i: e_i \leq x} \,\, \sum_{j: f_j \leq y} p_{X,Y}(e_i, f_j) \\
+& = \sum_{i: e_i \leq x} \,\, \sum_{j: f_j \leq y} p_X(e_i) \cdot p_Y(f_j) \\
+& = \left( \sum_{i: e_i \leq x} p_X(e_i) \right) \cdot \left( \sum_{j: f_j \leq y} p_Y(f_j) \right) \\
+& = P(\{X \leq x\}) \cdot P(\{Y \leq y\})
+\end{align*}
+++++
+
+====
+Given stem:[X \mathrel{\unicode{x2AEB}} Y],
+
+* We can always say that their joint CDFs product out: stem:[F_{X,Y}(x,y) = F_X(x) \cdot F_Y(y)] for all stem:[x,y \in \mathbb{R}].
+* But if the random variables are discrete, then it equivalent to say that their joint PMFs also product out: stem:[p_{X,Y}(x,y) = p_X(x) \cdot p_Y(y)] for all stem:[x,y \in \mathbb{R}].
+====

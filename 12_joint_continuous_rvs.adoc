@@ -1,0 +1,347 @@
+= Jointly Continuous Random Variables =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Definition ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X: \Omega \rightarrow \mathbb{R}] and stem:[Y: \Omega \rightarrow \mathbb{R}] be random variables defined with respect to the same stem:[\mathcal{F}].
+
+stem:[X] and stem:[Y] are said to be jointly continuous if there exists a function stem:[f_{X,Y}: \mathbb{R}^2 \rightarrow [0,+\infty)] such that the joint CDF of stem:[X] and stem:[Y] may be expressed as:
+
+[stem]
+++++
+\large
+F_{X,Y}(x,y) = \int_{-\infty}^x \int_{-\infty}^y f_{X,Y}(u,v) \,dv \, du \hspace{1cm} \forall x,y \in \mathbb{R}.
+++++
+
+The function stem:[f_{X,Y}] is called the joint PDF of stem:[X] and stem:[Y].
+
+Since we are integrating a non-negative function, the order of the integrals doesn't matter. We can first integrate along the y-axis and then along the x-axis (or) vice-versa.
+
+*Remarks:*
+
+* Every continuous variable should have a PDF. So when we say stem:[(X,Y)] are jointly continuous, they have a joint PDF.
+* The PDF doesn't have the interpretation of probability. In the case of jointly continuous random variables, only the integration along all the variables has the interpretation of probability. In the case of two jointly random variables, only the double integrals has the interpretation of probability.
+* If stem:[X] and stem:[Y] are individually continuous, then stem:[(X,Y)] doesn't need to be jointly continuous.
+* If the random variables are jointly continuous, then stem:[X] and stem:[Y] should be individually continuous.
+* When given two random variables stem:[X] and stem:[Y], their joint CDF always exists. If they both are discrete, their joint PMF always exists. If they are individually continuous, their joint PDF doesn't exist always. Only when they are jointly continuous, it is guaranteed that they have a joint PDF.
+
+== Properties of Joint PDF ==
+
+. stem:[\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} f_{X,Y}(u,v) \,dv \, du =1].
++
+*Proof:*
++
+[stem]
+++++
+\large
+\begin{align*}
+\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} f_{X,Y}(u,v) \,dv \, du & = \lim_{x \to \infty} \lim_{y \to \infty} \int_{-\infty}^x \int_{-\infty}^y f_{X,Y}(u,v) \,dv \, du \\
+& = \lim_{x \to \infty} \lim_{y \to \infty} F_{X,Y}(x,y) \\
+& = 1 && \text{by properties of CDF}
+\end{align*}
+++++
+
+. stem:[\int_{-\infty}^{+\infty} f_{X,Y}(u,v) \,dv  = f_X(u)] for all stem:[u \in \mathbb{R}].
++
+This says if stem:[X] and stem:[Y] are jointly continuous, then stem:[X] is a continuous RV. This still doesn't have the interpretation of probability. It is still a PDF.
++
+*Proof:*
++
+[stem]
+++++
+\large
+\begin{align*}
+F_{X,Y}(x,y) & = \int_{-\infty}^y \int_{-\infty}^x f_{X,Y}(u,v) \,du \, dv \\
+\lim_{y \to \infty} F_{X,Y}(x,y) & = \lim_{y \to \infty} \int_{-\infty}^y \int_{-\infty}^x f_{X,Y}(u,v) \,du \, dv \\
+& = \int_{-\infty}^\infty \int_{-\infty}^x f_{X,Y}(u,v) \,du \, dv \\
+& = \int_{-\infty}^x \int_{-\infty}^\infty f_{X,Y}(u,v) \,dv \, du \\
+\end{align*}
+++++
++
+On the other hand, we know that,
++
+[stem]
+++++
+\large
+\lim_{y \to \infty} F_{X,Y}(x,y) = F_X(x) \text{ for all } x \in \mathbb{R}
+++++
++
+Therefore by equating both the equations,
++
+[stem]
+++++
+\large
+F_X(x) = \int_{-\infty}^x \int_{-\infty}^\infty f_{X,Y}(u,v) \,dv \, du
+++++
++
+Since we are integrating out with respect to stem:[v], the inner integral is a function of stem:[u], and it is a non-negative function, stem:[g(u) = \int_{-\infty}^\infty f_{X,Y}(u,v) \,dv]. This turns out that the CDF of stem:[X] can be expressed as integral of a non-negative function. This is possible if and only if that function is the PDF of stem:[X].
++
+[stem]
+++++
+\large
+\int_{-\infty}^\infty f_{X,Y}(u,v) \, dv = f_X(u) \text{ for all } u \in \mathbb{R}
+++++
++
+The CDF of stem:[X] can be expressed as the integral of some non-negative function. Hence stem:[X] is a continuous random variable.
+
+
+. stem:[\int_{-\infty}^{+\infty} f_{X,Y}(u,v) \,du  = f_Y(v)] for all stem:[v \in \mathbb{R}].
++
+This says if stem:[X] and stem:[Y] are jointly continuous, then stem:[Y] is a continuous RV.
+
+====
+* stem:[X] and stem:[Y] are individually discrete random variables stem:[ \Longleftrightarrow (X,Y)] is a (jointly) discrete random variable.
+* If stem:[X] and stem:[Y] are individually continuous, then stem:[(X,Y)] doesn't need to be jointly continuous. But if stem:[(X,Y)] is jointly continuous, then stem:[X] and stem:[Y] are individually continuous random variables.
+====
+
+*Example:*
+
+Let stem:[X \sim \text{Unif}([0,1\])] and stem:[Y = 1 - X]. Here stem:[Y] also follows stem:[Y \sim \text{Unif}([0,1\])], which can also be proved formally. What is the joint CDF?
+
+We know that the joint CDF is:
+
+[stem]
+++++
+\large
+\begin{align*}
+F_{X,Y}(x,y) & = P(\{X \leq x\} \cap \{Y \leq y\} ), \,\, x,y \in \mathbb{R} \\
+& = P(\{X \leq x\} \cap \{1-X \leq y\} ) \\
+& = P(\{X \leq x\} \cap \{X \geq 1-y\} ) \\
+& = P(\{ 1-y \leq X \leq x\})
+\end{align*}
+++++
+
+* When stem:[x < 1-y], which is same as stem:[y < 1-x],  no stem:[\omega] can satisfy both the conditions. So stem:[P(\phi) = 0 \Rightarrow F_{X,Y}(x,y)=0].
+* When stem:[x = 1-y], then it will be stem:[P(\{X = 1-y\})]. This is zero because stem:[X] is a continuous random variable. Hence, stem:[F_{X,Y}(x,y)=0].
++
+image::.\images\joint_cdf_exer_01.png[align='center', 500, 300]
+
+* When stem:[x > 1-y], which is same as stem:[y > 1-x]:
++
+[stem]
+++++
+\large
+\begin{align*}
+P(\{ 1-y \leq X \leq x\}) = F_X(x) - F_X(1-y) \,\, \forall x,y \in \mathbb{R} \text{ such that } x > 1-y
+\end{align*}
+++++
++
+The CDF of stem:[X] is:
++
+[stem]
+++++
+\large
+F_X(x) = \begin{cases}
+        0, & x < 0,\\
+        x, & 0 \leq x < 1, \\
+        1, & x \geq 1
+    \end{cases}
+
+\hspace{1cm}
+
+F_X(1-y) = \begin{cases}
+        0, & 1-y < 0,\\
+        1-y, & 0 \leq 1-y < 1, \\
+        1, & 1-y \geq 1
+    \end{cases}
+++++
++
+*Case 1:* When stem:[x < 0] and stem:[1-y < 0] such that stem:[y > 1-x]:
++
+Both the terms stem:[F_X(x)] and stem:[F_X(1-y)] are zero. The joint CDF is 0 in this area. The area is stem:[x < 0] and stem:[y > 1] such that stem:[y > 1-x].
++
+*Case 2:* When stem:[0 \leq x < 1] and stem:[1-y < 0] such that stem:[y > 1-x]:
++
+The Area is stem:[0 \leq x < 1] and stem:[y>1] such that stem:[y > 1-x].
++
+[stem]
+++++
+\large
+\begin{align*}
+P(\{ 1-y \leq X \leq x\}) = F_X(x) - F_X(1-y) = x - 0 = x
+\end{align*}
+++++
++
+*Case 3:* When stem:[0 \leq x < 1] and stem:[0 \leq 1-y < 1] such that stem:[y > 1-x]:
++
+The Area is stem:[0 \leq x < 1] and stem:[0 < y \leq 1] such that stem:[y > 1-x].
++
+[stem]
+++++
+\large
+\begin{align*}
+P(\{ 1-y \leq X \leq x\}) = F_X(x) - F_X(1-y) = x - (1-y) = x+y-1
+\end{align*}
+++++
++
+*Case 4:* When stem:[x \geq 1] and stem:[1-y < 0] such that stem:[y > 1-x]:
++
+The Area is stem:[x \geq 1] and stem:[y > 1] such that stem:[y > 1-x].
++
+[stem]
+++++
+\large
+\begin{align*}
+P(\{ 1-y \leq X \leq x\}) = F_X(x) - F_X(1-y) = 1 - 0 = 1
+\end{align*}
+++++
++
+*Case 5:* When stem:[x \geq 1] and stem:[0 \leq 1-y < 1] such that stem:[y > 1-x]:
++
+The Area is stem:[x \geq 1] and stem:[0 < y \leq 1] such that stem:[y > 1-x].
++
+[stem]
+++++
+\large
+\begin{align*}
+P(\{ 1-y \leq X \leq x\}) = F_X(x) - F_X(1-y) = 1 - (1-y) = y
+\end{align*}
+++++
++
+*Case 6:* When stem:[x \geq 1] and stem:[1-y \geq 1] such that stem:[y > 1-x]:
++
+The Area is stem:[x \geq 1] and stem:[y \leq 0] such that stem:[y > 1-x]. Both the terms stem:[F_X(x)] and stem:[F_X(1-y)] are 1. The joint CDF is 0 in this area.
++
+image::.\images\joint_cdf_exer_02.png[align='center', 500, 300]
++
+The joint CDF of stem:[(X,Y)] is:
++
+[stem]
+++++
+\large
+F_{X,Y}(x,y) = \begin{cases}
+        0, & y \leq 1-x,\\
+        0, & x < 0, \, y >1 \\
+        x, & 0 \leq x < 1, \, y > 1 \\
+        x+y-1, & 0 \leq x < 1, \, 0 < y \leq 1 \\
+        1, & x \geq 1, \, y > 1 \\
+        y, & x \geq 1,\, 0 < y \leq 1 \\
+        0, & x \geq 1, \, y \leq 0
+    \end{cases}
+++++
++
+The last 6 subject to stem:[y > 1-x].
+
+The CDF is continuous here, but not absolute continuous. Here stem:[X] and stem:[Y] are not jointly continuous. They don't have a joint PDF. All stem:[\omega]'s will be mapped to the line in stem:[\mathbb{R}^2].
+
+image::.\images\joint_cdf_exer_03.png[align='center', 600, 400]
+
+If the joint PDF was strictly positive somewhere in stem:[\mathbb{R}^2] and on looking at the volume under stem:[f_{X,Y}(x,y)] for a small patch in that area, the value should be strictly positive. Since stem:[f_{X,Y}(x,y)] doesn't span both the axis here, the volume under stem:[f_{X,Y}(x,y)] is zero for any patch. The total volume under the joint PDF should be 1. Here it is 0. Hence they cannot have a joint PDF.
+
+Here the line is stem:[\mathcal{L} = \{(x,y): 0 \leq x < 1, y = 1-x\}]. And stem:[P(\{(x,y) \in \mathcal{L} \}) = 1].
+
+If they are not jointly continuous? What are they? How can we define their joint distribution? It turns out that stem:[(X,Y)] is a singular random variable (when viewed as a mapping from stem:[\Omega] to stem:[\mathbb{R}^2]).
+
+== Conditional CDF and Conditional PDF ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X: \Omega \rightarrow \mathbb{R}] and stem:[Y: \Omega \rightarrow \mathbb{R}] be jointly continuous random variables defined with respect to the same stem:[\mathcal{F}].
+
+Conditional CDF of stem:[X] conditioned on stem:[\{Y=y\}: P(\{X \leq x \,|\, Y=y\})]. However, this conditional probability is not defined because stem:[P(\{Y=y\}) = 0 \, \forall y \in \mathbb{R}].
+
+Remedy:
+
+Since stem:[X] and stem:[Y] are jointly continuous, they are also individually continuous. Fix stem:[y \in \mathbb{R}] and stem:[\epsilon > 0] such that stem:[P(\{Y \in (y-\epsilon, y+\epsilon)\}) > 0].
+
+image::.\images\cond_joint_cont_01.png[align='center', 800, 300]
+
+Define conditional probability with respect to the event stem:[\{Y \in (y-\epsilon, y+\epsilon)\}], and let stem:[\epsilon \downarrow 0].
+
+[stem]
+++++
+\large
+\begin{align*}
+P(\{ X \leq x  \}\,|\, \{Y \in (y-\epsilon, y+\epsilon)\}) & = \frac{P(\{X \leq x\} \cap \{Y \in (y-\epsilon, y+\epsilon)\})}{P(\{Y \in (y-\epsilon, y+\epsilon)\})} \\
+\\
+& = \frac{\int_{-\infty}^x \int_{y-\epsilon}^{y+\epsilon} f_{X,Y}(u,v) \, dv \, du}{\int_{y-\epsilon}^{y+\epsilon} f_Y(v) \, dv} \\
+\end{align*}
+++++
+
+For a given very small interval around an stem:[x] (the outer integral), the region stem:[(y-\epsilon, y+\epsilon)] is very small. We can approximate the function value to be constant in this area, and it equals stem:[f_{X,Y}(u,y)]. Since this is a constant,
+
+[stem]
+++++
+\large
+\int_{-\infty}^x \int_{y-\epsilon}^{y+\epsilon} f_{X,Y}(u,v) \, dv \, du = \int_{-\infty}^x f_{X,Y}(u,y) v \bigg|_{y-\epsilon}^{y+\epsilon} \, du = \int_{-\infty}^x f_{X,Y}(u,y) \cdot 2\epsilon \, du
+++++
+
+The same reasoning can be applied for the denominator as well. Hence, they can be approaximated as:
+
+[stem]
+++++
+\large
+\begin{align*}
+& \approx \frac{\int_{-\infty}^x f_{X,Y}(u,y) \cdot 2\epsilon \, du}{f_Y(y) \cdot 2\epsilon} = \int_{-\infty}^x \frac{f_{X,Y}(u,y)}{f_Y(y)} \, du
+\end{align*}
+++++
+
+=== Definition of Conditional CDF ===
+The conditional CDF of stem:[X], conditioned on the event stem:[\{Y=y\}], is the function stem:[F_{X\,|\,Y=y}: \mathbb{R} \rightarrow [0,1\]] defined as:
+
+[stem]
+++++
+\large
+F_{X\,|\,Y=y}(x) = \int_{-\infty}^x \frac{f_{X,Y}(u,y)}{f_Y(y)} \, du, \hspace{1cm} x \in \mathbb{R},
+++++
+
+defined for all stem:[y \in \mathbb{R}] such that stem:[f_Y(y) > 0]. Note we are conditioning on a small interval around stem:[\{Y=y\}] and letting it to shrink to 0.
+
+=== Definition of Conditional PDF ===
+The conditional PDF of stem:[X], conditioned on the event stem:[\{Y=y\}], is the function stem:[f_{X\,|\,Y=y}: \mathbb{R} \rightarrow [0,+\infty)] defined as:
+
+[stem]
+++++
+\large
+f_{X\,|\,Y=y}(x) = \frac{f_{X,Y}(x,y)}{f_Y(y)}, \hspace{1cm} x \in \mathbb{R},
+++++
+
+defined for all stem:[y \in \mathbb{R}] such that stem:[f_Y(y) > 0].
+
+== Independence of Jointly Continuous RVs ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X: \Omega \rightarrow \mathbb{R}] and stem:[Y: \Omega \rightarrow \mathbb{R}] be jointly continuous random variables defined with respect to the same stem:[\mathcal{F}].
+
+stem:[X] and stem:[Y] are independent if and only if 
+
+[stem]
+++++
+\large
+f_{X,Y}(x,y) = f_X(x) \cdot f_Y(y) \hspace{1cm} \forall x,y \in \mathbb{R}
+++++
+
+====
+Given stem:[X \mathrel{\unicode{x2AEB}} Y],
+
+* We can always say that their joint CDFs product out: stem:[F_{X,Y}(x,y) = F_X(x) \cdot F_Y(y)] for all stem:[x,y \in \mathbb{R}].
+* But if the random variables are jointly continuous, then it equivalent to say that their joint PDF products out: stem:[f_{X,Y}(x,y) = f_X(x) \cdot f_Y(y)] for all stem:[x,y \in \mathbb{R}].
+====
+
+*Remarks:*
+
+. If conditionals make sense, then independence is same as saying unconditional PDF is equal to the conditional PDF.
++
+[stem]
+++++
+\large
+X \mathrel{\unicode{x2AEB}} Y \Leftrightarrow f_{X | Y=y}(x) = f_X(x) \hspace{1cm} \forall y \text{ such that } f_Y(y) > 0.
+++++
+
+. If stem:[X] and stem:[Y] are individually continuous, and they are independent, then they are necessarily jointly continuous.
+
+== Example ==
+Let stem:[f_{X,Y}(x,y) = 1] inside the traingle, and 0 elsewhere. Compute the marginal PDFs of stem:[X] and stem:[Y], and the conditional PDF of stem:[X] conditioned on stem:[\{Y=y\}] for various values of stem:[y]. Argue if stem:[X] and stem:[Y] are independent.
+
+image::.\images\joint_cont_prob_0.png[align='center']
+
+image::.\images\joint_cont_prob.png[align='center', 900, 700]
+
+* To check the independence, we should choose any point stem:[(x,y)] inside the triangle and check if stem:[f_{X,Y}(x,y) = f_X(x) \cdot f_Y(y)]. It should be satisfied for all points. And for all points outside the triangle, both the sides should be 0.
+
+* Conditional PDF of stem:[X], conditioned on stem:[\{Y=y\}]: Let's fix an arbitrary stem:[y] such that stem:[f_Y(y) > 0]. So stem:[0 \leq y < 2]. Note for stem:[y=2, f_Y(y)=0]. And the conditional PDF turns out to be a constant. Hence given stem:[\{Y=y\}], stem:[X] is uniformly distributed between 0 and stem:[(1-\frac{y}{2})].

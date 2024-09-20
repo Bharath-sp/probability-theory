@@ -1,0 +1,303 @@
+= General Transformations =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Introduction ==
+The Jacobian transformation formula is only for a special class of functions.
+
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X: \Omega \rightarrow \mathbb{R}] be a continuous random variable with PDF stem:[f_X].
+
+Given stem:[g: \mathbb{R} \rightarrow \mathbb{R}] that is monotone and differentiable with non-zero derivative throughout its domain, what is the PDF of stem:[Y=g(X)]? 
+
+Note that stem:[g] admits an inverse, stem:[g^{-1}].
+
+[TIP]
+====
+* When a function is strictly monotone, it is both one-to-one and onto. So inverse always exists.
+
+* When it is monotone and differentiable with non-zero derivative throughout its domain (i.e.,) the function is not flat anywhere in its domain, then also inverse is guaranteed.
+====
+
+== Monotone Increasing Functions ==
+
+The CDF of stem:[Y] is
+
+[stem]
+++++
+\large
+\begin{align*}
+F_{Y}(y) & = P(\{Y \leq y\}) \\
+& = P(\{g(X) \leq y\}) \\
+& = P(\{X \leq g^{-1}(y) \}) && \text{as } g \text{ is monotone increasing}
+\end{align*}
+++++
+
+Since stem:[X] is continuous, it will have a PDF. We can express this probability in terms of its PDF.
+
+[stem]
+++++
+\large
+= \int_{-\infty}^{g^{-1}(y)} f_X(x) \, dx
+++++
+
+We change the variable stem:[x] to stem:[v] such that the upper limit is stem:[y]. When stem:[x = g^{-1}(y) \Rightarrow v =y], then stem:[v] should be stem:[g(x)]. So we substitute stem:[x = g^{-1}(v)],
+
+* For a small change in stem:[x], what is corresponding change in stem:[v]: stem:[\frac{dv}{dx} = g'(x) \Rightarrow dx = \frac{dv}{g'(x)} = \frac{dv}{g'(g^{-1}(v))}].
+* When stem:[x = g^{-1}(y)], then stem:[v= y].
+* When stem:[x = -\infty], then stem:[v= -\infty], as stem:[g] is monotone and differentiable with non-zero derivative throughout its domain.
+
+[stem]
+++++
+\large
+F_Y(y) = \int_{-\infty}^y  \frac{f_X(g^{-1}(v))}{g'(g^{-1}(v))} \, dv
+++++
+
+This must be the PDF of stem:[Y]. But we can compute stem:[g^{-1}(v)] only when stem:[v \in \text{ range}(g)].
+
+[stem]
+++++
+\large
+f_y(y) = \begin{cases}
+        \frac{f_X(g^{-1}(y))}{g'(g^{-1}(y))}, & y \in \text{ range}(g),\\
+        0, & y \notin \text{ range}(g).
+    \end{cases}
+++++
+
+== Monotone Decreasing Functions ==
+
+The CDF of stem:[Y] is
+
+[stem]
+++++
+\large
+\begin{align*}
+F_{Y}(y) & = P(\{Y \leq y\}) \\
+& = P(\{g(X) \leq y\}) \\
+& = P(\{X \geq g^{-1}(y) \}) && \text{as } g \text{ is monotone decreasing}
+\end{align*}
+++++
+
+image::.\images\monotone_decrease.png[align='center', 400, 300]
+
+Since stem:[X] is continuous, it will have a PDF. We can express this probability in terms of its PDF.
+
+[stem]
+++++
+\large
+= \int_{g^{-1}(y)}^{+\infty} f_X(x) \, dx
+++++
+
+By following the same substitution,
+
+[stem]
+++++
+\large
+\begin{align*}
+F_Y(y) & = \int_{y}^{+\infty} \frac{f_X(g^{-1}(v))}{g'(g^{-1}(v))} \, dv \\
+\\
+& = 1 - \int_{-\infty}^y \frac{f_X(g^{-1}(v))}{g'(g^{-1}(v))} \, dv
+\end{align*}
+++++
+
+This must be the PDF of stem:[Y]. On differentiating this with respect to stem:[y], we get the PDF of stem:[Y] as:
+
+[stem]
+++++
+\large
+f_y(y) = \begin{cases}
+        \frac{f_X(g^{-1}(y))}{- g'(g^{-1}(y))}, & y \in \text{ range}(g),\\
+        0, & y \notin \text{ range}(g).
+    \end{cases}
+++++
+
+NOTE: Since stem:[g] is monotone decreasing, it's derivative will be negative.
+
+In general, when stem:[g] is monotone and differentiable with non-zero derivative throughout its domain:
+
+[stem]
+++++
+\large
+f_y(y) = \begin{cases}
+        \frac{f_X(g^{-1}(y))}{|g'(g^{-1}(y))|}, & y \in \text{ range}(g),\\
+        0, & y \notin \text{ range}(g).
+    \end{cases}
+++++
+
+This is known as *Jacobian transformation formula* for one variable.
+
+=== Example ===
+Let stem:[X \sim \mathcal{N}(0,1)]. Derive the PDF of stem:[Y=e^X] from first principles and using the transformation formula.
+
+stem:[X] takes values stem:[\in (-\infty, +\infty)]. stem:[Y] takes values stem:[\in (0, +\infty)] and it is a continuous random variable.
+
+*From First Principles:*
+
+The CDF of stem:[Y] is
+
+[stem]
+++++
+\large
+\begin{align*}
+F_{Y}(y) & = P(\{Y \leq y\}) \\
+& = P(\{e^X \leq y\}) \\
+& = P(\{X \leq \ln(y) \}) = F_X(\ln y)
+\end{align*}
+++++
+
+[stem]
+++++
+\large
+F_y(y) = \begin{cases}
+        F_X(\ln y), & y > 0,\\
+        0, & y \leq 0.
+    \end{cases}
+++++
+
+[stem]
+++++
+\large
+f_Y(y) = \frac{d F_y(y)}{dy} = \begin{cases}
+        f_X(\ln y) \cdot \frac{1}{y}, & y > 0,\\
+        0, & y \leq 0.
+    \end{cases}
+++++
+
+*Using Jacobian Formula:*
+
+The function is stem:[g(x) = e^x]. 
+
+* Domain of the function stem:[\in (-\infty, +\infty)], range of the function is stem:[\in (0, +\infty)].
+* stem:[g'(x) = e^x].
+
+This is a monotone increasing and differentiable with non-zero derivative throughout its domain, so its inverse exists.
+
+stem:[g^{-1}(x) = \ln x]. Then by using the Jacobian formula:
+
+[stem]
+++++
+\large
+\begin{align*}
+f_y(y) & = \begin{cases}
+        \frac{f_X(g^{-1}(y))}{g'(g^{-1}(y))}, & y > 0,\\
+        0, & y \leq 0.
+    \end{cases} \\
+
+f_y(y) & = \begin{cases}
+        \frac{f_X(\ln(y))}{y}, & y > 0,\\
+        0, & y \leq 0.
+    \end{cases} \\
+
+\end{align*}
+
+++++
+
+We know that,
+
+[stem]
+++++
+\large
+f_X(x) = \frac{1}{\sqrt{2\pi}} \text{exp} \left( \frac{-x^2}{2} \right), \,\, x \in \mathbb{R}
+++++
+
+Then,
+
+[stem]
+++++
+\large
+f_y(y) = \begin{cases}
+        \frac{1}{y\sqrt{2\pi}} \text{ exp} \left( \frac{-(\ln y)^2}{2} \right) , & y > 0,\\
+        0, & y \leq 0.
+    \end{cases}
+++++
+
+This is the PDF of log-normal distribution. Hence stem:[Y] follows a *log-normal distribution*.
+
+TIP: If we take log of stem:[Y], we get a normal distribution, hence the name log-normal.
+
+== Piecewise Monotone Functions ==
+When stem:[g] is piecewise monotone and differentiable.
+
+Suppose that stem:[I_1, I_2, \dots, I_n] is a partition of stem:[\mathbb{R}], and stem:[g: \mathbb{R} \rightarrow \mathbb{R} ] is piecewise monotone and differentiable with non-zero derivative on stem:[I_i] for each stem:[i \in \{1,\dots,n\}]. Let stem:[h_i] denote the inverse of stem:[g] on stem:[I_i].
+
+If stem:[X] is a continuous random variable with PDF stem:[f_X], then the PDF of stem:[Y=g(X)] is given by
+
+[stem]
+++++
+\large
+f_y(y) = \sum_{i=1}^n \frac{f_X(h_i(y))}{|g'(h_i(y))|} \mathbf{1}_{g(I_i)}(y)
+++++
+
+stem:[y \in \text{range}(g)] is taken care by the indicator function.
+
+=== Example ===
+Let stem:[X \sim \mathcal{N}(0,1)]. Derive the PDF of stem:[Y=X^2] from first principles and using the transformation formula.
+
+== Multivariate Case ==
+
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X_1, \dots, X_n] be jointly continuous random variables with joint PDF stem:[f_{X_1, \dots, X_n}]. Let stem:[Y_i = g_i(X_1, \dots, X_n)] for  stem:[i \in \{1,\dots,n\}], where stem:[g_1, \dots, g_n] are smooth functions. Derive the joint PDF of stem:[Y_1, \dots, Y_n].
+
+IMPORTANT: Smooth: stem:[g_1, \dots, g_n] are differentiable with continuous first-order partial derivatives. The first order partial derivatives are not required to be continuous for applying the below formula, but they should exist.
+
+Let stem:[g: \mathbb{R}^n \rightarrow \mathbb{R}^n ] be defined by
+
+[stem]
+++++
+\large
+g(x_1, \dots, x_n)=
+\begin{bmatrix}
+g_1(x_1, \dots, x_n) \\
+g_2(x_1, \dots, x_n) \\
+\vdots \\
+g_n(x_1, \dots, x_n) \\
+\end{bmatrix}
+++++
+
+for some smooth functions stem:[g_1, \dots, g_n].
+
+The Jacobian matrix of the mapping stem:[g] at the point stem:[(x_1, \dots, x_n)] is defined as,
+
+[stem]
+++++
+\large
+J_g(x_1, \dots, x_n)=
+\begin{bmatrix}
+\frac{\partial g_1}{\partial x_1} & \dots & \frac{\partial g_1}{\partial x_n} \\
+\vdots & \vdots & \vdots \\
+\frac{\partial g_n}{\partial x_1} & \dots & \frac{\partial g_n}{\partial x_n}
+\end{bmatrix}
+++++
+
+The Jacobian of stem:[g] at any point stem:[(x_1, \dots, x_n)] is simply equal to stem:[\text{det}(J_g(x_1, \dots, x_n))].
+
+*Formula:*
+
+Let stem:[g: \mathbb{R}^n \rightarrow \mathbb{R}^n ] be one-one, differentiable with continuous first-order partial derivatives, and non-zero Jacobian throughout its domain. Let the individual components of stem:[g] be denoted by stem:[g_1, \dots, g_n].
+
+Let stem:[Y_i = g_i(X_1, \dots, X_n)] for  stem:[i \in \{1,\dots,n\}]. Then, the joint PDF of stem:[Y=(Y_1, \dots, Y_n)] is given by
+
+image::.\images\jacobi_01.png[align='center', 700, 300]
+
+Remark:
+
+* The denominator is the *absolute value* of stem:[\text{det}(J_g(x_1, \dots, x_n))].
+* For stem:[g: \mathbb{R} \rightarrow \mathbb{R}], stem:[J_g(x) = g'(x), \hspace{1cm} x \in \mathbb{R}].
+
+=== Example ===
+Let stem:[X] and stem:[Y] be independent exponential random variables with parameter stem:[\lambda]. Derive the joint PDF of stem:[Y_1 = X_1] and stem:[Y_2 = X_1 + X_2]. Also deduce the conditional PDF of stem:[Y_1], conditioned on the event stem:[\{Y_2 = y\}].
+
+=== Piecewise Differentiable ===
+Suppose that stem:[I_1, \dots, I_n] is a partition of stem:[\mathbb{R}^n], and stem:[g: \mathbb{R}^n \rightarrow \mathbb{R}^n ] is one-one, differentiable with continuous first-order partial derivatives, and has non-zero Jacobian on stem:[I_i] for each stem:[i \in \{1,\dots,n\}].
+
+Let stem:[h_i] denote the inverse of stem:[g] on stem:[I_i]. Let stem:[X_1, \dots, X_n] be jointly continuous random variables with joint PDF stem:[f_{X_1, \dots, X_n}]. Let the individual components of stem:[g] be denoted by stem:[g_1, \dots, g_n].
+
+Let stem:[Y_i = g_i(X_1, \dots, X_n)] for stem:[i \in \{1,\dots,n\}]. Then, the joint PDF of stem:[Y=(Y_1, \dots, Y_n)] is given by
+
+image::.\images\jacobi_02.png[align='center', 700, 300]

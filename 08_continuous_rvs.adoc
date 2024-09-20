@@ -14,12 +14,12 @@ A random variable stem:[X: \Omega \rightarrow \mathbb{R}] is said to be continuo
 [stem]
 ++++
 \large
-F_X(x) = \int_{-\infty}^x f_x(t) dt, \hspace{1cm} \forall x \in \mathbb{R}.
+F_X(x) = \int_{-\infty}^x f_X(t) dt, \hspace{1cm} \forall x \in \mathbb{R}.
 ++++
 
 *Remarks:*
 
-* If the CDF of stem:[X] is continuous, then the random variable stem:[X: \Omega \rightarrow \mathbb{R}] is called as a continuous random variable.
+* A random variable is continuous if and only if its CDF is absolutely continuous (both ways).
 * The function stem:[f_X] in the definition is called the probability density function (PDF) of the random variable stem:[X]. When we integrate the PDF for the whole range, it should be 1: stem:[\int_{-\infty}^\infty f_X(t) dt =1].
 +
 This follows from the property of the CDF:
@@ -27,7 +27,7 @@ This follows from the property of the CDF:
 [stem]
 ++++
 \large
-\lim_{x \to +\infty} F_X(x) = 1 \Rightarrow \lim_{x \to +\infty} \int_{-\infty}^x f_x(t) dt = 1.
+\lim_{x \to +\infty} F_X(x) = 1 \Rightarrow \lim_{x \to +\infty} \int_{-\infty}^x f_X(t) dt = 1.
 ++++
 
 * For a continuous random variable stem:[X], its PDF stem:[f_X] provides the full probabilistic description of stem:[X].
@@ -40,6 +40,8 @@ The CDF of stem:[X] is the probability of an event stem:[\{X \leq x\}], the PMF 
 * PDF: stem:[f_X: \mathbb{R} \rightarrow [0,\infty)]
 
 NOTE: A PDF doesn't have the interpretation of a probability. Only integrals of PDF have interpretation of a probabilities.
+
+If we want to compute the probability stem:[P(\{X \in A\})], we should integrate the PDF of stem:[X] on the set, stem:[P(\{X \in A\}) = \int_A f_X(u) du]. Here stem:[A \in \mathcal{F}] is a continuous interval.
 
 == Examples of Continuous Random Variables ==
 

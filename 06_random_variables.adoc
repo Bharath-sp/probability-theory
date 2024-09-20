@@ -26,7 +26,7 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. A function stem:[X: \Om
 \{\omega \in \Omega: X(\omega) \leq x\} \in \mathcal{F} \,\, \forall x \in \mathbb{R}
 ++++
 
-A function that maps each elementary outcome in the sample space to a real number such that the collection of all the elementary outcomes which gets mapped to a number stem:[x \in \mathbb{R}] is an element of the stem:[\sigma-] algebra. Such a function is called as random variable with respect to the given stem:[\mathcal{F}].
+A function that maps each elementary outcome in the sample space to a real number such that the collection of all the elementary outcomes which gets mapped to a number equal to or less than stem:[x \in \mathbb{R}] is an element of the stem:[\sigma-] algebra. Such a function is called as random variable with respect to the given stem:[\mathcal{F}].
 
 image::.\images\random_variable_1.png[align='center', 600, 400]
 

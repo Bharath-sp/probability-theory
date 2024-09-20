@@ -1,0 +1,54 @@
+= Lebesgue Measure =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Introduction ==
+* For a discrete random variable, all the mass lies on a countable set. The CDF of such a random variable will either jump or remain flat.
+
+* For a continuous random variable, all the mass lies on an uncountable set (because the probability of a continuous random variable taking values in any countable set is 0). The CDF of such a random variable is continuous everywhere, and will never jump.
+
+We also saw random variables that are both discrete and continuous. The CDFs of such random variables will have jumps and continuous parts.
+
+There is actually a third type of random variable, called *singular random variable*. A singular random variable is generally not encountered in practice. It is only of theoretical interest. It differs slightly from a continuous random variable in the following way.
+
+== Lebesgue Measure ==
+The Lebesgue measure captures the notion of length, area, volume, etc.
+
+* In single dimension, the Lebesgue measure of any interval on the real line is the length of the interval. Thus, for example, the Lebesgue measure of stem:[(1,2)] is equal to 1, but the Lebesgue measure of the whole real line is stem:[+\infty].
+
+* In two dimensions, the Lebesgue measure of any set is equal to the "area" of the set. For e.g., the Lebesgue measure of the unit square in 2d is equal to 1, whereas the Lebesgue measure of the unit circle is stem:[\pi].
+
+NOTE: The Lebesgue measure of any countable set is 0.
+
+If stem:[X] is a continuous random variable, then we can show that stem:[P(\{X \in E\}) = 0] whenever Lebesgue measure of stem:[E] is zero.
+
+On the contrary, if stem:[X] is a singular random variable, there exists an uncountable set stem:[E] such that stem:[P(\{X \in E\})=1], but the Lebesgue measure of stem:[E] is zero. That is, stem:[X] and the Lebesgue measure act orthogonally on the set stem:[E].
+
+In the example where stem:[X \sim \text{Unif}([0,1\])] and stem:[Y=1-X], it turns out that stem:[(X,Y)] is a singular random variable (when viewed as a mapping from stem:[\Omega] to stem:[\mathbb{R}^2]. 
+
+Note that the line stem:[E = \{(x,y): y=1-x\}] has zero area in 2 dimensions (therefore zero Lebesgue measure), but stem:[P(\{(X,Y) \in E\}) = 1].
+
+== Summary ==
+Any random variable that we encounter can be of only one of the following types or mixtures thereof:
+
+. Discrete.
+. Continuous.
+. Singular.
+
+//
+
+* Discrete random variables:
+
+If stem:[X] is discrete, then there exists a countable set stem:[E] such that stem:[P(\{X \in E\})=1], while Lebesgue measure of stem:[E] is 0 (fact: the Lebesgue measure of any countable set is 0).
+
+* Continuous random variables:
+
+If stem:[X] is continuous, then there exists an uncountable set stem:[E] such that stem:[P(\{X \in E\})=1] and Lebesgue measure of stem:[E] is >0. But if the Lebesgue measure is 0 for any stem:[E], then it can be shown that stem:[P(\{X \in E\}) = 0].
+
+* Singular random variables:
+
+If stem:[X] is singular, then there exists an uncountable set stem:[E] such that stem:[P(\{X \in E\})=1], but the Lebesgue measure of stem:[E] is 0.

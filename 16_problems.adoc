@@ -1,0 +1,20 @@
+= Problems =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Problem 1 ==
+Let stem:[X_0, X_1, \dots \sim \text{Unif}([0,1\])] and they all are i.i.d. And let stem:[N= \min \{n \geq 1: X_n > X_0\}].
+
+IMPORTANT: stem:[X] and stem:[Y] are said to be identically distributed if both of them have the same CDF.
+
+As a random variable stem:[N] can take values stem:[\{1,2,\dots\}]. So it is a discrete random variable. We are interested in the event stem:[\{N=n\}]. Say stem:[\{N=2\}]. stem:[N] takes the value 2 when stem:[X_1 \leq X_0, X_2 > X_0, \dots] (after that anything would have happened). But since 2 is the first index such that stem:[X_n > X_0], stem:[N] takes the value 2.
+
+Finding stem:[P(\{N=n\})] gives us the PMF of random variable stem:[N]. But note stem:[X_0, X_1, \dots] are all continuous random variables.
+
+So in general,
+
+image::.\images\problem_01.png[align='center', 700, 500]

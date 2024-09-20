@@ -1,0 +1,164 @@
+= CDF and Uniform Distribution =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Introduction ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X] be a random variable with CDF stem:[F_X]. Let stem:[g_{F_X}:(0,1\] \rightarrow \mathbb{R}] be defined as
+
+[stem]
+++++
+\large
+g_{F_X}(u) = \min \{ x \in \mathbb{R}: F_X(x) \geq u \}, \hspace{1cm} u \in (0,1]
+++++
+
+The function stem:[g_{F_X}] is defined on the range of the CDF.
+
+[stem]
+++++
+\large
+F_X: \mathbb{R} \rightarrow [0,1]; \hspace{1cm} g_{F_X}: (0,1] \rightarrow \mathbb{R} 
+++++
+
+The function stem:[g_{F_X}] at any point stem:[u] is defined as the smallest value of stem:[x] for which stem:[F_X(x) \geq u].
+
+[TIP]
+====
+* For stem:[u=0], stem:[g_{F_X}(0) = \min \{ x \in \mathbb{R}: F_X(x) \geq 0 \}]. All stem:[x \in \mathbb{R}] satisfy this condition, so minimum of all those will be stem:[-\infty]. So let's define stem:[g_{F_X}] only for stem:[(0,1\]].
+
+* The range of stem:[g_{F_X}(u)] will always be equal to the range of stem:[X] (i.e.,) the values/interval that stem:[X] takes with probability greater than 0.
+====
+
+== Discrete Case ==
+Let stem:[X] be a discrete random variable, stem:[X \in \{0,1,2,3\}]. The PMF of stem:[X] is
+
+[stem]
+++++
+\large
+p_X(x) = \begin{cases}
+        0.1, & x = 0,\\
+        0.2, & x = 1,\\
+        0.3, & x = 2,\\
+        0.4, & x = 3,\\
+        0, & x \notin \{0,1,2,3\}
+    \end{cases}
+++++
+
+image::.\images\cdf_and_unif_01.png[align='center', 600, 400]
+
+Now let's define stem:[g_{F_X}(u)]:
+
+[stem]
+++++
+\large
+g_{F_X}(u) = \begin{cases}
+        0, & 0 < u \leq 0.1,\\
+        1, & 0.1 < u \leq 0.3,\\
+        2, & 0.3 < u \leq 0.6,\\
+        3, & 0.6 < u \leq 1.\\
+    \end{cases}
+++++
+
+image::.\images\inverse_cdf_discrete.png[align='center', 600, 400]
+
+
+=== Generate Random Variables from stem:[U] ===
+
+If stem:[U \sim \text{Unif([0,1\])}], then stem:[g_{F_X}(U)] has the same distribution as stem:[X].
+
+We can see directly from the above graph, 
+
+* The proportion of times stem:[U] taking value stem:[\in [0.6,1\]] is 0.4, for which stem:[g_{F_X}(u)] gives 3 as the output.
+* The proportion of times stem:[U] taking value stem:[\in [0.3,0.6\]] is 0.3, for which stem:[g_{F_X}(u)] gives 2 as the output.
+* The proportion of times stem:[U] taking value stem:[\in [0.1,0.3\]] is 0.2, for which stem:[g_{F_X}(u)] gives 1 as the output.
+* The proportion of times stem:[U] taking value stem:[\in [0,0.1\]] is 0.1, for which stem:[g_{F_X}(u)] gives 0 as the output.
+
+Hence stem:[g_{F_X}(U)] has the same distribution as stem:[X].
+
+== Continuous Case ==
+
+Let stem:[X \sim \text{Exp}(1)].
+
+[stem]
+++++
+\large
+f_X(x) = \begin{cases}
+        e^{-x}, & x \geq 0,\\
+        0, & x < 0
+    \end{cases}
+++++
+
+image::.\images\cdf_and_unif_02.png[align='center', 700, 900]
+
+* In the second step, stem:[x \in \mathbb{R}] is changed to stem:[x \geq 0] because for stem:[x < 0 \Rightarrow F_X(x)=0]. And since stem:[u > 0], we are only looking for stem:[x] that satisfy stem:[F_X(x) > 0].
+
+* stem:[- \ln (1-u)] is a positive number for stem:[u >0] and stem:[+\infty] for stem:[u=1].
+
+IMPORTANT: For (absolute) continuous stem:[F_X], the function stem:[g_{F_X}] is exactly the inverse of stem:[F_X].
+
+=== Generate Random Variables from stem:[U] ===
+
+If stem:[U \sim \text{Unif([0,1\])}], then stem:[g_{F_X}(U)] has the same distribution as stem:[X].
+
+*Formal Proof:*
+
+Let stem:[U \sim \text{Unif([0,1\])}] and stem:[Y=g_{F_X}(U)], where stem:[g_{F_X}] is defined based on the CDF of (a discrete or continuous rv) stem:[X]. Find the distribution of stem:[Y].
+
+[stem]
+++++
+\large
+\begin{align*}
+F_{Y}(x) & = P(\{Y \leq x\}) \\
+& = P(\{g_{F_X}(U) \leq x\}) \\
+& = P(\{U \leq F_X(x)\}) && \text{use the below reasoning} \\ 
+& = F_X(x) && \text{as } F_X(x) \text{ takes value } [0,1]
+\end{align*}
+++++
+
+The CDF of stem:[Y] is equal to the CDF of stem:[X]. Hence stem:[Y] has the same distribution as stem:[X].
+
+=== Computer Simulation ===
+
+This is the basis for generating a random sample from a custom CDF stem:[F_X] on a computer. Let stem:[X] be a random variable with the CDF stem:[F_X (x)]. Say we want to generate random samples from this distribution.
+
+image::.\images\generate_rvs.png[align='left', 700, 300]
+
+For example, we can get random samples from an exponential distribution, by just passing the CDF of the exponential random variable.
+
+image::.\images\generate_rvs_2.png[align='center']
+
+=== Generate stem:[U] from Random variables ===
+Let stem:[X] be a continuous random variable with CDF stem:[F_X]. Show that stem:[Y = F_X(X)] is uniformly distributed on stem:[[0,1\]] (i.e.,) transformation of stem:[X] by its own CDF is uniformly distributed.
+
+WARNING: This is applicable only for continuous random variable stem:[X].
+
+*Proof:*
+
+Let's find the complementary CDF of stem:[Y] and show that it is the complementary CDF of uniform random variable.
+
+[stem]
+++++
+\large
+\begin{align*}
+P(\{Y \geq u\}) & = P(\{F_X(X) \geq u\}) \\
+\end{align*}
+++++
+
+* If stem:[u>1 \Rightarrow P(\{F_X(X) \geq u\}) =0 ], because stem:[F_X] never takes values greater than 1.
+* If stem:[u \leq 0 \Rightarrow P(\{F_X(X) \geq u\}) =1 ], because stem:[F_X] always takes values greater than or equal to 0.
+* If stem:[0 < u \leq 1]:
+
+** If stem:[\omega \in \Omega] is an element of the set stem:[\{F_X(X) \geq u\}], then it must have satisfied stem:[F_X(X(\omega)) \geq u].
+** Then stem:[X(\omega)] should be any number that belongs to the set stem:[\{x \in \mathbb{R}: F_X(x) \geq u\}].
+** The smallest number among all the numbers in the set stem:[\{x \in \mathbb{R}: F_X(x) \geq u\}] is stem:[g_{F_X}(u)]. Then stem:[X(\omega)] should be a number greater than or equal to stem:[g_{F_X}(u) \Rightarrow X(\omega) \geq g_{F_X}(u) ].
++
+So the set stem:[\{F_X(X) \geq u\}] is equal to the set stem:[\{X(\omega) \geq g_{F_X}(u)\}].
+
+image::.\images\cdf_and_unif_03.png[align='center']
+
+Hence stem:[Y] is uniformly distributed on stem:[[0,1\]].

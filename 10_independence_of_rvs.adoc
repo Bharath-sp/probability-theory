@@ -1,0 +1,315 @@
+= Independence of Random Variables =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Definition ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Two random variables stem:[X: \Omega \rightarrow \mathbb{R}] and stem:[Y: \Omega \rightarrow \mathbb{R}] defined with respect to the same stem:[\mathcal{F}] are said to be independent if
+
+[stem]
+++++
+\large
+F_{X,Y}(x,y) = F_X(x) \cdot F_Y(y) \hspace{1cm} \forall x,y \in \mathbb{R}
+++++
+
+We know that 
+
+* stem:[F_{X,Y}(x,y)] is a probability given to the event stem:[\{X \leq x\} \cap \{Y \leq y\} ] for any stem:[x,y \in \mathbb{R}].
+* stem:[F_X(x)] is a probability given to the event stem:[\{X \leq x\}] for any stem:[x \in \mathbb{R}].
+* stem:[F_Y(y)] is a probability given to the event stem:[\{Y \leq y\} ] for any stem:[y \in \mathbb{R}].
+
+Two random variables stem:[X] and stem:[Y] are independent if the events stem:[\{X \leq x\}] and stem:[\{Y \leq y\}] are independent for all stem:[x,y \in \mathbb{R}].
+
+[stem]
+++++
+\large
+P(\{X \leq x\} \cap \{Y \leq y\}) = P(\{X \leq x\}) \cdot P(\{Y \leq y\})
+++++
+
+A collection of random variables stem:[X_1, \dots, X_n], all defined with respect to the same stem:[\mathcal{F}] are said to be independent if
+
+[stem]
+++++
+\large
+F_{X_1, \dots, X_n}(x_1, \dots, x_n) = F_{X_1}(x_1) \cdot \dots \cdot F_{X_n}(x_n) \hspace{1cm} \forall x_1, \dots, x_n \in \mathbb{R}
+++++
+
+====
+These are if and only if statements:
+
+[stem]
+++++
+\large
+\begin{align*}
+X \mathrel{\unicode{x2AEB}} Y & \Longleftrightarrow F_{X,Y}(x,y) = F_X(x) \cdot F_Y(y) \hspace{1cm} && \forall x,y \in \mathbb{R} \\
+& \Longleftrightarrow P(\{X \leq x\} \cap \{Y \leq y\}) = P(\{X \leq x\}) \cdot P(\{Y \leq y\})  \hspace{1cm} && \forall x,y \in \mathbb{R} \\
+& \Longleftrightarrow \{X \leq x\} \unicode{x2AEB} \{Y \leq y\} \hspace{1cm} && \forall x,y \in \mathbb{R} \\
+\end{align*}
+++++
+====
+
+*Can a random variable be independent of itself?*
+
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X: \Omega \rightarrow \mathbb{R}] be a random variable defined with respect to stem:[\mathcal{F}]. Can stem:[X] be independent of itself?
+
+For stem:[X] to be independent, we need to show:
+
+[stem]
+++++
+\large
+\begin{align*}
+F_{X,X}(x,x) & = F_X(x) \cdot F_X(x) \hspace{1cm} \forall x \in \mathbb{R} \\
+F_X(x) & = [F_X(x)]^2 \\
+F_X(x) - [F_X(x)]^2 & = 0 \\
+F_X(x) (1 - F_X(x) ) & = 0 \\
+F_X(x) & \in \{0,1\}  \hspace{1cm} \forall x \in \mathbb{R} 
+\end{align*}
+++++
+
+If the CDF of a random variable stem:[X] takes a value of 0 or 1 for all stem:[x \in \mathbb{R}], then stem:[X] is said to be independent of itself.
+
+image::.\images\independent_rv.png[align='center', 500, 300]
+
+Which essentially means the CDF can have jump only at one point, say stem:[c \in \mathbb{R}], and the jump value should be equal to 1, stem:[P(\{X=c\})=1]. So the random variable has to be a discrete rv taking only one value with probability 1.
+
+Therefore, the random variable has to be a constant function with probability 1 i.e., it can still take different values, but with probability 0.
+
+image::.\images\independent_rv_2.png[align='center']
+
+== Implications of Independence ==
+
+If stem:[X \mathrel{\unicode{x2AEB}} Y], then
+
+*Implication 1:*
+
+stem:[\{X \leq x\} \mathrel{\unicode{x2AEB}} \{Y > y\}] for all stem:[x,y \in \mathbb{R}], i.e., 
+
+stem:[P(\{X \leq x\} \cap \{Y > y\}) = P(\{X \leq x\}) \cdot P(\{Y > y\})  \hspace{1cm} \forall x,y \in \mathbb{R}].
+
+Proof:
+
+Fix a stem:[x,y \in \mathbb{R}], consider the event stem:[\{X \leq x\}] as stem:[A] and stem:[\{Y \leq y\}] as stem:[B]. Given that stem:[A \mathrel{\unicode{x2AEB}} B], then we know that stem:[A \mathrel{\unicode{x2AEB}} B^c]. Here stem:[B^c = \{Y \leq y\}^c = \{Y > y\} ].
+
+This holds for for all stem:[x,y \in \mathbb{R}].
+
+*Implication 2:*
+
+stem:[\{X > x\} \mathrel{\unicode{x2AEB}} \{Y > y\}] for all stem:[x,y \in \mathbb{R}], i.e., 
+
+stem:[P(\{X > x\} \cap \{Y > y\}) = P(\{X > x\}) \cdot P(\{Y > y\})  \hspace{1cm} \forall x,y \in \mathbb{R}].
+
+Follows from the property that if stem:[A \mathrel{\unicode{x2AEB}} B], then stem:[A^c \mathrel{\unicode{x2AEB}} B^c].
+
+*Lemma 1:* 
+
+If stem:[A \mathrel{\unicode{x2AEB}} B], and stem:[A \mathrel{\unicode{x2AEB}} C], then
+
+[stem]
+++++
+\large
+A \mathrel{\unicode{x2AEB}} (B \cup C) \Longleftrightarrow A \mathrel{\unicode{x2AEB}} (B \cap C)
+++++
+
+From given:
+
+* stem:[P(A \cap B) = P(A) \cdot P(B)]
+* stem:[P(A \cap C) = P(A) \cdot P(C)]
+
+. Assume stem:[A \mathrel{\unicode{x2AEB}} (B \cup C)] is true. So stem:[P(A \cap (B \cup C)) = P(A) \cdot P(B \cup C)].
++
+Show stem:[P(A \cap (B \cap C)) = P(A) \cdot P(B \cap C)]
++
+[stem]
+++++
+\large
+\begin{align*}
+P(A \cap (B \cap C)) & = P((A \cap B )\cap (A \cap C)) && \text{distributive prop. of sets} \\
+& = P(A \cap B) + P(A \cap C) - P((A \cap B )\cup (A \cap C)) && \text{additive prop. of probability} \\
+\\
+& = P(A \cap B) + P(A \cap C) - P(A \cap (B \cup C)) && \text{distributive prop. of sets} \\
+& = P(A) \cdot P(B) + P(A) \cdot P(C) - P(A) \cdot P(B \cup C)) && \text{from given} \\
+\\
+& = P(A) \,\, \left[ P(B) + P(C) - P(B \cup C) \right] \\
+& = P(A) \cdot P(B \cap C)
+\end{align*}
+++++
+
+. Assume stem:[A \mathrel{\unicode{x2AEB}} (B \cap C)] is true. So stem:[P(A \cap (B \cap C)) = P(A) \cdot P(B \cap C)].
++
+Show stem:[P(A \cap (B \cup C)) = P(A) \cdot P(B \cup C)]
++
+[stem]
+++++
+\large
+\begin{align*}
+P(A \cap (B \cup C)) & = P((A \cap B )\cup (A \cap C)) && \text{distributive prop. of sets} \\
+& = P(A \cap B) + P(A \cap C) - P((A \cap B )\cap (A \cap C)) && \text{additive prop. of probability} \\
+\\
+& = P(A \cap B) + P(A \cap C) - P(A \cap (B \cap C)) && \text{distributive prop. of sets} \\
+& = P(A) \cdot P(B) + P(A) \cdot P(C) - P(A) \cdot P(B \cap C)) && \text{from given} \\
+\\
+& = P(A) \,\, \left[ P(B) + P(C) - P(B \cap C) \right] \\
+& = P(A) \cdot P(B \cup C)
+\end{align*}
+++++
+
+*Lemma 2:*
+
+If stem:[A \mathrel{\unicode{x2AEB}} B_n \,\, \forall n \geq 1] and stem:[B_n \supseteq B_{n+1} \,\, \forall n \geq 1], then
+
+[stem]
+++++
+\large
+A \mathrel{\unicode{x2AEB}} \bigcap_{n=1}^\infty B_n
+++++
+
+Show: stem:[P\left( A \cap \left( \bigcap_{n=1}^\infty B_n \right)\right) = P(A) \cdot P\left( \bigcap_{n=1}^\infty B_n \right)]
+
+[stem]
+++++
+\large
+\begin{align*}
+P\left( A \cap \left( \bigcap_{n=1}^\infty B_n \right)\right) & = P \left(\bigcap_{n=1}^\infty (A \cap B_n) \right) && \text{distributive prop. of sets} \\
+\end{align*}
+++++
+
+Let stem:[C_n = (A \cap B_n) \,\, \forall n \geq 1], which is a subset of stem:[B_n].
+
+As stem:[B_n \supseteq B_{n+1} \Rightarrow C_n \supseteq C_{n+1}  \,\, \forall n \geq 1]. Then,
+
+[stem]
+++++
+\large
+\begin{align*}
+P \left(\bigcap_{n=1}^\infty (A \cap B_n) \right) & = P \left(\bigcap_{n=1}^\infty C_n \right) \\
+& = P( \lim_{n \to \infty} C_n) && \text{countable intersections is just the limit set} \\
+& = \lim_{n \to \infty} P(C_n) && \text{by continuity property of probability} \\
+& = \lim_{n \to \infty} P(A \cap B_n) \\
+& = \lim_{n \to \infty} P(A) \cdot P(B_n) && \text{from given} \\
+& = P(A) \cdot \lim_{n \to \infty} P(B_n) && \text{as the first term doesn't involve } n \\
+& = P(A) \cdot P(\lim_{n \to \infty} B_n) && \text{by continuity property of probability} \\
+& = P(A) \cdot P\left( \bigcap_{n=1}^\infty B_n \right) && \text{limit set is the countable instersections}
+\end{align*}
+++++
+
+*Implication 3:*
+
+stem:[\{X = x\} \mathrel{\unicode{x2AEB}} \{Y = y\}] for all stem:[x,y \in \mathbb{R}], i.e., 
+
+stem:[P(\{X = x\} \cap \{Y = y\}) = P(\{X = x\}) \cdot P(\{Y = y\})  \hspace{1cm} \forall x,y \in \mathbb{R}].
+
+*Proof:*
+
+Fix stem:[x,y \in \mathbb{R}] arbitrary.
+
+[stem]
+++++
+\large
+\begin{align*}
+X \mathrel{\unicode{x2AEB}} Y & \Rightarrow \{X \leq x\} \mathrel{\unicode{x2AEB}} \{Y \leq y\} \\
+& \Rightarrow \{X \leq x\} \mathrel{\unicode{x2AEB}} \{Y \leq y - \frac{1}{n}\} \,\, \forall n \geq 1 \\
+& \Rightarrow \{X \leq x\} \mathrel{\unicode{x2AEB}} \{Y > y - \frac{1}{n}\} \,\, \forall n \geq 1 \\
+\end{align*}
+++++
+
+* Take stem:[A = \{X \leq x\}].
+* Take stem:[B_n = \{Y > y - \frac{1}{n}\}]. And note that stem:[B_n \supseteq B_{n+1} \,\, \forall n \geq 1 ].
+
+By lemma 2,
+
+[stem]
+++++
+\large
+\begin{align*}
+& \Rightarrow \{X \leq x\} \mathrel{\unicode{x2AEB}} \bigcap_{n=1}^\infty \{Y > y - \frac{1}{n}\} \\
+& \Rightarrow \{X \leq x\} \mathrel{\unicode{x2AEB}} \{Y \geq  y\} \\
+\end{align*}
+++++
+
+We have stem:[ \{X \leq x\} \mathrel{\unicode{x2AEB}} \{Y \leq y\}] and stem:[\{X \leq x\} \mathrel{\unicode{x2AEB}} \{Y \geq  y\} ].
+
+Take stem:[A = \{X \leq x\} ; B = \{Y \leq y\}; C = \{Y \geq  y\} ]. By lemma 1, if stem:[A \mathrel{\unicode{x2AEB}} B] and stem:[A \mathrel{\unicode{x2AEB}} C], then
+
+[stem]
+++++
+\large
+A \mathrel{\unicode{x2AEB}} (B \cup C) \Longleftrightarrow A \mathrel{\unicode{x2AEB}} (B \cap C)
+++++
+
+Here stem:[B \cup C = \Omega]. A set with probability 1 is independent with any other set. So stem:[A \mathrel{\unicode{x2AEB}} (B \cup C)]. This implies, stem:[A \mathrel{\unicode{x2AEB}} (B \cap C)].
+
+stem:[B \cap C = \{Y=y\}]. Therefore, stem:[\{X \leq x\} \mathrel{\unicode{x2AEB}} \{Y = y\}]. We can repeat the steps for stem:[\{X \leq x\}]:
+
+[stem]
+++++
+\large
+\begin{align*}
+\{Y = y\} \mathrel{\unicode{x2AEB}} \{X \leq x\} & \Rightarrow \{Y = y\} \mathrel{\unicode{x2AEB}} \{X \leq x - \frac{1}{n}\} \,\, \forall n \geq 1 \\
+& \Rightarrow \{Y = y\} \mathrel{\unicode{x2AEB}} \{X > x - \frac{1}{n}\} \,\, \forall n \geq 1 \\
+& \dots
+\end{align*}
+++++
+
+And we get stem:[\{X = x\} \mathrel{\unicode{x2AEB}} \{Y = y\}] for all stem:[x,y \in \mathbb{R}].
+
+====
+If stem:[X \mathrel{\unicode{x2AEB}} Y], then stem:[\{X \leq x\} \mathrel{\unicode{x2AEB}} \{Y \leq y\}, \{Y < y\}, \{Y = y\}, \{Y > y\}, \{Y \geq y\} ]. And vice-versa, i.e., interchange stem:[X] and stem:[Y]. 
+
+If stem:[X \mathrel{\unicode{x2AEB}} Y], then events of any form of stem:[X] and events of any form of stem:[Y] will be independent.
+====
+
+== Example ==
+Let stem:[X_1] and stem:[X_2] be distributed exponentially with parameters stem:[\lambda_1 > 0] and stem:[\lambda_2 > 0] respectively. And they are independent. Determine the distribution of stem:[Z=\min\{X_1, X_2\}].
+
+[stem]
+++++
+\large
+\begin{align*}
+F_Z(z) & = P(\{Z \leq z\}) \\
+& = P\left( \{ \min \{X_1, X_2 \} \leq z\} \right) \\
+& = P\left( \{ X_1 \leq z \} \cup  \{ X_2 \leq z \} \right) \\
+\end{align*}
+++++
+
+Here we cannot use the independence property, so let's look at its complement event.
+
+[stem]
+++++
+\large
+\begin{align*}
+1 - F_Z(z) = 1 - P(\{Z \leq z\}) & = P(\{Z > z\}) \\
+& = P\left( \{ \min \{X_1, X_2 \} > z\} \right) \\
+& = P\left( \{ X_1 > z \} \cap  \{ X_2 > z \} \right) \\
+& = P(\{ X_1 > z \}) \cdot P( \{ X_2 > z \}) \text{ as } X_1 \mathrel{\unicode{x2AEB}} X_2 \\
+& = e^{-\lambda_1 z} \cdot e^{-\lambda_2 z} = e^{-(\lambda_1 + \lambda_2)z} \text{ for } z \geq 0
+\end{align*}
+++++
+
+Because we know that,
+
+[stem]
+++++
+\large
+P(X_1 > x) = 1 - F_{X_1}(x) = \begin{cases}
+        e^{-\lambda_1 x}, & x \geq 0,\\
+        1, & x < 0
+    \end{cases}
+++++
+
+Therefore, stem:[Z] is also an exponentially distributed random variable with parameter stem:[\lambda_1 + \lambda_2],
+
+[stem]
+++++
+\large
+P(Z > z) = 1 - F_Z(z) = \begin{cases}
+        e^{-(\lambda_1 + \lambda_2)z}, & z \geq 0,\\
+        1, & z < 0
+    \end{cases}
+++++

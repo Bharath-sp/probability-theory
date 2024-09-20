@@ -1,0 +1,173 @@
+= Sum of Random Variables =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Introduction ==
+
+Let stem:[X, Y] be random variables defined with respect to the same stem:[\mathcal{F}]. If we have a continuous function stem:[f: \mathbb{R}^2 \rightarrow \mathbb{R}], then stem:[f(X,Y)] is also a random variable.
+
+The function stem:[f(x,y)=x+y] is a continuous function. Hence, stem:[Z = f(X,Y) = X+Y] is also a random variable.
+
+Similarly, stem:[X-Y, \hspace{1cm} X \cdot Y, \hspace{1cm} X/Y, \hspace{1cm} X^2 + Y^2, \dots] are all random variables. In stem:[X/Y], stem:[Y] should not take the value 0.
+
+IMPORTANT: Continuous functions of random variables are random variables.
+
+== Sum of Two Random Variables ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X] and stem:[Y] be random variables defined with respect to the same stem:[\mathcal{F}], with joint CDF stem:[F_{X,Y}(x,y)].
+
+* In the cases where stem:[X] and stem:[Y] are jointly discrete/continuous, derive the PMF/PDF of stem:[X+Y].
+* Simplify the PMF/PDF when stem:[X] and stem:[Y] are independent.
+
+*Case 1:*
+
+When stem:[X] and stem:[Y] are jointly discrete stem:[\Rightarrow] stem:[X] and stem:[Y] are individually discrete. Then stem:[Z] will also be a discrete random variable. It is enough to get the PMF of stem:[Z].
+
+[stem]
+++++
+\large
+\begin{align*}
+p_{Z}(z) & = P(\{Z=z\}) \\
+& = P(\{X+Y=z\}) \\
+& = \sum_{(x,y) \, : \, x+y=z} p_{X,Y}(x,y) \\
+& = \sum_x \sum_{y \, : \, y=z-x} p_{X,Y}(x,y) \\
+& = \sum_x  p_{X,Y}(x,z-x) \\
+\end{align*}
+++++
+
+For a chosen stem:[x] and stem:[z], there will be only one stem:[y \Rightarrow y=z-x].
+
+If stem:[X] and stem:[Y] are independent:
+
+[stem]
+++++
+\large
+\begin{align*}
+p_{Z}(z) & = \sum_x  p_{X,Y}(x,z-x) \\
+& = \sum_x P(\{X=x\} \cap \{Y=z-x\}) \\
+& = \sum_x P(\{X=x\}) \cdot P(\{Y=z-x\}) \\
+& = \sum_x p_X(x) \cdot p_Y(z-x) \\
+& = ( p_X * p_Y )(z) \\
+p_{Z}(z) & = ( p_X * p_Y )(z)
+\end{align*}
+++++
+
+This is read as, "stem:[p_X] convoluted with stem:[p_Y] evaluated at point stem:[z]". If stem:[X] and stem:[Y] are independent and jointly discrete, the PMF of stem:[X+Y] can be expressed as the convolution of the PMF of stem:[X] and stem:[Y].
+
+*Case 2:*
+
+When stem:[X] and stem:[Y] are jointly continuous stem:[\Rightarrow] they have a joint PDF. So let's express the below probability in terms of joint PDF.
+
+[stem]
+++++
+\large
+\begin{align*}
+F_{Z}(z) & = P(\{Z \leq z\}) \\
+& = P(\{X+Y \leq z\}) \\
+& = \int_{-\infty}^\infty \int_{-\infty}^{z-x} f_{X,Y}(u,v) \, dv \, du
+\end{align*}
+++++
+
+We want the inner limit to go from stem:[- \infty] to stem:[z]. The inner limit is for the variable stem:[v]. So we need to transform stem:[v] into stem:[t] such that it's limits are from stem:[- \infty] to stem:[z].
+
+* When stem:[v = z - u], stem:[t = z]. Then stem:[t = u + v]. Hence we can transform stem:[v = t - u].
++
+For a small change in stem:[v], what is the corresponding change in stem:[t]? So stem:[\frac{dt}{dv} = 1 \Rightarrow dt = dv] (as stem:[u] is fixed and chosen from the outside integral).
+* When stem:[v = - \infty], then stem:[t = -\infty].
+
+[stem]
+++++
+\large
+\begin{align*}
+& = \int_{-\infty}^\infty \int_{-\infty}^{z-x} f_{X,Y}(u,v) \, dv \, du \\
+& = \int_{-\infty}^\infty \int_{-\infty}^{z} f_{X,Y}(u,t-u) \, dt \, du \\
+& = \int_{-\infty}^{z} \int_{-\infty}^\infty f_{X,Y}(u,t-u) \, du \, dt
+\end{align*}
+++++
+
+As the inner integral doesn't depend on stem:[u] (the value from the outer integral), we can switch their order. As we are able to represent the CDF of stem:[X+Y] as an integral of a non-negative function, then that function must be the PDF of stem:[X+Y].
+
+[stem]
+++++
+\large
+f_{X+Y}(t) = \int_{-\infty}^\infty f_{X,Y}(u,t-u) \, du
+++++
+
+Hence, stem:[X+Y] is a continuous random variable. And if stem:[X] and stem:[Y] are independent:
+
+[stem]
+++++
+\large
+\begin{align*}
+f_{X+Y}(z) & =  \int_{-\infty}^\infty f_{X,Y}(u,z-u) \, du \\
+& = \int_{-\infty}^\infty f_X(u) \cdot f_Y(z-u) \, du = (f_X * f_Y) (z)
+\end{align*}
+++++
+
+If stem:[X] and stem:[Y] are independent and jointly continuous, the PDF of stem:[X+Y] can be expressed as the convolution of the PDF of stem:[X] and stem:[Y].
+
+== Example 01: Exponential RVs ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X \sim \text{Exp}(\mu_1)] and stem:[Y \sim \text{Exp}(\mu_2)]. Assume they are independent. Determine the distribution of stem:[Z = X+Y].
+
+stem:[X] and stem:[Y] are individually continuous and they are independent, which implies they are jointly continuous. Hence stem:[X+Y] is a continuous random variable, because in the last section which showed that they have a valid PDF. And it takes non-negative values.
+
+The PDF of stem:[X+Y] is,
+
+[stem]
+++++
+\large
+f_{X+Y}(z) =  \int_{-\infty}^\infty f_X(u) \cdot f_Y(z-u) \, du
+++++
+
+We know that,
+
+[stem]
+++++
+\large
+f_X(u) = \begin{cases}
+        \mu_1 e^{-\mu_1 u}, & u \geq 0,\\
+        0, & u < 0
+    \end{cases};
+
+    \hspace{1cm}
+
+f_Y(z-u) = \begin{cases}
+        \mu_2 e^{-\mu_2 (z-u)}, & z-u \geq 0,\\
+        0, & z-u < 0.
+    \end{cases}
+
+++++
+
+Since it is a product of these two PDFs, stem:[u> 0] and stem:[u < z]. So for a given value of stem:[z \geq 0]:
+
+[stem]
+++++
+\large
+\begin{align*}
+f_{X+Y}(z) & =  \mu_1 \mu_2 e^{-\mu_2z} \int_0^z e^{-\mu_1 u} \cdot e^{\mu_2u} \, du \\
+& =  \mu_1 \mu_2 e^{-\mu_2z} \int_0^z e^{(\mu_2 - \mu_1) u} \, du \\
+
+f_{X+Y}(z) & = \begin{cases}
+        \mu_1 \mu_2 e^{-\mu_2z} \cdot \frac{e^{(\mu_2 - \mu_1)z} -1}{\mu_2 - \mu_1}, & z \geq 0,\\
+        0, & z < 0
+    \end{cases}
+\end{align*}
+++++
+
+If stem:[\mu_1 = \mu_2 = \mu], then the distribution of stem:[X+Y] is called *Erlang* distribution.
+
+[stem]
+++++
+\large
+f_{X+Y}(z) = \begin{cases}
+        \mu^2 z  e^{-\mu z}, & z \geq 0,\\
+        0, & z < 0
+    \end{cases}
+++++

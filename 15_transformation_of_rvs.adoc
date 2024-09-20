@@ -1,0 +1,245 @@
+= Transformation of Random Variables =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Definition ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X: \Omega \rightarrow \mathbb{R}] be a random variable defined with respect to stem:[\mathcal{F}].
+
+Given a function stem:[f: \mathbb{R} \rightarrow \mathbb{R}], our interest is to characterize the CDF/PDF/PMF of the random variable stem:[Y=f(X)]. For ease of analysis, we shall consider functions stem:[f] which are continuous and/or differentiable.
+
+== Example 01 ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X: \Omega \rightarrow \mathbb{R}] be a random variable defined with respect to stem:[\mathcal{F}], with CDF stem:[F_X]. Determine the CDF of stem:[Y=aX+b] for some stem:[a,b \in \mathbb{R}].
+
+[stem]
+++++
+\large
+\begin{align*}
+F_Y(y) & = P(\{Y \leq y\}) \\
+& = P(\{aX+b \leq y\}) 
+\end{align*}
+++++
+
+If stem:[a > 0]:
+
+[stem]
+++++
+\large
+F_Y(y) = P \left( \{ X \leq \frac{y-b}{a} \} \right) = F_X \left( \frac{y-b}{a} \right) \hspace{1cm} \forall y \in \mathbb{R}
+++++
+
+If stem:[a < 0]:
+
+[stem]
+++++
+\large
+F_Y(y) = P \left( \{ X \geq \frac{y-b}{a} \} \right) = 1- P \left( \{ X < \frac{y-b}{a} \} \right) \hspace{1cm} \forall y \in \mathbb{R}
+++++
+
+If stem:[X] is a continuous RV, then,
+
+[stem]
+++++
+\large
+F_Y(y) = 1- P \left( \{ X < \frac{y-b}{a} \} \right) = 1- P \left( \{ X \leq \frac{y-b}{a} \} \right) = 1 - F_X \left( \frac{y-b}{a} \right)
+++++
+
+== Example 02 ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X: \Omega \rightarrow \mathbb{R}] be a random variable defined with respect to stem:[\mathcal{F}], with CDF stem:[F_X]. Determine the CDF of stem:[Y=X^2].
+
+stem:[Y] can take only non-negative values. Fix a value stem:[y \geq 0].
+
+[stem]
+++++
+\large
+\begin{align*}
+F_Y(y) & = P(\{Y \leq y\}) \\
+& = P(\{X^2 \leq y\}) \\
+& = P(\{|X| \leq \sqrt{y}\}) \\
+& = P(\{- \sqrt{y} \leq X \leq \sqrt{y} \})
+\end{align*}
+++++
+
+The set stem:[\{- \sqrt{y} \leq X \leq \sqrt{y}\} = \{ X \leq \sqrt{y}\} \cap \{ X \geq - \sqrt{y}\} = \{ X \leq \sqrt{y}\} \cap \{ X < - \sqrt{y}\}^c ]. And we know that stem:[A \cap B^c = (A - B)]. So,
+
+[stem]
+++++
+\large
+\begin{align*}
+& = P(\{ X \leq \sqrt{y}\} - \{ X < - \sqrt{y}\} ) \\
+& = P(\{ X \leq \sqrt{y}\}) - P(\{ X < - \sqrt{y}\} ) \\
+& = F_X(\sqrt{y}) - P(\{ X < - \sqrt{y}\} )
+\end{align*}
+++++
+
+[stem]
+++++
+\large
+F_Y(y)  = \begin{cases}
+        F_X(\sqrt{y}) - P(\{ X < - \sqrt{y}\} ), & y \geq 0,\\
+        0, & y < 0.
+    \end{cases}
+++++
+
+If stem:[X] is a continuous RV, then stem:[P(\{ X < - \sqrt{y}\} = P(\{ X \leq - \sqrt{y}\}].
+
+[stem]
+++++
+\large
+F_Y(y) = F_X(\sqrt{y}) - F_X(- \sqrt{y})
+++++
+
+[IMPORTANT]
+====
+Not every function of a random variable is a random variable. Any Borel measurable function of a random variable is always a random variable. In particular, every continuous function is a Borel measurable function. So any continuous function of a random variable is a random variable.
+
+In general, any continuous function of one or more random variables is also a random variable.
+====
+
+Let stem:[X, Y] be random variables defined with respect to the same stem:[\mathcal{F}]. If we have a continuous function stem:[f: \mathbb{R}^2 \rightarrow \mathbb{R}], then stem:[f(X,Y)] is also a random variable.
+
+More generally, any continuous function stem:[f: \mathbb{R}^m \rightarrow \mathbb{R}^n] of random variables is also a random variable.
+
+== Example 03 - Maximum of Random Variables ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X_1, \dots, X_n] be random variables defined with respect to stem:[\mathcal{F}], with joint CDF stem:[F_{X_1, \dots, X_n}]. Let stem:[Y = \max \{X_1, \dots, X_n\}]. Derive the CDF of stem:[Y]. Simplify the CDF of stem:[Y] when stem:[X_1, \dots, X_n] are i.i.d.
+
+First, to show that stem:[Y] is a random variable, we should show that the event of the form stem:[\{Y \leq y\}] belongs to stem:[\mathcal{F}] for all stem:[y \in \mathbb{R}].
+
+[stem]
+++++
+\large
+\begin{align*}
+\{Y \leq y\} & = \{ \max \{X_1, \dots, X_n\} \leq y \} \\
+& = \bigcap_{i=1}^n  \{ X_i \leq y  \}
+\end{align*}
+++++
+
+If maximum of stem:[n] quantities is less than or equal to stem:[x], then all of them have to be less than or equal to stem:[x]. Conversely, if all of them are less than or equal to stem:[x], then the maximum of those stem:[n] quantities will be less than or equal to stem:[x].
+
+Since stem:[X_i]'s are random variables, all events of the form stem:[\{X_i \leq x\} \in \mathcal{F}] for all stem:[x \in \mathbb{R}]. Finite intersections of sets also belong to the sigma algebra. Hence stem:[Y] is a random variable.
+
+*CDF of stem:[Y]:*
+
+[stem]
+++++
+\large
+\begin{align*}
+F_Y(y) = P(\{Y \leq y\}) & = P(\{ \max \{X_1, \dots, X_n\} \leq y \}) \\
+& = P \left ( \bigcap_{i=1}^n  \{ X_i \leq y  \} \right) \\
+& = F_{X_1, \dots, X_n}(y,y,\dots,y)
+\end{align*}
+++++
+
+If stem:[X_1, \dots, X_n] are independent, then
+
+[stem]
+++++
+\large
+\begin{align*}
+F_Y(y) & = P \left ( \bigcap_{i=1}^n  \{ X_i \leq y  \} \right) \\
+& = P(\{X_1 \leq y\}) \cdot P(\{X_2 \leq y\}) \dots \cdot P(\{X_n \leq y\}) \\
+& = F_{X_1}(y) \cdot F_{X_2}(y) \dots \cdot F_{X_n}(y) && \text{for all } y \in \mathbb{R} \\
+& = (F_{X_1}(y))^n && \text{if they are i.i.d}
+\end{align*}
+++++
+
+== Example 04 - Minimum of Random Variables ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X_1, \dots, X_n] be random variables defined with respect to stem:[\mathcal{F}], with joint CDF stem:[F_{X_1, \dots, X_n}]. Let stem:[Y = \min \{X_1, \dots, X_n\}] be a random variable with respect to stem:[\mathcal{F}]. Derive the CDF of stem:[Y]. Simplify the CDF of stem:[Y] when stem:[X_1, \dots, X_n] are i.i.d.
+
+*CDF of stem:[Y]:*
+
+[stem]
+++++
+\large
+\begin{align*}
+F_Y(x) = P(\{Y \leq x\}) & = P(\{ \min \{X_1, \dots, X_n\} \leq x \}) \\
+& = P \left ( \bigcup_{i=1}^n  \{ X_i \leq x  \} \right) \\
+& = 1 - P \left ( \bigcap_{i=1}^n  \{ X_i > x  \} \right) \\ 
+\end{align*}
+++++
+
+If minimum of stem:[n] quantities is less than or equal to stem:[x], then at least one of them have to be less than or equal to stem:[x]. Conversely, at least if one of them is less than or equal to stem:[x], then the minimum will be less than or equal to stem:[x].
+
+[stem]
+++++
+\large
+\begin{align*}
+& = 1 - P \left ( \bigcap_{i=1}^n  \{ X_i > x  \} \right) \\ 
+& = 1 - P \left ( \{ X_1 > x  \} \cap \{ X_2 > x  \} \cap \dots \cap \{ X_n > x \} \right) \\
+\end{align*}
+++++
+
+If stem:[X_1, \dots, X_n] are independent,
+
+[stem]
+++++
+\large
+\begin{align*}
+& = 1 - \bigl[ P ( \{ X_1 > x  \}) \cdot P( \{ X_2 > x  \}) \dots P(\{ X_n > x \}) \bigr] \\
+& = 1 - \bigl[ (1 - P ( \{ X_1 \leq x  \})) \cdot \dots \cdot (1 - P( \{ X_n \leq x \})) \bigr] \\
+& = 1 - \bigl[ (1 - F_{X_1}(x)) \cdot \dots \cdot (1 - F_{X_n}(x)) \bigr] \\
+& = 1 - \prod_{i=1}^n (1 - F_{X_i}(x)) && \text{for all } x \in \mathbb{R} \\
+& = 1 - (1 - F_{X_1}(x))^n && \text{if they are i.i.d }
+\end{align*}
+++++
+
+== Example 05 - Minimum of Exponential RVs ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
+
+Let stem:[X_1, \dots, X_n] be independent, with stem:[X_i \sim \text{Exponential}(\lambda_i)] for each stem:[i \in \{1,2,\dots,n\}]. Find the distribution of stem:[Z = \min \{X_1, \dots, X_n\}].
+
+From the previous result, we know that,
+
+[stem]
+++++
+\large
+\begin{align*}
+F_Z(x) = 1 - \prod_{i=1}^n (1 - F_{X_i}(x)) && \text{for all } x \in \mathbb{R} \\
+\end{align*}
+++++
+
+And the CDF of stem:[X_i] is
+
+[stem]
+++++
+\large
+F_{X_i}(x) = \begin{cases}
+        1 - e^{-\lambda_i x}, & x \geq 0,\\
+        0, & x < 0
+    \end{cases}
+++++
+
+Hence,
+
+[stem]
+++++
+\large
+\begin{align*}
+F_Z(x) & = 1 - \prod_{i=1}^n (1 - (1 - e^{-\lambda_i x})) && \text{for all } x \geq 0 \\
+& = 1 - \prod_{i=1}^n e^{-\lambda_i x} = 1 - e^{- (\sum_{i=1}^n \lambda_i) x}
+\end{align*}
+++++
+
+[stem]
+++++
+\large
+F_Z(x) = \begin{cases}
+        1 - e^{- (\sum_{i=1}^n \lambda_i) x}, & x \geq 0,\\
+        0, & x < 0
+    \end{cases}
+++++
+
+stem:[Z] is also an exponential random variable with parameter stem:[\lambda_1 + \dots + \lambda_n].
