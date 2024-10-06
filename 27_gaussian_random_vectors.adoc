@@ -1,0 +1,175 @@
+= Gaussian Random Vector =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Definition ==
+They are also called as Jointly Gaussian random variables.
+
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Fix stem:[n \in \mathbb{N}]. Let stem:[X_1, \dots, X_n] be random variables with respect to stem:[\mathcal{F}].
+
+We say the vector stem:[\mathbf{X} = (X_1, \dots, X_n)\top \in \mathbb{R}^n] is a Gaussian random vector if
+
+. stem:[X_1, \dots, X_n] are jointly continuous, and
+. The joint PDF of stem:[X_1, \dots, X_n] at any point stem:[\mathbf{x} = (x_1, \dots, x_n) \in \mathbb{R}^n ] may be expressed as
++
+[stem]
+++++
+f_{X_1, \dots, X_n}(\mathbf{x}) = \frac{1}{\sqrt{(2\pi)^n \text{det}(\textbf{K})}} \text{exp} \left( - \frac{1}{2} (\mathbf{x} - \boldsymbol{\mu})^\top \textbf{K}^{-1} (\mathbf{x} - \boldsymbol{\mu})  \right), \\
+++++
++
+for some stem:[\boldsymbol{\mu} \in \mathbb{R}^n] and positive definite matrix stem:[\textbf{K}_{n \times n}].
++
+NOTE: stem:[\textbf{K}] is a positive definite matrix if stem:[\mathbf{x}^\top \textbf{K} \mathbf{x} > 0] for all stem:[\mathbf{x} \in \mathbb{R}^n ]. For a positive definite matrix, its determinant is always greater than 0. Therefore, its inverse always exists.
+
+* stem:[\boldsymbol{\mu}] is the mean vector.
+* stem:[\textbf{K}] is the covariance matrix.
+
+[stem]
+++++
+\boldsymbol{\mu}= \mathbb{E}[\mathbf{X}] =
+\begin{bmatrix}
+\mathbb{E}[X_1] \\
+\mathbb{E}[X_2] \\
+\vdots \\
+\mathbb{E}[X_n]
+\end{bmatrix}
+
+\hspace{1cm}
+
+\textbf{K}=
+\begin{bmatrix}
+\text{Var}(X_1) & \text{Cov}(X_1, X_2) & \dots &  \text{Cov}(X_1, X_n)\\
+\text{Cov}(X_2, X_1) & \text{Var}(X_2) & \dots & \text{Cov}(X_2, X_n) \\
+\vdots & \vdots & \vdots & \vdots \\
+\text{Cov}(X_n, X_1) & \text{Cov}(X_n, X_2) & \dots & \text{Var}(X_n)
+\end{bmatrix}
+++++
+
+In matrix notation, stem:[\textbf{K} = \mathbb{E}[ \, (\mathbf{X} - \mathbb{E}[\mathbf{X}\])(\mathbf{X} - \mathbb{E}[\mathbf{X}\])^\top \, \] ], where
+
+[stem]
+++++
+K_{i,j} = \mathbb{E}[ \, (X_i - \mathbb{E}[X_i]) \, (X_j - \mathbb{E}[X_j]) \, ] = \text{Cov}(X_i, X_j)
+++++
+
+We can see that,
+
+* stem:[\textbf{K}] is symmetric.
+* stem:[K_{i,i} = \text{Var}(X_i)] for all stem:[i = 1, \dots, n].
+
+== Remarks ==
+
+* If stem:[\mathbf{X} = (X_1, \dots, X_n)\top] is a Gaussian random vector, we say that stem:[X_1, \dots, X_n] are jointly Gaussian.
+* If stem:[X] and stem:[Y] are individually Gaussian, and stem:[X] is independent of stem:[Y], then stem:[X] and stem:[Y] are jointly Gaussian.
+
+*Proof:*
+
+Since stem:[X] and stem:[Y] are individually continuous and they are independent, stem:[X] and stem:[Y] are jointly continuous.
+
+image::.\images\x_y_gaussian.png[align='center', 700, 400]
+
+Here stem:[\textbf{K}] is a positive definite matrix, and hence stem:[X,Y] are jointly Gaussian.
+
+== Important Results ==
+
+*Result 1:*
+
+stem:[X_1, \dots, X_n] are jointly Gaussian *if and only if* every non-zero linear combination of stem:[X_1, \dots, X_n] is also Gaussian, i.e.,
+
+[stem]
+++++
+a_1X_1 + \dots + a_n X_n \hspace{1cm} (a_1, \dots, a_n)^\top \in \mathbb{R}^n \backslash \mathbf{\{0\}}
+++++
+
+is a Gaussian random variable. The constants stem:[(a_1, \dots, a_n)] shouldn't all be 0 at the same time.
+
+If stem:[X,Y] are jointly Gaussian, the marginals are also Gaussian. stem:[X,Y] jointly Gaussian implies that every non-zero linear combination stem:[aX+bY] is also Gaussian for all stem:[(a,b)^\top \in \mathbb{R}^2 \backslash \mathbf{\{0\}}]. Then,
+
+* stem:[X = 1.X + 0.Y] is Gaussian.
+* stem:[Y = 0.X + 1.Y] is Gaussian.
+
+Therefore, if stem:[X_1, \dots, X_n] are jointly Gaussian, then marginals are also Gaussian (Note that there is no independence mentioned, this is irrespective of dependence or independence).
+
+On the other hand, stem:[X] and stem:[Y] individually Gaussian (without the independence condition) doesn't imply they are jointly Gaussian.
+
+
+*Result 2:*
+
+If stem:[X] and stem:[Y] are *jointly Gaussian*, and stem:[\text{Cov}(X,Y)=0], then stem:[X] and stem:[Y] are independent.
+
+image::.\images\x_y_gaussian_02.png[align='center', 700, 400]
+
+We can extend this to stem:[n] random variables.
+
+== When determinant is Zero ==
+Let stem:[X_1, \dots, X_n] be any individually continuous random variables.
+
+If stem:[\text{det}(\mathbf{K})=0], then stem:[X_1, \dots, X_n] are not jointly continuous.
+
+In general, for any random vector stem:[\mathbf{X} = (X_1, \dots, X_n)\top \in \mathbb{R}^n] (not necesaarily Gaussian), when the determinant of the covariance matrix is 0, what does it mean? We know that,
+
+[stem]
+++++
+\textbf{K}=
+\begin{bmatrix}
+\text{Var}(X_1) & \text{Cov}(X_1, X_2) & \dots &  \text{Cov}(X_1, X_n)\\
+\text{Cov}(X_2, X_1) & \text{Var}(X_2) & \dots & \text{Cov}(X_2, X_n) \\
+\vdots & \vdots & \vdots & \vdots \\
+\text{Cov}(X_n, X_1) & \text{Cov}(X_n, X_2) & \dots & \text{Var}(X_n)
+\end{bmatrix}
+++++
+
+stem:[\text{det}(\textbf{K}) = 0 \implies] at least one of the rows is linearly dependent on the other rows, which means there exists stem:[(a_1, \dots, a_n)^\top \in \mathbb{R}^n \backslash \mathbf{\{0\}}] such that
+
+image::.\images\x_y_gaussian_03.png[align='center', 800, 400]
+
+So whenever stem:[\text{det}(\textbf{K}) = 0], this shows that one of the random variables stem:[X_i] can be expressed in terms of others. There is a linear dependence between stem:[X_1, \dots, X_n]. There is redundancy in the information, the full length vector is not informative.
+
+In the case of stem:[X_1, \dots, X_n] individually Gaussian:
+
+When stem:[X_1, \dots, X_n] are individually Gaussian and stem:[\text{det}(\mathbf{K})=0], we can prove that there exist constants stem:[(a_1, \dots, a_n)^\top \in \mathbb{R}^n \backslash \mathbf{\{0\}}] such that the random variable stem:[a_1X_1 + \dots + a_n X_n] is not Gaussian.
+
+*Example:*
+
+Consider two random variables, stem:[X \sim \mathcal{N}(0,1)] and stem:[Y = -X \implies Y \sim \mathcal{N}(0,1)].
+
+[stem]
+++++
+\begin{align*}
+\text{Cov}(X,Y) & = \mathbb{E}[ \, (X-\mathbb{E}[X]) \, (Y-\mathbb{E}[Y])\, ] \\
+& = \mathbb{E}[XY] && \text{ as the mean is 0} \\
+& = - \mathbb{E}[X^2] = -1
+\end{align*}
+++++
+
+Then the covariance matrix is:
+
+[stem]
+++++
+\textbf{K}=
+\begin{bmatrix}
+1 & -1 \\
+-1 & 1
+\end{bmatrix} \implies \text{det}(\textbf{K}) = 0
+++++
+
+And when we add these two random variables stem:[X+Y], the result is always 0. The random variable stem:[X+Y] is a discrete random variable which takes only one value 0. We are able to find a non-zero linear combination of stem:[X+Y] which is not Gaussian (in fact, they are not even continuous).
+
+Hence from result 1, we can say that stem:[X] and stem:[Y] are not jointly Gaussian. stem:[(X,Y)] is a singular random variable, they don't have a joint PDF.
+
+We can remove some of the components from this random vector such that the other components are linearly independent, i.e., we have to retain the most informative set of variables. Say we define a restricted random vector stem:[\mathbf{Y} = (X_1, \dots, X_p)\top \in \mathbb{R}^p] where stem:[p < n], and the determinant of its covariance matrix is positive, then on this reduced random vector, we can define a jointly Gaussian PDF.
+
+=== Summary ===
+
+[cols="1,1,1", width=75%]
+|===
+| |stem:[\text{det}(\textbf{K}) = 0] |stem:[\text{det}(\textbf{K}) > 0]
+
+|stem:[X_1, \dots, X_n] individually any continuous RVs |stem:[X_1, \dots, X_n] not jointly continuous | May or mayn't be jointly continuous
+|stem:[X_1, \dots, X_n] individually Gaussian RVs |stem:[X_1, \dots, X_n] not jointly Gaussian (not even jointly continuous) | Jointly Gaussian
+
+|===

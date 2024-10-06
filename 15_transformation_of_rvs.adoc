@@ -20,7 +20,6 @@ Let stem:[X: \Omega \rightarrow \mathbb{R}] be a random variable defined with re
 
 [stem]
 ++++
-\large
 \begin{align*}
 F_Y(y) & = P(\{Y \leq y\}) \\
 & = P(\{aX+b \leq y\}) 
@@ -31,7 +30,6 @@ If stem:[a > 0]:
 
 [stem]
 ++++
-\large
 F_Y(y) = P \left( \{ X \leq \frac{y-b}{a} \} \right) = F_X \left( \frac{y-b}{a} \right) \hspace{1cm} \forall y \in \mathbb{R}
 ++++
 
@@ -39,7 +37,6 @@ If stem:[a < 0]:
 
 [stem]
 ++++
-\large
 F_Y(y) = P \left( \{ X \geq \frac{y-b}{a} \} \right) = 1- P \left( \{ X < \frac{y-b}{a} \} \right) \hspace{1cm} \forall y \in \mathbb{R}
 ++++
 
@@ -47,7 +44,6 @@ If stem:[X] is a continuous RV, then,
 
 [stem]
 ++++
-\large
 F_Y(y) = 1- P \left( \{ X < \frac{y-b}{a} \} \right) = 1- P \left( \{ X \leq \frac{y-b}{a} \} \right) = 1 - F_X \left( \frac{y-b}{a} \right)
 ++++
 
@@ -60,7 +56,6 @@ stem:[Y] can take only non-negative values. Fix a value stem:[y \geq 0].
 
 [stem]
 ++++
-\large
 \begin{align*}
 F_Y(y) & = P(\{Y \leq y\}) \\
 & = P(\{X^2 \leq y\}) \\
@@ -73,7 +68,6 @@ The set stem:[\{- \sqrt{y} \leq X \leq \sqrt{y}\} = \{ X \leq \sqrt{y}\} \cap \{
 
 [stem]
 ++++
-\large
 \begin{align*}
 & = P(\{ X \leq \sqrt{y}\} - \{ X < - \sqrt{y}\} ) \\
 & = P(\{ X \leq \sqrt{y}\}) - P(\{ X < - \sqrt{y}\} ) \\
@@ -83,7 +77,6 @@ The set stem:[\{- \sqrt{y} \leq X \leq \sqrt{y}\} = \{ X \leq \sqrt{y}\} \cap \{
 
 [stem]
 ++++
-\large
 F_Y(y)  = \begin{cases}
         F_X(\sqrt{y}) - P(\{ X < - \sqrt{y}\} ), & y \geq 0,\\
         0, & y < 0.
@@ -94,7 +87,6 @@ If stem:[X] is a continuous RV, then stem:[P(\{ X < - \sqrt{y}\} = P(\{ X \leq -
 
 [stem]
 ++++
-\large
 F_Y(y) = F_X(\sqrt{y}) - F_X(- \sqrt{y})
 ++++
 
@@ -118,7 +110,6 @@ First, to show that stem:[Y] is a random variable, we should show that the event
 
 [stem]
 ++++
-\large
 \begin{align*}
 \{Y \leq y\} & = \{ \max \{X_1, \dots, X_n\} \leq y \} \\
 & = \bigcap_{i=1}^n  \{ X_i \leq y  \}
@@ -133,7 +124,6 @@ Since stem:[X_i]'s are random variables, all events of the form stem:[\{X_i \leq
 
 [stem]
 ++++
-\large
 \begin{align*}
 F_Y(y) = P(\{Y \leq y\}) & = P(\{ \max \{X_1, \dots, X_n\} \leq y \}) \\
 & = P \left ( \bigcap_{i=1}^n  \{ X_i \leq y  \} \right) \\
@@ -145,7 +135,6 @@ If stem:[X_1, \dots, X_n] are independent, then
 
 [stem]
 ++++
-\large
 \begin{align*}
 F_Y(y) & = P \left ( \bigcap_{i=1}^n  \{ X_i \leq y  \} \right) \\
 & = P(\{X_1 \leq y\}) \cdot P(\{X_2 \leq y\}) \dots \cdot P(\{X_n \leq y\}) \\
@@ -163,7 +152,6 @@ Let stem:[X_1, \dots, X_n] be random variables defined with respect to stem:[\ma
 
 [stem]
 ++++
-\large
 \begin{align*}
 F_Y(x) = P(\{Y \leq x\}) & = P(\{ \min \{X_1, \dots, X_n\} \leq x \}) \\
 & = P \left ( \bigcup_{i=1}^n  \{ X_i \leq x  \} \right) \\
@@ -175,7 +163,6 @@ If minimum of stem:[n] quantities is less than or equal to stem:[x], then at lea
 
 [stem]
 ++++
-\large
 \begin{align*}
 & = 1 - P \left ( \bigcap_{i=1}^n  \{ X_i > x  \} \right) \\ 
 & = 1 - P \left ( \{ X_1 > x  \} \cap \{ X_2 > x  \} \cap \dots \cap \{ X_n > x \} \right) \\
@@ -186,7 +173,6 @@ If stem:[X_1, \dots, X_n] are independent,
 
 [stem]
 ++++
-\large
 \begin{align*}
 & = 1 - \bigl[ P ( \{ X_1 > x  \}) \cdot P( \{ X_2 > x  \}) \dots P(\{ X_n > x \}) \bigr] \\
 & = 1 - \bigl[ (1 - P ( \{ X_1 \leq x  \})) \cdot \dots \cdot (1 - P( \{ X_n \leq x \})) \bigr] \\
@@ -205,7 +191,6 @@ From the previous result, we know that,
 
 [stem]
 ++++
-\large
 \begin{align*}
 F_Z(x) = 1 - \prod_{i=1}^n (1 - F_{X_i}(x)) && \text{for all } x \in \mathbb{R} \\
 \end{align*}
@@ -215,7 +200,6 @@ And the CDF of stem:[X_i] is
 
 [stem]
 ++++
-\large
 F_{X_i}(x) = \begin{cases}
         1 - e^{-\lambda_i x}, & x \geq 0,\\
         0, & x < 0
@@ -226,7 +210,6 @@ Hence,
 
 [stem]
 ++++
-\large
 \begin{align*}
 F_Z(x) & = 1 - \prod_{i=1}^n (1 - (1 - e^{-\lambda_i x})) && \text{for all } x \geq 0 \\
 & = 1 - \prod_{i=1}^n e^{-\lambda_i x} = 1 - e^{- (\sum_{i=1}^n \lambda_i) x}
@@ -235,7 +218,6 @@ F_Z(x) & = 1 - \prod_{i=1}^n (1 - (1 - e^{-\lambda_i x})) && \text{for all } x \
 
 [stem]
 ++++
-\large
 F_Z(x) = \begin{cases}
         1 - e^{- (\sum_{i=1}^n \lambda_i) x}, & x \geq 0,\\
         0, & x < 0
@@ -243,3 +225,71 @@ F_Z(x) = \begin{cases}
 ++++
 
 stem:[Z] is also an exponential random variable with parameter stem:[\lambda_1 + \dots + \lambda_n].
+
+== Example 05 - Transformation of Gaussian ==
+Let stem:[X \sim \mathcal{N}(\mu, \sigma^2)]. What is the distribution of stem:[Y=aX+b] for some stem:[a,b \in \mathbb{R}]?
+
+[stem]
+++++
+\begin{align*}
+F_Y(y) & = P(\{Y \leq y\}) \\
+& = P(\{aX+b \leq y\}) 
+\end{align*}
+++++
+
+If stem:[a > 0]:
+
+[stem]
+++++
+F_Y(y) = P \left( \{ X \leq \frac{y-b}{a} \} \right) = F_X \left( \frac{y-b}{a} \right) \hspace{1cm} \forall y \in \mathbb{R}
+++++
+
+[stem]
+++++
+\frac{d}{dy} F_Y(y) = f_Y(y) = f_X \left( \frac{y-b}{a} \right) \frac{d}{dy} \left( \frac{y-b}{a} \right) = f_X \left( \frac{y-b}{a} \right) \cdot  \frac{1}{a} 
+++++
+
+We know that,
+
+[stem]
+++++
+\begin{align*}
+f_X(x) & = \frac{1}{\sigma \sqrt{2\pi}} \text{exp} \left( - \frac{(x-\mu)^2}{2\sigma^2} \right), \,\, x \in \mathbb{R} \\
+f_X \left( \frac{y-b}{a} \right) & = \frac{1}{\sigma \sqrt{2\pi}} \text{exp} \left( - \frac{(y-b-a\mu)^2}{2a^2\sigma^2} \right) \\
+& = \frac{1}{\sigma \sqrt{2\pi}} \text{exp} \left( - \frac{(y-(a\mu+b)^2}{2a^2\sigma^2} \right) \\
+\end{align*}
+++++
+
+Hence,
+
+[stem]
+++++
+f_Y(y) =  \frac{1}{a} \cdot \frac{1}{\sigma \sqrt{2\pi}} \text{exp} \left( - \frac{(y-(a\mu+b)^2}{2a^2\sigma^2} \right) \sim \mathcal{N}(a\mu + b, a^2 \sigma^2)
+++++
+
+
+If stem:[a < 0]:
+
+[stem]
+++++
+F_Y(y) = P \left( \{ X \geq \frac{y-b}{a} \} \right) = 1- P \left( \{ X < \frac{y-b}{a} \} \right) \hspace{1cm} \forall y \in \mathbb{R}
+++++
+
+If stem:[X] is a continuous RV, then,
+
+[stem]
+++++
+F_Y(y) = 1- P \left( \{ X < \frac{y-b}{a} \} \right) = 1- P \left( \{ X \leq \frac{y-b}{a} \} \right) = 1 - F_X \left( \frac{y-b}{a} \right)
+++++
+
+We get,
+
+[stem]
+++++
+\begin{align*}
+f_Y(y) & =  - \frac{1}{a} \cdot \frac{1}{\sigma \sqrt{2\pi}} \text{exp} \left( - \frac{(y-(a\mu+b)^2}{2a^2\sigma^2} \right) \\
+& = \frac{1}{|a|} \cdot \frac{1}{\sigma \sqrt{2\pi}} \text{exp} \left( - \frac{(y-(a\mu+b)^2}{2a^2\sigma^2} \right) && \text{as }a \text{ is negative} \\
+& =  \frac{1}{\sqrt{2\pi \sigma^2 a^2 }} \text{exp} \left( - \frac{(y-(a\mu+b)^2}{2a^2\sigma^2} \right) \sim \mathcal{N}(a\mu + b, a^2 \sigma^2)
+\end{align*}
+++++
+

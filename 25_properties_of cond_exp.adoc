@@ -1,0 +1,139 @@
+= Properties of Conditional Expectations =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Properties ==
+
+*Property 1:*
+
+Suppose that stem:[X] and stem:[Y] are independent random variables, what is stem:[\mathbb{E}[X|Y\]]?
+
+When stem:[X] and stem:[Y] are discrete,
+
+[stem]
+++++
+\begin{align*}
+p_{X | Y =y}(x) & = \frac{p_{X,Y}(x,y)}{p_Y(y)},  \hspace{1cm} x \in \mathbb{R} \\
+& = \frac{p_X(x) \cdot p_Y(y)}{p_Y(y)} = p_X(x)
+\end{align*}
+++++
+
+And we know that,
+
+[stem]
+++++
+\begin{align*}
+\mathbb{E}[X \, | \, \{Y=y\} ] & = \sum_{x \in \mathbb{R}} x \cdot p_{X | Y =y}(x) \\
+& = \sum_{x \in \mathbb{R}} x \cdot p_X(x) = \mathbb{E}[X]  \hspace{1cm} \forall y \in \mathbb{R}
+\end{align*}
+++++
+
+Hence, stem:[\mathbb{E}[X|Y\] = \mathbb{E}[X\] ]
+
+*Property 2:*
+
+Given a random variable stem:[Y] and a function stem:[g], what is stem:[\mathbb{E}[g(Y)|Y\]]?
+
+Let stem:[X=g(Y)]. We need to find stem:[\mathbb{E}[X|Y\]]. Let stem:[X] and stem:[Y] be discrete.
+
+[stem]
+++++
+\begin{align*}
+p_{X | Y =y}(x) & = \frac{p_{X,Y}(x,y)}{p_Y(y)}  \hspace{1cm} x \in \mathbb{R} \\
+& = \frac{P(\{X=x\} \cap \{Y=y\})}{P(\{Y=y\})} \\
+& = \frac{P(\{g(Y)=x\} \cap \{Y=y\})}{P(\{Y=y\})}
+\end{align*}
+++++
+ 
+Observe stem:[Y=y \implies g(Y)=g(y)]. The numerator will have non-zero probability only when stem:[x=g(y)], else the condition of happening stem:[Y=y] and stem:[g(Y) \ne g(y)] is not possible. So,
+
+[stem]
+++++
+= \mathbf{1}_{\{x=g(y)\}} \frac{P(\{g(Y)=g(y)\} \cap \{Y=y\})}{P(\{Y=y\})}
+++++
+
+`Implies` in set theory is `subset of`. We observe that stem:[\{Y=y\}] is a (proper) subset of stem:[\{g(Y)=g(y)\}].
+
+* stem:[\{Y=y\}] contains all stem:[\omega \in \Omega] such that stem:[Y(\omega) = y].
+* stem:[\{g(Y)=g(y)\}] contains all stem:[\omega \in \Omega] such that stem:[g(Y(\omega))=g(y)].
+
+stem:[Y=y \implies g(Y)=g(y)]. And it is not the other way around, i.e., stem:[g(Y)=g(y) \nRightarrow Y=y] because the function can be many-to-one. Many values stem:[y] would have mapped to the same number stem:[g(y)]. Hence,
+
+[stem]
+++++
+= \mathbf{1}_{\{x=g(y)\}} \frac{P(\{Y=y\})}{P(\{Y=y\})} = \mathbf{1}_{\{x=g(y)\}}
+++++
+
+[stem]
+++++
+p_{X|Y=y}(x) = \begin{cases}
+        1, & x=g(y),\\
+        0, & \text{otherwise}.
+    \end{cases}
+++++
+
+And we know that,
+
+[stem]
+++++
+\begin{align*}
+\mathbb{E}[X \, | \, \{Y=y\} ] & = \sum_{x \in \mathbb{R}} x \cdot p_{X | Y =y}(x) \\
+& = g(y) \cdot 1
+\end{align*}
+++++
+
+Hence, stem:[\mathbb{E}[X \, | \, Y \] = \mathbb{E}[g(Y) \, | \, Y \] = g(Y) ].
+
+Intuitively, when stem:[Y=y] given, then stem:[g(Y)] is a constant. We can pull it outside the expectation, 
+
+[stem]
+++++
+\begin{align*}
+\mathbb{E}[g(y) \, | \, \{Y=y\} ] & = g(y) \cdot \mathbb{E}[1 | \{Y=y\} ] \\
+& = g(y) \cdot 1
+\end{align*}
+++++
+
+Hence, stem:[\mathbb{E}[g(Y) \, | \, Y \] = g(Y) ].
+
+*Property 3:*
+
+Suppose that stem:[X] and stem:[Y] are independent random variables, what is stem:[\mathbb{E}[Xg(Y) | Y\] ]?
+
+When stem:[Y=y] given, then stem:[g(Y)] is a constant. We can pull it outside the expectation,
+
+[stem]
+++++
+\begin{align*}
+\mathbb{E}[Xg(Y) | Y]  &= g(Y) \cdot \mathbb{E}[X | Y] \\
+& = g(Y) \cdot \mathbb{E}[X]
+\end{align*}
+++++
+
+This is a function of random variable stem:[Y].
+
+[NOTE]
+====
+The expectation is always with respect to the joint distribution of all the variables that occur in the expectation. For example,
+
+* stem:[\mathbb{E}[X |Y\]] is with respect to the conditional distribution of stem:[X] given stem:[Y].
+* stem:[\mathbb{E}[XY\]] is with respect to the joint distribution of stem:[X,Y].
+====
+
+== Examples ==
+
+*Example 01:*
+
+Let stem:[X \sim \text{Exp}(1)]. Compute stem:[\mathbb{E}[X|\{X>1\}\]].
+
+*Example 02:*
+
+Let stem:[X,Y] be jointly distributed uniformly over the traingle with vertices at stem:[(0,0), (1,0), (0,2)]. Compute stem:[\mathbb{E}[X|\{Y>1\}\]].
+
+"Uniformly distributed" means that the joint PDF is stem:[\frac{1}{\text{Area of the triangle}}] for stem:[(x,y)] in the triangle. Here the area of the triangle is 1.
+
+image::.\images\cond_exp_eg_05.png[align='center', 800, 600]

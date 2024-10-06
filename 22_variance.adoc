@@ -1,0 +1,91 @@
+= Variance =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Definition ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[X: \Omega \rightarrow \mathbb{R}] be a random variable with respect to stem:[\mathcal{F}]. Let stem:[\mathbb{E}[X\]] be well defined, i.e., not of the form stem:[\infty - \infty]. The variance of stem:[X] is just the variation of stem:[X] around its mean.
+
+The variance of stem:[X] is defined as
+
+[stem]
+++++
+\large
+\text{Var}(X) := \mathbb{E}[(X - \mathbb{E}[X] )^2].
+++++
+
+Remarks:
+
+* Eventhough stem:[X] is some arbitrary random variable, stem:[(X - \mathbb{E}[X\] )^2] is a non-negative random variable. The expectation of a non-negative random variable is always stem:[\geq 0]. So variance is always non-negative. Variance is always well defined, provided stem:[\mathbb{E}[X\]] is well defined.
+* The quantity stem:[\sqrt{\text{Var}(X)}] is called the standard deviation of stem:[X].
+
+*Lemma:*
+
+The variance of stem:[X] is zero if and only stem:[X] takes only one value stem:[c] with probability 1.
+
+[stem]
+++++
+\large
+P(\{X=c\}) = 1 \text{ for some constant } c
+++++
+
+This random variable is a constant function, it cannot deviate around its mean, so its variance is 0.
+
+image::.\images\variance_prop_01.png[align='center', 800, 600]
+
+The expectation of any random variable can be written as the expectation of the same random variable looking through a window which has probability 1 (from property 6), stem:[\mathbb{E}[X\] = \mathbb{E}[X \cdot \mathbf{1}_A\] ]. Any set which has probability 1 can be used as stem:[A].
+
+NOTE: For variance to be 0, stem:[X] should be equal to stem:[\mathbb{E}[X\]]. So expectation of stem:[X] cannot be stem:[ + \infty] or stem:[ - \infty] and its variance be 0, at the same time.
+
+== Alternative Expression for Variance ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[X: \Omega \rightarrow \mathbb{R}] be a random variable with respect to stem:[\mathcal{F}]. Let stem:[\mathbb{E}[X\]] be well defined, i.e., not of the form stem:[\infty - \infty].
+
+. If stem:[\Bigl|\mathbb{E}[X\] \Bigr| = +\infty], then stem:[\text{Var}(X) = +\infty].
++
+stem:[\text{Var}(X) = \mathbb{E}[(X - \mathbb{E}[X\] )^2\] = \mathbb{E}[+\infty\] = +\infty ].
+. If stem:[\Bigl|\mathbb{E}[X\] \Bigr| < +\infty], then stem:[\text{Var}(X) = \mathbb{E}[X^2\] - (\mathbb{E}[X\])^2 ].
++
+[stem]
+++++
+\large
+\begin{align*}
+\mathbb{E}[(X - \mathbb{E}[X] )^2] & = \mathbb{E}\left[ X^2 + (\mathbb{E}[X])^2 - 2X \mathbb{E}[X] \right] \\
+& = \mathbb{E}[ X^2] + (\mathbb{E}[X])^2 - 2(\mathbb{E}[X])^2
+\end{align*}
+++++
++
+Since we get terms of this form stem:[(\mathbb{E}[X\])^2 - 2(\mathbb{E}[X\])^2], we require the expectation to be finite.
+
+== How to Compute Variance ==
+We can follow either of the two techniques to compute the variance:
+
+When stem:[\mathbb{E}[X\]] is well defined, and 
+
+* If it equals stem:[+ \infty] or stem:[ - \infty], the variance is always stem:[+ \infty].
+* If it is a finite number, then stem:[(X - \mathbb{E}[X\])^2 ] is a function of stem:[X]:
+
+image::.\images\compute_variance.png[align='center', 800, 400]
+
+== Variance for Some Common RVs ==
+
+[cols="1,1", width=50%]
+|===
+|stem:[X] |stem:[\text{Var}(X)]
+
+|stem:[X \sim \text{Ber}(p)] |stem:[p(1-p)]
+|stem:[X \sim \text{Poisson}(\lambda)] |stem:[\lambda]
+|stem:[X \sim \text{Unif}([a,b\])] |stem:[\frac{(b-a)^2}{12}]
+|stem:[X \sim \text{Exp}(\mu)] |stem:[\frac{1}{\mu^2}]
+|stem:[X \sim \mathcal{N}(\mu, \sigma^2)] |stem:[\sigma^2]
+|===
+
+Give an example of a random variable stem:[X] for which stem:[\Bigl|\mathbb{E}[X\] \Bigr| < +\infty] (it is finite), but stem:[\text{Var}(X) = +\infty].
+
+Since the expectation is finite, we can write stem:[\text{Var}(X) = \mathbb{E}[X^2\] - (\mathbb{E}[X\])^2 ]. The second term is finite. To have the variance stem:[+ \infty], we should have the first term as stem:[+\infty].
+
+image::.\images\variance_eg_01.png[align='center', 600, 400]
+
+

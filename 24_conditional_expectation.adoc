@@ -1,0 +1,276 @@
+= Conditional Expectation =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Objective ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[X,Y] be random variables with respect to stem:[\mathcal{F}]. We define the following quantities:
+
+* stem:[\mathbb{E}[X \, | \, \{Y=y\} \]], for any stem:[y \in \mathbb{R}]. This quantity is a number. For every stem:[y], the number will be different.
+* stem:[\mathbb{E}[X \, | \, Y \]]. This quantity is a random variable.
+
+== Case 1: stem:[X] Discrete, stem:[Y] Discrete ==
+Let stem:[X,Y] have the joint PMF stem:[p_{X,Y}].
+
+* Step 1: The conditional PMF of stem:[X], conditioned on the event stem:[\{Y=y\}]:
++
+[stem]
+++++
+\large
+p_{X | Y =y}(x) = \frac{p_{X,Y}(x,y)}{p_Y(y)},  \hspace{1cm} x \in \mathbb{R}
+++++
++
+provided stem:[p_Y(y) > 0].
+
+* Step 2: The quantity stem:[\mathbb{E}[X \, | \, \{Y=y\} \]] is defined as the expectation with respect to the conditional PMF stem:[p_{X | Y =y}],
++
+[stem]
+++++
+\large
+\mathbb{E}[X \, | \, \{Y=y\} ] := \sum_{x \in \mathbb{R}} x \cdot p_{X | Y =y}(x)
+++++
++
+Make sure the expectation is well defined. The summation should be over the range of stem:[x] conditioned on stem:[\{Y=y\}], i.e, the possible values that stem:[x] can take given that stem:[\{Y=y\}].
+
+* Step 3: Define the function stem:[\psi_1: \mathbb{R} \rightarrow \mathbb{R}] as
++
+[stem]
+++++
+\large
+\psi_1(y) := \begin{cases}
+        \mathbb{E}[X \, | \, \{Y=y\} ], & p_Y(y) > 0,\\
+        0, & p_Y(y) = 0.
+    \end{cases}
+++++
++
+The function value will be 0 if the expectation is undefined.
+
+* Step 4: The quantity stem:[\mathbb{E}[X \, | \, Y \]] is simply defined as
++
+[stem]
+++++
+\large
+\mathbb{E}[X \, | \, Y ] = \psi_1(Y)
+++++
++
+stem:[\mathbb{E}[X \, | \, Y \]] is a function of random variable stem:[Y].
+
+== Case 2: stem:[X] Continuous, stem:[Y] Continuous ==
+Let stem:[X,Y] have the joint PDF stem:[f_{X,Y}], i.e., they are jointly continuous.
+
+* Step 1: The conditional PDF of stem:[X], conditioned on the event stem:[\{Y=y\}]:
++
+[stem]
+++++
+\large
+f_{X | Y =y}(x) = \frac{f_{X,Y}(x,y)}{f_Y(y)},  \hspace{1cm} x \in \mathbb{R}
+++++
++
+provided stem:[f_Y(y) > 0].
+
+* Step 2: The quantity stem:[\mathbb{E}[X \, | \, \{Y=y\} \]] is defined as the expectation with respect to the conditional PDF stem:[f_{X | Y =y}],
++
+[stem]
+++++
+\large
+\mathbb{E}[X \, | \, \{Y=y\} ] := \int_{-\infty}^{+ \infty} x \cdot f_{X | Y =y}(x) \, dx
+++++
++
+Make sure the expectation is well defined. The integral should be over the range of stem:[x] conditioned on stem:[\{Y=y\}], i.e, over the possible range that stem:[x] can take given that stem:[\{Y=y\}].
+
+* Step 3: Define the function stem:[\psi_2: \mathbb{R} \rightarrow \mathbb{R}] as
++
+[stem]
+++++
+\large
+\psi_2(y) := \begin{cases}
+        \mathbb{E}[X \, | \, \{Y=y\} ], & f_Y(y) > 0,\\
+        0, & f_Y(y) = 0.
+    \end{cases}
+++++
++
+The function value will be 0 if the expectation is undefined.
+
+* Step 4: The quantity stem:[\mathbb{E}[X \, | \, Y \]] is simply defined as
++
+[stem]
+++++
+\mathbb{E}[X \, | \, Y ] = \psi_2(Y)
+++++
+
+== Case 3: stem:[X] Continuous, stem:[Y] Discrete ==
+
+* Step 1: The conditional CDF of stem:[X], conditioned on the event stem:[\{Y=y\}]:
++
+[stem]
+++++
+F_{X | Y =y}(x) = P(\{X \leq x\} \, |\, \{Y=y\}),  \hspace{1cm} x \in \mathbb{R}
+++++
++
+provided stem:[p_Y(y) > 0]. Here we recalibrate the CDF of stem:[X] based on the given value of stem:[Y].
+
+* Step 2: Get the conditional PDF of stem:[X], conditioned on the event stem:[\{Y=y\}]:
++
+[stem]
+++++
+h_y(x) = \frac{d}{dx} F_{X | Y =y}(x)
+++++
+
+* Step 3: The quantity stem:[\mathbb{E}[X \, | \, \{Y=y\} \]] is defined as the expectation with respect to the conditional PDF stem:[h_y(x)],
++
+[stem]
+++++
+\large
+\mathbb{E}[X \, | \, \{Y=y\} ] := \int_{-\infty}^{+ \infty} x \cdot h_y(x) \, dx
+++++
++
+Make sure the expectation is well defined.
+
+* Step 4: Define the function stem:[\psi_3: \mathbb{R} \rightarrow \mathbb{R}] as
++
+[stem]
+++++
+\psi_3(y) := \begin{cases}
+        \mathbb{E}[X \, | \, \{Y=y\} ], & p_Y(y) > 0,\\
+        0, & p_Y(y) = 0.
+    \end{cases}
+++++
++
+The function value will be 0 if the expectation is undefined.
+
+* Step 5: The quantity stem:[\mathbb{E}[X \, | \, Y \]] is simply defined as
++
+[stem]
+++++
+\mathbb{E}[X \, | \, Y ] = \psi_3(Y)
+++++
+
+== Case 4: stem:[X] Discrete, stem:[Y] Continuous ==
+
+* Step 1: The joint probability:
++
+[stem]
+++++
+i(x,y) = P(\{X =x\} \cap \{Y \leq y\})
+++++
++
+In a sense, this gives the CDF of stem:[Y]. Differentiating it gives us the PDF of stem:[Y]. This is a function of both stem:[x] and stem:[y].
+
+* Step 2: Get the conditional PMF of stem:[X], conditioned on the event stem:[\{Y=y\}]:
++
+[stem]
+++++
+i_y(x) =  \frac{1}{f_Y(y)} \frac{d}{dy} i(x,y), \hspace{1cm} x \in \mathbb{R}
+++++
++
+Hold stem:[x] constant, and differentiate stem:[i(x,y)] with respect to stem:[y]. In some sense, this is equal to PDF of stem:[Y] along with stem:[\{X =x\}].
++
+We then divide it by the PDF of stem:[Y] to get the conditional PMF of stem:[X], conditioned on the event stem:[\{Y=y\}].
+
+* Step 3: The quantity stem:[\mathbb{E}[X \, | \, \{Y=y\} \]] is defined as the expectation with respect to the conditional PMF stem:[i_y(x)],
++
+[stem]
+++++
+\mathbb{E}[X \, | \, \{Y=y\} ] := \sum_{x \in \mathbb{R}} x \cdot i_y(x) \, dx
+++++
++
+Make sure the expectation is well defined.
+
+* Step 4: Define the function stem:[\psi_4: \mathbb{R} \rightarrow \mathbb{R}] as
++
+[stem]
+++++
+\psi_4(y) := \begin{cases}
+        \mathbb{E}[X \, | \, \{Y=y\} ], & f_Y(y) > 0,\\
+        0, & f_Y(y) = 0.
+    \end{cases}
+++++
++
+The function value will be 0 if the expectation is undefined.
+
+* Step 5: The quantity stem:[\mathbb{E}[X \, | \, Y \]] is simply defined as
++
+[stem]
+++++
+\mathbb{E}[X \, | \, Y ] = \psi_4(Y)
+++++
+
+== Examples ==
+
+*Example 01:*
+
+image::.\images\cond_exp_eg_01.png[align='center', 700, 500]
+
+For step 4, we don't have to worry about the case in stem:[\psi_1] where stem:[p_Y(y)=0]. This is same as saying stem:[\mathbb{E}[X |X\] = X] or stem:[\mathbb{E}[Y |Y\] = Y].
+
+*Example 02:*
+
+image::.\images\cond_exp_eg_02.png[align='center', 600, 400]
+
+*Example 03:*
+
+image::.\images\cond_exp_eg_03.png[align='center', 800, 500]
+
+Conditioned on having observed the sum stem:[X+Y] taking some value stem:[w], stem:[X] becomes binomial random variable stem:[\text{Bin}(w,\frac{1}{2})].
+
+*Example 04:* (This example has good amount of integration exercise)
+
+Let stem:[X] and stem:[Y] have the joint PDF
+
+[stem]
+++++
+f_{X,Y}(x,y) = \begin{cases}
+        cx (y-x) e^{-y}, & 0 \leq x \leq y < + \infty ,\\
+        0, & \text{ow}.
+    \end{cases}
+++++
+
+What is stem:[\mathbb{E}[Y|X\]]?
+
+image::.\images\cond_exp_eg_04.png[align='center', 800, 600]
+
+*Example 05:*
+
+Let stem:[Y \sim \mathcal{N}(0,1)]. Suppose that the conditional PMF of stem:[X], conditioned on the event stem:[\{Y=y\}], is
+
+[stem]
+++++
+p_{X| Y=y}(x) = \frac{1}{2} \mathbf{1}_{\{|x - sgn(y)|=1\}},
+++++
+
+Where stem:[sgn(y)] denotes the sign of stem:[y], and is defined as
+
+[stem]
+++++
+sgn(y) = \begin{cases}
+        1, & y>0 ,\\
+        0, & y=0, \\
+        -1, & y < 0.
+    \end{cases}
+++++
+
+Compute stem:[\mathbb{E}[X | Y\]].
+
+We can write the conditional PMF of stem:[X] as
+
+[stem]
+++++
+p_{X| Y=y}(x) = \begin{cases}
+        \frac{1}{2}, & x = 1+sgn(y) ,\\
+        \frac{1}{2}, & x = -1+sgn(y) ,\\
+        0, & \text{ow}.
+    \end{cases}
+++++
+
+[stem]
+++++
+\begin{align*}
+\mathbb{E}[X | \{Y=y\}] & = \sum_x x \cdot p_{X| Y=y}(x) \\
+& = \frac{1}{2} (1+sgn(y)) + \frac{1}{2} (sgn(y)-1) = sgn(y)
+\end{align*}
+++++
+
+Then, stem:[\mathbb{E}[X | Y\] = sgn(Y)]

@@ -192,6 +192,8 @@ P \left( \bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty P(A_i)
 The triplet stem:[(\Omega, \mathcal{F}, P)] is called a probability space.
 ====
 
+NOTE: For a collection of sets, mutually disjoint and pairwise disjoint are the same.
+
 These are called as axioms of probability. These definitions don't tell us what numbers to assign to events, it is up to us to collect events that are interested to us and define a function that assign numbers to those events. The definitions just tell us the rules such a function must satisfy for it to be a probability function. 
 
 We can talk about the probability of a set only if the set is in the stem:[\sigma-] algebra. Here in property 3, stem:[\bigcup_{i=1}^\infty A_i] is also a set in the stem:[\sigma-] algebra, so we can talk about its probability.

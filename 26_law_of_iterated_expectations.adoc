@@ -1,0 +1,69 @@
+= Law of Iterated Expectations =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Definition ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[X,Y] be random variables with respect to stem:[\mathcal{F}]. The expectation of stem:[X] can be computed through a two-stage formula.
+
+Suppose that stem:[\mathbb{E}[X\]] is well-defined, i.e., not of the form stem:[\infty - \infty]. Then,
+
+[stem]
+++++
+\mathbb{E}[X] = \mathbb{E}\bigl[\mathbb{E}[X|Y] \bigr]
+++++
+
+The inner expectation is over the conditional distribution of stem:[X], conditioned on stem:[Y]. stem:[\mathbb{E}[X|Y\] ] is a function of random variable stem:[Y] and it is also a random variable. The outer expectation is over the distribution of stem:[Y].
+
+More generally, if stem:[g: \mathbb{R} \rightarrow \mathbb{R} ] is a function such that stem:[\mathbb{E}[g(X)\]] is well-defined, then
+
+[stem]
+++++
+\mathbb{E}[g(X)] = \mathbb{E}\bigl[\mathbb{E}[g(X)|Y] \bigr]
+++++
+
+If stem:[Y] is a discrete random variable with PMF stem:[p_Y], then
+
+[stem]
+++++
+\mathbb{E}[X] =\sum_y \mathbb{E}[X | \{Y=y\}] \cdot p_Y(y), \hspace{1cm} \mathbb{E}[g(X)] =\sum_y \mathbb{E}[g(X) | \{Y=y\}] \cdot p_Y(y)
+++++
+
+If stem:[Y] is a continuous random variable with PDF stem:[f_Y], then
+
+[stem]
+++++
+\mathbb{E}[X] =\int_{-\infty}^{+ \infty} \mathbb{E}[X | \{Y=y\}] \cdot f_Y(y) \, dy, \hspace{1cm} \mathbb{E}[g(X)] =\int_{-\infty}^{+ \infty} \mathbb{E}[g(X) | \{Y=y\}] \cdot f_Y(y) \, dy
+++++
+
+NOTE: Expectation is always with respect to the distribution of random variable that appear inside that expectation. Joint distribution if there are multiple random variables.
+
+== Examples ==
+Let stem:[X \sim \text{Geo}(p)] for some stem:[p \in (0,1)]. Determine stem:[\mathbb{E}[X\]] using the law of iterated expectations.
+
+Without using the law of iterated expectations:
+
+We know that,
+
+[stem]
+++++
+p_X(x) = \begin{cases}
+        p (1-p)^{x-1}, & x \in \mathbb{N},\\
+        0, & \text{otherwise}.
+    \end{cases}
+++++
+
+[stem]
+++++
+\begin{align*}
+\mathbb{E}[X] & = \sum_x x \cdot p_X(x) \\
+& = \sum_{x=1}^\infty x p (1-p)^{x-1}
+\end{align*}
+++++
+
+This may be difficult to compute. To use the law of iterated expectations, we need to cleverly generate a second random variable stem:[Y].
+
+image::.\images\iterative_exp_eg_02.png[align='center', 800, 600]

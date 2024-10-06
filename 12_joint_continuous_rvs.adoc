@@ -243,7 +243,7 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)].
 
 Let stem:[X: \Omega \rightarrow \mathbb{R}] and stem:[Y: \Omega \rightarrow \mathbb{R}] be jointly continuous random variables defined with respect to the same stem:[\mathcal{F}].
 
-Conditional CDF of stem:[X] conditioned on stem:[\{Y=y\}: P(\{X \leq x \,|\, Y=y\})]. However, this conditional probability is not defined because stem:[P(\{Y=y\}) = 0 \, \forall y \in \mathbb{R}].
+Conditional CDF of stem:[X] conditioned on stem:[\{Y=y\}: P(\{X \leq x \} \,|\, \{Y=y\})]. However, this conditional probability is not defined because stem:[P(\{Y=y\}) = 0 \, \forall y \in \mathbb{R}].
 
 Remedy:
 

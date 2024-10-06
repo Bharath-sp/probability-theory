@@ -1,0 +1,240 @@
+= Expectation =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Riemann Integration ==
+Let stem:[f:\mathbb{R} \rightarrow \mathbb{R} ] be given. Let stem:[a,b \in \mathbb{R}], stem:[a < b], be given. What is the mathematical interpretation of stem:[\int_a^b f(t) dt]?
+
+Create a partition stem:[\mathcal{P}_n = \{x_0, x_1, \dots, x_n\}], where stem:[x_0 = a] and stem:[x_n=b].
+
+image::.\images\riemann_int_01.png[align='center', 500, 400]
+
+Define the lower Riemann sum as the total area under the red rectangles. In each partition, take the minimum value of the function stem:[m_i], and multiply it with the length of the interval.
+
+[stem]
+++++
+\large
+L(f, \mathcal{P}_n) = \sum_{i=1}^n m_i \cdot |x_i - x_{i-1}|
+++++
+
+Define the upper Riemann sum as the total area under the blue rectangles (from the top point to the x-axis). In each partition, take the maximum value of the function stem:[M_i], and multiply it with the length of the interval.
+
+[stem]
+++++
+\large
+U(f, \mathcal{P}_n) = \sum_{i=1}^n M_i \cdot |x_i - x_{i-1}|
+++++
+
+The lower Riemann sum is smaller than the area under the curve. The upper Riemann sum is more than the area under the curve. Now create a finer partition than this, increase stem:[n] to stem:[n+1]. It is easy to see that for all stem:[n],
+
+[stem]
+++++
+\large
+L(f, \mathcal{P}_n) \leq  L(f, \mathcal{P}_{n+1}), \hspace{1cm} U(f, \mathcal{P}_n) \geq  U(f, \mathcal{P}_{n+1})
+++++
+
+The lower Riemann sums are all increasing numbers, it is a sequence of increasing numbers. And the upper Riemann sums is a sequence of decreasing numbers. If they both meet, then that common point is the area under the curve. If stem:[\lim_{n \to \infty} L(f, \mathcal{P}_n) = \lim_{n \to \infty} U(f, \mathcal{P}_n)], then this limit is denoted as stem:[\int_a^b f(t) dt].
+
+If they both don't meet, there is no notion of area under the curve. The function doesn't have an integral, i.e., the integral is not defined. For example, consider the function,
+
+[stem]
+++++
+\large
+f(x) = \begin{cases}
+        1, & x \in \mathbb{Q},\\
+        0, & x \notin \mathbb{Q}.
+    \end{cases}
+++++
+
+Where stem:[\mathbb{Q}] is the set of rational numbers. In any partition that we take, there will be a rational and an irrational number. So stem:[L(f, \mathcal{P}_n) = 0] for all stem:[n]. And stem:[U(f, \mathcal{P}_n) = 1] for all stem:[n]. Hence the Riemann integral is not defined for this function.
+
+== Lebesgue Integration ==
+A more general theory of integration is proposed by Lebesgue.
+
+Consider a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[X: \Omega \rightarrow \mathbb{R}] be a random variable with respect to stem:[\mathcal{F}].
+
+To build the necessary machinery on Lebesgue's theory of integration, so as to be able to interpret an abstract integral of the form,
+
+[stem]
+++++
+\large
+\int_A X dP, \hspace{1cm} A \in \mathcal{F}.
+++++
+
+Here the integration is with respect to a measure stem:[P], stem:[X] random variable is a function, and stem:[A] is any set in stem:[\mathcal{F}].
+
+=== Simple Random Variables ===
+A random variable stem:[X] is called a simple random variable if it can be expressed in the form,
+
+[stem]
+++++
+\large
+X(\omega) = \sum_{i=1}^n a_i \mathbf{1}_{A_i}(\omega), \hspace{1cm} \omega \in \Omega
+++++
+
+for some stem:[a_1, \dots, a_n \geq 0] and stem:[A_1, \dots, A_n \in \mathcal{F}]. And,
+
+[stem]
+++++
+\large
+\mathbf{1}_{A_i}(\omega) = \begin{cases}
+        1, & \omega \in A_i,\\
+        0, & \omega \notin A_i.
+    \end{cases}
+++++
+
+We know that a random variable is a function which maps each stem:[\omega] to stem:[\mathbb{R}]. And let stem:[A_1, \dots, A_n] be sets in stem:[\mathcal{F}].
+
+* For a given stem:[\omega], if that stem:[\omega \in A_1], then stem:[X] maps it to stem:[a_1].
+* For a given stem:[\omega], if that stem:[\omega \in A_2], then stem:[X] maps it to stem:[a_2].
+* stem:[\dots]
+* For a given stem:[\omega], if that stem:[\omega \in A_1 \text{ and } A_2], then stem:[X] maps it to stem:[a_1 + a_2].
+
+Such a random variable that takes finite number of values, and all of them are non-negative, and can be expressed in the above form is called as a simple random variable.
+
+*Example:*
+
+Consider stem:[X: \mathbb{R} \rightarrow \mathbb{R}], where stem:[\Omega = \mathbb{R}], defined as:
+
+[stem]
+++++
+\large
+X(\omega) = \mathbf{1}_{[0,1]}(\omega) + \frac{3}{2} \mathbf{1}_{[1,3]}(\omega),  \hspace{1cm} \omega \in \Omega
+++++
+
+* If stem:[\omega \in [0,1\]], then stem:[X] takes the value 1.
+* If stem:[\omega \in [1,3\]], then stem:[X] takes the value stem:[\frac{3}{2}].
+* If stem:[\omega \in [0,1\] \cap [1,3\] = \{1\}], i.e., stem:[\omega=1], then stem:[X] takes the value stem:[\frac{5}{2}].
+
+[stem]
+++++
+\large
+X(\omega) = \begin{cases}
+        1, & \omega \in [0,1),\\
+        \frac{5}{2}, & \omega =1,\\
+        \frac{3}{2}, & \omega \in (1,3], \\
+        0, & \text{otherwise}
+    \end{cases}
+++++
+
+There are multiple representations of the same stem:[X]. The above stem:[X] can also be represented as:
+
+[stem]
+++++
+\large
+X(\omega) = \mathbf{1}_{[0,3]}(\omega) + \frac{1}{2} \mathbf{1}_{[1,3]}(\omega) + \mathbf{1}_{\{1\}}(\omega),  \hspace{1cm} \omega \in \Omega
+++++
+
+*Canonical Representation of a simple random variable:*
+
+A simple random variable stem:[X] is said to be in canonical representation if 
+
+[stem]
+++++
+\large
+X(\omega) = \sum_{i=1}^n a_i \mathbf{1}_{A_i}(\omega), \hspace{1cm} \omega \in \Omega
+++++
+
+Where stem:[a_1, \dots, a_n \geq 0] are distinct, and stem:[A_1, \dots, A_n \in \mathcal{F}] are disjoint, where stem:[\bigcup_{i=1}^n A_i = \Omega]. In such cases, there will be only one representation of stem:[X]. For our example,
+
+[stem]
+++++
+\large
+X(\omega) = \mathbf{1}_{[0,1)}(\omega) + \frac{5}{2} \mathbf{1}_{\{1\}}(\omega) + \frac{3}{2} \mathbf{1}_{(1,3]}(\omega),  \hspace{1cm} \omega \in \Omega
+++++
+
+*Integral of a simple random variable:*
+
+For a simple random variable stem:[X] in its canonical form, we define 
+
+[stem]
+++++
+\large
+\int_\Omega X dP := \sum_{i=1}^n a_i P(A_i).
+++++
+
+The quantity stem:[\int_\Omega X dP] is called the expectation of stem:[X] under the probability measure stem:[P]. Expectation of stem:[X] is more commonly denoted as stem:[\mathbb{E}[X\]]. 
+
+IMPORTANT: Since stem:[a_i] and stem:[P(A_i)] are both non-negative, the expectation of a simple random variable will always be stem:[\geq 0].
+
+=== Non-Negative Random Variables ===
+Consider a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[X: \Omega \rightarrow \mathbb{R}] be a random variable with respect to stem:[\mathcal{F}] such that stem:[X(\omega) \geq 0 \, \, \forall \omega \in \Omega]. Let
+
+[stem]
+++++
+\large
+\mathcal{S}(X) := \{ q : \Omega \rightarrow \mathbb{R}: q \text{ simple }, q(\omega) \leq X(\omega) \, \, \forall \omega \in \Omega \}
+++++
+
+stem:[\mathcal{S}(X)] is a collection of all simple functions stem:[q] that are point-wise less than or equal to stem:[X], stem:[q(\omega) \leq X(\omega) \, \, \forall \omega \in \Omega ]. Example of one such simple function stem:[q(\omega)] is,
+
+image::.\images\non_negative_rv.png[align='center', 600, 300]
+
+Here stem:[q(\omega) = 2 \cdot \mathbf{1}_{[-0.75,0.75\]}(\omega) + 0 \cdot \mathbf{1}_{(-\infty, -0.75)}(\omega) + 0 \cdot \mathbf{1}_{(0.75, \infty)}(\omega) ]. Similarly, we can collect so many simple functions and that collection forms the set stem:[\mathcal{S}(X)].
+
+Then, the expectation of the non-negative random variable stem:[X] under stem:[P] is defined as
+
+[stem]
+++++
+\large
+\mathbb{E}[X] = \int_\Omega X dP := \sup_{q \in \mathcal{S}(X)} \int_\Omega q \, dP.
+++++
+
+For every simple function stem:[q(\omega) \in \mathcal{S}(X)], compute the expectation stem:[\mathbb{E}[q\]] (which is always stem:[\geq 0]) and take supremum of that collection of real numbers.
+
+IMPORTANT: The expectation of a non-negative random variable will always be stem:[\geq 0] and it is possible that stem:[\mathbb{E}[X\] = +\infty].
+
+=== Arbitrary Random Variables ===
+Consider a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[X: \Omega \rightarrow \mathbb{R}] be any random variable with respect to stem:[\mathcal{F}]. Define,
+
+[stem]
+++++
+\large
+X_+ (\omega) := \max \{X(\omega), 0\}, \hspace{1cm} X\_(\omega) := -\min \{X(\omega), 0\}, \, \omega \in \Omega.
+++++
+
+image::.\images\arbitrary_rv.png[align='center', 500, 300]
+
+stem:[X_+ (\omega)] will mask out the positive part, stem:[X\_(\omega)] will mask out the negative part and flip it. Hence both of these are non-negative random variables.
+
+Clearly, both stem:[X_+] and stem:[X\_] are non-negative random variables with respect to stem:[\mathcal{F}]. We define the expectation of stem:[X] under stem:[P] as
+
+[stem]
+++++
+\large
+\mathbb{E}[X] = \int_\Omega X dP := \mathbb{E}[X_+] - \mathbb{E}[X\_],
+++++
+
+provided stem:[\min \{ \mathbb{E}[X_+\], \mathbb{E}[X\_\] \} < \+\infty], i.e., if at least one of them is finite, then stem:[\mathbb{E}[X\]] is defined. It is undefined if both of them are stem:[+\infty] at the same time.
+
+IMPORTANT: The expection of a random variable can take any values in stem:[\mathbb{R}], provided it is defined.
+
+=== Integral Over a Set ===
+For any event stem:[A \in \mathcal{F}], we define the abstract integral
+
+[stem]
+++++
+\large
+\int_A X \, dP = \int_{\Omega} (X \cdot \mathbf{1}_A) \, dP,
+++++
+
+provided the RHS is well-defined (i.e., not of the form stem:[\infty - \infty]).
+
+Here LHS stem:[\int_A X \, dP] is not the expectation of stem:[X]. The expectation is always integral over stem:[\Omega]. The RHS is the expectation of the random variable stem:[(X \cdot \mathbf{1}_A)].
+
+Let stem:[Y = X \cdot \mathbf{1}_A], i.e., stem:[Y(\omega) = X(\omega) \cdot \mathbf{1}_A(\omega)].
+
+[stem]
+++++
+\large
+Y(\omega) = \begin{cases}
+        X(\omega), & \omega \in A,\\
+        0, & \omega \in A^c.
+    \end{cases}
+++++
+
+

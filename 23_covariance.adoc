@@ -1,0 +1,124 @@
+= Covariance =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== Definition ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[X,Y] be random variables with respect to stem:[\mathcal{F}]. Let stem:[\mathbb{E}[X\], \mathbb{E}[Y\]] be well defined, i.e., not of the form stem:[\infty - \infty].
+
+The covariance of stem:[X] and stem:[Y] is defined as
+
+[stem]
+++++
+\large
+\text{Cov}(X,Y) := \mathbb{E}[(X - \mathbb{E}[X] ) (Y - \mathbb{E}[Y] )],
+++++
+
+provided the expectation on the RHS is well-defined. This signifies the joint variation of stem:[X] around its mean and stem:[Y] around its mean. Covariance can take any values, stem:[\pm \infty] or any real number stem:[\mathbb{R}] or it can be undefined also.
+
+Furthermore, by the linearity property of expectation,
+
+[stem]
+++++
+\large
+\text{Cov}(X,Y) = \mathbb{E}[XY] - \mathbb{E}[X] \, \mathbb{E}[Y],
+++++
+
+provided the right hand side is not of the form stem:[\infty - \infty].
+
+== Uncorrelated Random Variables ==
+stem:[X] and stem:[Y] are said to be uncorrelated if stem:[\text{Cov}(X,Y) = 0]. In such cases,
+
+[stem]
+++++
+\large
+\mathbb{E}[XY] = \mathbb{E}[X] \, \mathbb{E}[Y]
+++++
+
+== Uncorrelatedness and Independence ==
+If stem:[X] and stem:[Y] are independent, then stem:[\text{Cov}(X,Y) = 0].
+
+The converse is not true in general. For example, consider stem:[X \sim \mathcal{N}(0,1)]. Let stem:[Y=X^2]. Then, it is easy to verify that
+
+[stem]
+++++
+\large
+\mathbb{E}[XY] = \mathbb{E}[X^3] = 0
+++++
+
+We know that, stem:[\mathbb{E}[X^n\] = \int_{-\infty}^{+\infty} x^n f_X(x) \, dx]. For standard normal variable, stem:[f_X(x)] is a symmetric function (even function), and stem:[x^n] is an odd function if stem:[n] is odd. For all the odd power,  the stem:[\mathbb{E}[X^n\]] will be 0.  
+
+And stem:[\mathbb{E}[X\]\, \mathbb{E}[Y\] = \mathbb{E}[X\]\, \mathbb{E}[X^2\] = 0 \cdot 1 = 0 ]. Therefore, stem:[\text{Cov}(X,Y) = 0], but they are not independent.
+
+To show that they are not independent, we should show that the product of CDF of stem:[X] and stem:[Y] is not equal to the joint CDF of stem:[X,Y]. In fact in this case, the random variables stem:[(X,Y)] are not jointly continuous.
+
+== Variance of Sum of Two RVs ==
+Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[X,Y] be random variables with respect to stem:[\mathcal{F}].
+
+[stem]
+++++
+\large
+\text{Var}(X+Y) = \text{Var}(X) + \text{Var}(Y) + 2 \cdot \text{Cov}(X,Y),
+++++
+
+provided stem:[\text{Cov}(X,Y)] is well defined.
+
+If stem:[X,Y] are uncorrelated, then stem:[\text{Var}(X+Y) = \text{Var}(X) + \text{Var}(Y)].
+
+== Correlation Coefficient ==
+The correlation coefficient of stem:[X] and stem:[Y] is defined as
+
+[stem]
+++++
+\large
+\rho_{X,Y} := \frac{\text{Cov}(X,Y)}{\sqrt{\text{Var}(X) \cdot \text{Var}(Y)}}
+++++
+
+Remark: The denominator is always non-negative. stem:[\rho_{X,Y}] can be positive, negative, or zero. If covariance is undefined, then correlation coefficient is also undefined.
+
+== Cauchy-Schwartz Inequality ==
+For any two random variables stem:[X] and stem:[Y], it is always that
+
+[stem]
+++++
+\large
+-1 \leq \rho_{X,Y} \leq 1
+++++
+
+Provided stem:[\mathbb{E}[X\], \mathbb{E}[Y\] ] are finite. If either of them is stem:[\pm \infty], then stem:[\rho_{X,Y}] is undefined.
+
+*Proof:*
+
+image::.\images\cauchy_schwartz.png[align='center', 800, 700]
+
+Furthermore, the following hold.
+
+. If stem:[\rho_{X,Y}=1], then there exists stem:[a > 0] such that
++
+[stem]
+++++
+\large
+P(\,\{\,\,Y-\mathbb{E}[Y] = a(Y-\mathbb{E}[X])\,\,\}\,) =1
+++++
+
+. If stem:[\rho_{X,Y}=-1], then there exists stem:[a < 0] such that
++
+[stem]
+++++
+\large
+P(\,\{\,\,Y-\mathbb{E}[Y] = a(Y-\mathbb{E}[X])\,\,\}\,) =1
+++++
+
+It means that when stem:[\rho_{X,Y}= \pm 1], stem:[Y] can be represented as a function of stem:[X], i.e., one can be expressed as a linear function of the other, with probability 1.
+
+*Proof:*
+
+From our previous result, for stem:[|\rho_{X,Y} |= 1], the expectation has to be 0.
+
+image::.\images\cauchy_schwartz_2.png[align='center', 400, 300]
+
+Here we have used the property 4 of expectation.
+
