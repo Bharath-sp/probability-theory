@@ -19,7 +19,6 @@ Let stem:[X,Y] have the joint PMF stem:[p_{X,Y}].
 +
 [stem]
 ++++
-\large
 p_{X | Y =y}(x) = \frac{p_{X,Y}(x,y)}{p_Y(y)},  \hspace{1cm} x \in \mathbb{R}
 ++++
 +
@@ -29,7 +28,6 @@ provided stem:[p_Y(y) > 0].
 +
 [stem]
 ++++
-\large
 \mathbb{E}[X \, | \, \{Y=y\} ] := \sum_{x \in \mathbb{R}} x \cdot p_{X | Y =y}(x)
 ++++
 +
@@ -39,7 +37,6 @@ Make sure the expectation is well defined. The summation should be over the rang
 +
 [stem]
 ++++
-\large
 \psi_1(y) := \begin{cases}
         \mathbb{E}[X \, | \, \{Y=y\} ], & p_Y(y) > 0,\\
         0, & p_Y(y) = 0.
@@ -52,7 +49,6 @@ The function value will be 0 if the expectation is undefined.
 +
 [stem]
 ++++
-\large
 \mathbb{E}[X \, | \, Y ] = \psi_1(Y)
 ++++
 +
@@ -65,7 +61,6 @@ Let stem:[X,Y] have the joint PDF stem:[f_{X,Y}], i.e., they are jointly continu
 +
 [stem]
 ++++
-\large
 f_{X | Y =y}(x) = \frac{f_{X,Y}(x,y)}{f_Y(y)},  \hspace{1cm} x \in \mathbb{R}
 ++++
 +
@@ -75,7 +70,6 @@ provided stem:[f_Y(y) > 0].
 +
 [stem]
 ++++
-\large
 \mathbb{E}[X \, | \, \{Y=y\} ] := \int_{-\infty}^{+ \infty} x \cdot f_{X | Y =y}(x) \, dx
 ++++
 +
@@ -85,7 +79,6 @@ Make sure the expectation is well defined. The integral should be over the range
 +
 [stem]
 ++++
-\large
 \psi_2(y) := \begin{cases}
         \mathbb{E}[X \, | \, \{Y=y\} ], & f_Y(y) > 0,\\
         0, & f_Y(y) = 0.
@@ -123,7 +116,6 @@ h_y(x) = \frac{d}{dx} F_{X | Y =y}(x)
 +
 [stem]
 ++++
-\large
 \mathbb{E}[X \, | \, \{Y=y\} ] := \int_{-\infty}^{+ \infty} x \cdot h_y(x) \, dx
 ++++
 +

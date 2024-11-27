@@ -49,7 +49,6 @@ Property 3 implies, by mathematical induction, that
 
 [stem]
 ++++
-\large
 A_1, A_2, \dots, A_n  \in \mathcal{A} \Rightarrow \bigcup_{i=1}^n A_i \in \mathcal{A} \text{ for all } n \in \mathbb{N} \text{ (closure under finite unions)}
 ++++
 ====
@@ -60,7 +59,6 @@ Given these 3 properties, we can also show that an algebra is always closed unde
 
 [stem]
 ++++
-\large
 A_1, A_2, \dots, A_n  \in \mathcal{A} \Rightarrow \bigcap_{i=1}^n A_i \in \mathcal{A} \text{ for all } n \in \mathbb{N} \text{ (closure under finite intersections)}
 ++++
 
@@ -70,13 +68,11 @@ If stem:[A_1, A_2, \dots, A_n  \in \mathcal{A}], then stem:[A_1^c, A_2^c, \dots,
 
 [stem]
 ++++
-\large
 \left( \bigcap_{i=1}^n A_i \right)^c =  \bigcup_{i=1}^n A_i^c
 ++++
 
 [stem]
 ++++
-\large
 \left( \bigcap_{i=1}^n A_i \right)^c \in \mathcal{A} \Rightarrow \bigcap_{i=1}^n A_i \in \mathcal{A}
 ++++
 
@@ -92,7 +88,6 @@ If stem:[\Omega = \{1,2,3\}], then stem:[2^\Omega = \left\{ \phi, \Omega, \{1\},
 +
 [stem]
 ++++
-\large
 \mathcal{A} = \left\{ \phi, \Omega, \{1\}, \{2,3\}, \{1,2,3\}, \{4,5,6\}, \{2,3,4,5,6\}, \{1,4,5,6\}  \right\}
 ++++
 +
@@ -105,7 +100,6 @@ This concept of algebra fell short of what actually needed in practice. Let's co
 
 [stem]
 ++++
-\large
 \begin{align*}
 \mathcal{A} = & \left\{ \phi, \Omega, \{H\}, \{TH\}, \{TTH\}, \{TTTH\}, \dots  \right. \\
 &\left. \quad \{H, TH\}, \{H, TTH\}, \{H, TTTH\}, \dots \right. \\
@@ -181,18 +175,24 @@ A function stem:[P: \mathcal{F} \rightarrow [0,1\]] is called a probability meas
 
 . stem:[P(\phi) = 0].
 . stem:[P(\Omega) = 1].
-. If stem:[A_1, A_2, \dots] is a countable (infinite) collection of mutually disjoint sets, with stem:[A_i \in \mathcal{F}] for each stem:[i\in \mathbb{N}] and stem:[A_i \cap A_j = \phi ] for all stem:[i \ne j], then
+. If stem:[A_1, A_2, \dots] is a countable (infinite) collection of mutually disjoint sets, with stem:[A_i \in \mathcal{F}] for each stem:[i \in \mathbb{N}] and stem:[A_i \cap A_j = \phi ] for all stem:[i \ne j], then
 +
 [stem]
 ++++
-\large
 P \left( \bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty P(A_i)
 ++++
 
 The triplet stem:[(\Omega, \mathcal{F}, P)] is called a probability space.
 ====
 
-NOTE: For a collection of sets, mutually disjoint and pairwise disjoint are the same.
+[NOTE]
+====
+For a collection of sets, mutually disjoint and pairwise disjoint are the same. To be precise,
+
+* When the sets stem:[A_1, A_2, \dots, A_n] are mutually disjoint, every finite subset of them is disjoint (i.e.,) stem:[A_1 \cap A_2 \cap \dots \cap A_n=\phi] for any stem:[n \in \mathbb{N}]. 
+
+* When the sets stem:[A_1, A_2, \dots, A_n] are pairwise disjoint, every pair of them is disjoint (i.e.,) stem:[A_i \cap A_j = \phi ] for all stem:[i \ne j].
+====
 
 These are called as axioms of probability. These definitions don't tell us what numbers to assign to events, it is up to us to collect events that are interested to us and define a function that assign numbers to those events. The definitions just tell us the rules such a function must satisfy for it to be a probability function. 
 

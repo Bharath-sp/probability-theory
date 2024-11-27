@@ -30,7 +30,6 @@ When stem:[X] and stem:[Y] are jointly discrete stem:[\Rightarrow] stem:[X] and 
 
 [stem]
 ++++
-\large
 \begin{align*}
 p_{Z}(z) & = P(\{Z=z\}) \\
 & = P(\{X+Y=z\}) \\
@@ -46,7 +45,6 @@ If stem:[X] and stem:[Y] are independent:
 
 [stem]
 ++++
-\large
 \begin{align*}
 p_{Z}(z) & = \sum_x  p_{X,Y}(x,z-x) \\
 & = \sum_x P(\{X=x\} \cap \{Y=z-x\}) \\
@@ -65,7 +63,6 @@ When stem:[X] and stem:[Y] are jointly continuous stem:[\Rightarrow] they have a
 
 [stem]
 ++++
-\large
 \begin{align*}
 F_{Z}(z) & = P(\{Z \leq z\}) \\
 & = P(\{X+Y \leq z\}) \\
@@ -82,7 +79,6 @@ For a small change in stem:[v], what is the corresponding change in stem:[t]? So
 
 [stem]
 ++++
-\large
 \begin{align*}
 & = \int_{-\infty}^\infty \int_{-\infty}^{z-x} f_{X,Y}(u,v) \, dv \, du \\
 & = \int_{-\infty}^\infty \int_{-\infty}^{z} f_{X,Y}(u,t-u) \, dt \, du \\
@@ -94,7 +90,6 @@ As the inner integral doesn't depend on stem:[u] (the value from the outer integ
 
 [stem]
 ++++
-\large
 f_{X+Y}(t) = \int_{-\infty}^\infty f_{X,Y}(u,t-u) \, du
 ++++
 
@@ -102,7 +97,6 @@ Hence, stem:[X+Y] is a continuous random variable. And if stem:[X] and stem:[Y] 
 
 [stem]
 ++++
-\large
 \begin{align*}
 f_{X+Y}(z) & =  \int_{-\infty}^\infty f_{X,Y}(u,z-u) \, du \\
 & = \int_{-\infty}^\infty f_X(u) \cdot f_Y(z-u) \, du = (f_X * f_Y) (z)
@@ -122,7 +116,6 @@ The PDF of stem:[X+Y] is,
 
 [stem]
 ++++
-\large
 f_{X+Y}(z) =  \int_{-\infty}^\infty f_X(u) \cdot f_Y(z-u) \, du
 ++++
 
@@ -130,7 +123,6 @@ We know that,
 
 [stem]
 ++++
-\large
 f_X(u) = \begin{cases}
         \mu_1 e^{-\mu_1 u}, & u \geq 0,\\
         0, & u < 0
@@ -149,7 +141,6 @@ Since it is a product of these two PDFs, stem:[u> 0] and stem:[u < z]. So for a 
 
 [stem]
 ++++
-\large
 \begin{align*}
 f_{X+Y}(z) & =  \mu_1 \mu_2 e^{-\mu_2z} \int_0^z e^{-\mu_1 u} \cdot e^{\mu_2u} \, du \\
 & =  \mu_1 \mu_2 e^{-\mu_2z} \int_0^z e^{(\mu_2 - \mu_1) u} \, du \\
@@ -165,7 +156,6 @@ If stem:[\mu_1 = \mu_2 = \mu], then the distribution of stem:[X+Y] is called *Er
 
 [stem]
 ++++
-\large
 f_{X+Y}(z) = \begin{cases}
         \mu^2 z  e^{-\mu z}, & z \geq 0,\\
         0, & z < 0

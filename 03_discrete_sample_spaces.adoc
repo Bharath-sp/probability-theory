@@ -15,7 +15,6 @@ Given stem:[(\Omega, \mathcal{F})], we define stem:[P: \mathcal{F} \rightarrow [
 
 [stem]
 ++++
-\large
 P(A) = \sum_{\omega \in A} P(\{\omega\}), \, A \in \mathcal{F}
 ++++
 
@@ -40,7 +39,6 @@ Say our sample space is stem:[\Omega = \mathbb{N}], so stem:[\mathcal{F} = 2^\Om
 
 [stem]
 ++++
-\large
 \begin{align*}
 \mathcal{F} = & \left\{ \phi, \Omega, \{1\}, \{2\}, \{3\}, \{4\}, \dots  \right. \\
 &\left. \quad \{1, 2\}, \{1, 3\}, \{1, 4\}, \dots \right. \\
@@ -57,7 +55,6 @@ In general,
 
 [stem]
 ++++
-\large
 P(\{k\}) = p(1-p)^{k-1}, \, p \in (0,1] \text{ and } k \in \Omega
 ++++
 
@@ -69,7 +66,6 @@ Say our sample space is stem:[\Omega = \mathbb{N} \cup \{0\}], so stem:[\mathcal
 
 [stem]
 ++++
-\large
 \begin{align*}
 \mathcal{F} = & \left\{ \phi, \Omega, \{0\}, \{1\}, \{2\}, \{3\}, \{4\}, \dots  \right. \\
 &\left. \quad \{0, 1\}, \{0, 2\}, \{0, 3\}, \dots \right. \\
@@ -82,7 +78,6 @@ We can assign
 
 [stem]
 ++++
-\large
 P(\{k\}) = e^{-\lambda} \frac{\lambda^k}{k!}, \, \lambda > 0 \text{ and } k \in \Omega
 ++++
 

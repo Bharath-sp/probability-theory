@@ -13,7 +13,6 @@ The variance of stem:[X] is defined as
 
 [stem]
 ++++
-\large
 \text{Var}(X) := \mathbb{E}[(X - \mathbb{E}[X] )^2].
 ++++
 
@@ -28,7 +27,6 @@ The variance of stem:[X] is zero if and only stem:[X] takes only one value stem:
 
 [stem]
 ++++
-\large
 P(\{X=c\}) = 1 \text{ for some constant } c
 ++++
 
@@ -50,7 +48,6 @@ stem:[\text{Var}(X) = \mathbb{E}[(X - \mathbb{E}[X\] )^2\] = \mathbb{E}[+\infty\
 +
 [stem]
 ++++
-\large
 \begin{align*}
 \mathbb{E}[(X - \mathbb{E}[X] )^2] & = \mathbb{E}\left[ X^2 + (\mathbb{E}[X])^2 - 2X \mathbb{E}[X] \right] \\
 & = \mathbb{E}[ X^2] + (\mathbb{E}[X])^2 - 2(\mathbb{E}[X])^2

@@ -19,9 +19,9 @@ Note that stem:[g] admits an inverse, stem:[g^{-1}].
 
 [TIP]
 ====
-* When a function is strictly monotone, it is both one-to-one and onto. So inverse always exists.
-
 * When it is monotone and differentiable with non-zero derivative throughout its domain (i.e.,) the function is not flat anywhere in its domain, then also inverse is guaranteed.
+
+* When a function is strictly monotone, it is both one-to-one and onto. So inverse always exists.
 ====
 
 == Monotone Increasing Functions ==
@@ -30,11 +30,10 @@ The CDF of stem:[Y] is
 
 [stem]
 ++++
-\large
 \begin{align*}
 F_{Y}(y) & = P(\{Y \leq y\}) \\
 & = P(\{g(X) \leq y\}) \\
-& = P(\{X \leq g^{-1}(y) \}) && \text{as } g \text{ is monotone increasing}
+& = P(\{X \leq g^{-1}(y) \}) && \text{as } g \text{ is monotone increasing and it has non-zero derivative}
 \end{align*}
 ++++
 
@@ -42,7 +41,6 @@ Since stem:[X] is continuous, it will have a PDF. We can express this probabilit
 
 [stem]
 ++++
-\large
 = \int_{-\infty}^{g^{-1}(y)} f_X(x) \, dx
 ++++
 
@@ -54,7 +52,6 @@ We change the variable stem:[x] to stem:[v] such that the upper limit is stem:[y
 
 [stem]
 ++++
-\large
 F_Y(y) = \int_{-\infty}^y  \frac{f_X(g^{-1}(v))}{g'(g^{-1}(v))} \, dv
 ++++
 
@@ -62,7 +59,6 @@ This must be the PDF of stem:[Y]. But we can compute stem:[g^{-1}(v)] only when 
 
 [stem]
 ++++
-\large
 f_y(y) = \begin{cases}
         \frac{f_X(g^{-1}(y))}{g'(g^{-1}(y))}, & y \in \text{ range}(g),\\
         0, & y \notin \text{ range}(g).
@@ -75,7 +71,6 @@ The CDF of stem:[Y] is
 
 [stem]
 ++++
-\large
 \begin{align*}
 F_{Y}(y) & = P(\{Y \leq y\}) \\
 & = P(\{g(X) \leq y\}) \\
@@ -89,7 +84,6 @@ Since stem:[X] is continuous, it will have a PDF. We can express this probabilit
 
 [stem]
 ++++
-\large
 = \int_{g^{-1}(y)}^{+\infty} f_X(x) \, dx
 ++++
 
@@ -97,7 +91,6 @@ By following the same substitution,
 
 [stem]
 ++++
-\large
 \begin{align*}
 F_Y(y) & = \int_{y}^{+\infty} \frac{f_X(g^{-1}(v))}{g'(g^{-1}(v))} \, dv \\
 \\
@@ -109,7 +102,6 @@ This must be the PDF of stem:[Y]. On differentiating this with respect to stem:[
 
 [stem]
 ++++
-\large
 f_y(y) = \begin{cases}
         \frac{f_X(g^{-1}(y))}{- g'(g^{-1}(y))}, & y \in \text{ range}(g),\\
         0, & y \notin \text{ range}(g).
@@ -122,7 +114,6 @@ In general, when stem:[g] is monotone and differentiable with non-zero derivativ
 
 [stem]
 ++++
-\large
 f_y(y) = \begin{cases}
         \frac{f_X(g^{-1}(y))}{|g'(g^{-1}(y))|}, & y \in \text{ range}(g),\\
         0, & y \notin \text{ range}(g).
@@ -142,7 +133,6 @@ The CDF of stem:[Y] is
 
 [stem]
 ++++
-\large
 \begin{align*}
 F_{Y}(y) & = P(\{Y \leq y\}) \\
 & = P(\{e^X \leq y\}) \\
@@ -152,7 +142,6 @@ F_{Y}(y) & = P(\{Y \leq y\}) \\
 
 [stem]
 ++++
-\large
 F_y(y) = \begin{cases}
         F_X(\ln y), & y > 0,\\
         0, & y \leq 0.
@@ -161,7 +150,6 @@ F_y(y) = \begin{cases}
 
 [stem]
 ++++
-\large
 f_Y(y) = \frac{d F_y(y)}{dy} = \begin{cases}
         f_X(\ln y) \cdot \frac{1}{y}, & y > 0,\\
         0, & y \leq 0.
@@ -181,7 +169,6 @@ stem:[g^{-1}(x) = \ln x]. Then by using the Jacobian formula:
 
 [stem]
 ++++
-\large
 \begin{align*}
 f_y(y) & = \begin{cases}
         \frac{f_X(g^{-1}(y))}{g'(g^{-1}(y))}, & y > 0,\\
@@ -201,7 +188,6 @@ We know that,
 
 [stem]
 ++++
-\large
 f_X(x) = \frac{1}{\sqrt{2\pi}} \text{exp} \left( \frac{-x^2}{2} \right), \,\, x \in \mathbb{R}
 ++++
 
@@ -209,7 +195,6 @@ Then,
 
 [stem]
 ++++
-\large
 f_y(y) = \begin{cases}
         \frac{1}{y\sqrt{2\pi}} \text{ exp} \left( \frac{-(\ln y)^2}{2} \right) , & y > 0,\\
         0, & y \leq 0.
@@ -229,7 +214,6 @@ If stem:[X] is a continuous random variable with PDF stem:[f_X], then the PDF of
 
 [stem]
 ++++
-\large
 f_y(y) = \sum_{i=1}^n \frac{f_X(h_i(y))}{|g'(h_i(y))|} \mathbf{1}_{g(I_i)}(y)
 ++++
 
@@ -250,7 +234,6 @@ Let stem:[g: \mathbb{R}^n \rightarrow \mathbb{R}^n ] be defined by
 
 [stem]
 ++++
-\large
 g(x_1, \dots, x_n)=
 \begin{bmatrix}
 g_1(x_1, \dots, x_n) \\
@@ -266,7 +249,6 @@ The Jacobian matrix of the mapping stem:[g] at the point stem:[(x_1, \dots, x_n)
 
 [stem]
 ++++
-\large
 J_g(x_1, \dots, x_n)=
 \begin{bmatrix}
 \frac{\partial g_1}{\partial x_1} & \dots & \frac{\partial g_1}{\partial x_n} \\

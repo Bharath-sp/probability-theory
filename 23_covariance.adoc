@@ -13,28 +13,41 @@ The covariance of stem:[X] and stem:[Y] is defined as
 
 [stem]
 ++++
-\large
 \text{Cov}(X,Y) := \mathbb{E}[(X - \mathbb{E}[X] ) (Y - \mathbb{E}[Y] )],
 ++++
 
-provided the expectation on the RHS is well-defined. This signifies the joint variation of stem:[X] around its mean and stem:[Y] around its mean. Covariance can take any values, stem:[\pm \infty] or any real number stem:[\mathbb{R}] or it can be undefined also.
+provided the expectation on the RHS is well-defined. This signifies the joint variation of stem:[X] around its mean and stem:[Y] around its mean. It is the measure of the linear relationship between stem:[X] and stem:[Y]. Covariance can take any values, stem:[\pm \infty] or any real number stem:[\mathbb{R}] or it can be undefined also.
 
 Furthermore, by the linearity property of expectation,
 
 [stem]
 ++++
-\large
 \text{Cov}(X,Y) = \mathbb{E}[XY] - \mathbb{E}[X] \, \mathbb{E}[Y],
 ++++
 
 provided the right hand side is not of the form stem:[\infty - \infty].
+
+Suppose we have a list of random variables, say stem:[\mathbf{X} = (X_1, X_2, \dots, X_n)^\top] where stem:[\mathbf{X}] is a random vector and stem:[X_i] are scalar random variables. Then covariance of stem:[\mathbf{X}] is a square matrix that gives the covariance between each pair of elements of a given random vector. This matrix is the *covariance matrix*.
+
+The covariance matrix of a random vector stem:[\mathbf{X}] is denoted by stem:[\Sigma_{\mathbf{XX}}] or stem:[S]. The stem:[(i,j)] entry of the matrix is
+
+[stem]
+++++
+(\Sigma_{\mathbf{XX}})_{ij} = \text{Cov}(X_i,X_j) = \mathbb{E}[(X_i - \mathbb{E}[X_i] ) (X_j - \mathbb{E}[X_j] )]
+++++
+
+Then the whole matrix stem:[\Sigma_{\mathbf{XX}}]
+
+[stem]
+++++
+\Sigma_{\mathbf{XX}} = \text{Cov}(\mathbf{X,X}) = \mathbb{E}[(\mathbf{X}- \mathbb{E}[\mathbf{X}] ) (\mathbf{X} - \mathbb{E}[\mathbf{X}] )^\top]
+++++
 
 == Uncorrelated Random Variables ==
 stem:[X] and stem:[Y] are said to be uncorrelated if stem:[\text{Cov}(X,Y) = 0]. In such cases,
 
 [stem]
 ++++
-\large
 \mathbb{E}[XY] = \mathbb{E}[X] \, \mathbb{E}[Y]
 ++++
 
@@ -45,7 +58,6 @@ The converse is not true in general. For example, consider stem:[X \sim \mathcal
 
 [stem]
 ++++
-\large
 \mathbb{E}[XY] = \mathbb{E}[X^3] = 0
 ++++
 
@@ -60,7 +72,6 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[X,Y] be rando
 
 [stem]
 ++++
-\large
 \text{Var}(X+Y) = \text{Var}(X) + \text{Var}(Y) + 2 \cdot \text{Cov}(X,Y),
 ++++
 
@@ -73,7 +84,6 @@ The correlation coefficient of stem:[X] and stem:[Y] is defined as
 
 [stem]
 ++++
-\large
 \rho_{X,Y} := \frac{\text{Cov}(X,Y)}{\sqrt{\text{Var}(X) \cdot \text{Var}(Y)}}
 ++++
 
@@ -84,7 +94,6 @@ For any two random variables stem:[X] and stem:[Y], it is always that
 
 [stem]
 ++++
-\large
 -1 \leq \rho_{X,Y} \leq 1
 ++++
 
@@ -100,16 +109,14 @@ Furthermore, the following hold.
 +
 [stem]
 ++++
-\large
-P(\,\{\,\,Y-\mathbb{E}[Y] = a(Y-\mathbb{E}[X])\,\,\}\,) =1
+P(\,\{\,\,Y-\mathbb{E}[Y] = a(X-\mathbb{E}[X])\,\,\}\,) =1
 ++++
 
 . If stem:[\rho_{X,Y}=-1], then there exists stem:[a < 0] such that
 +
 [stem]
 ++++
-\large
-P(\,\{\,\,Y-\mathbb{E}[Y] = a(Y-\mathbb{E}[X])\,\,\}\,) =1
+P(\,\{\,\,Y-\mathbb{E}[Y] = a(X-\mathbb{E}[X])\,\,\}\,) =1
 ++++
 
 It means that when stem:[\rho_{X,Y}= \pm 1], stem:[Y] can be represented as a function of stem:[X], i.e., one can be expressed as a linear function of the other, with probability 1.

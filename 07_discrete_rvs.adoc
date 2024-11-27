@@ -24,7 +24,6 @@ That doesn't mean the set formed is stem:[\Omega]. There can be a set of stem:[\
 
 [stem]
 ++++
-\large
 \begin{align*}
 P(\{ X \in E\}) & = \sum_{i=1}^\infty P(\{ X = e_i\}) = 1 \\
 P(\{ X \in B\}) & = \sum_{i: e_i \in B} P(\{ X = e_i\}), B \subseteq \mathbb{R}
@@ -38,7 +37,6 @@ For any random variable (discrete or continuous or mixed) stem:[X: \Omega \right
 
 [stem]
 ++++
-\large
 p_X(x) = P(\{X=x\}), \, x \in \mathbb{R},
 ++++
 
@@ -54,7 +52,6 @@ If stem:[A_1, A_2, \dots \in \mathcal{F}], then its countable union stem:[\bigcu
 
 [stem]
 ++++
-\large
 \bigcup_{i=1}^\infty A_i = \bigcup_{i=1}^\infty \{X \leq x - \epsilon_i\} = \{X < x\}
 ++++
 
@@ -62,7 +59,6 @@ Which means sets of the form stem:[\{X < x\}] are also present in stem:[\mathcal
 
 [stem]
 ++++
-\large
 \{X \leq x\} \cap \{X \geq x\} = \{X=x\} \in \mathcal{F}
 ++++
 
@@ -79,7 +75,6 @@ We see that the set stem:[\{X = x\}] is a subset of stem:[\{X \leq x\}], by mono
 
 [stem]
 ++++
-\large
 p_X(x) \leq F_X(x) \, \forall x \in \mathbb{R}
 ++++
 
@@ -89,7 +84,6 @@ For a discrete random variable stem:[X] taking values in the countable set stem:
 
 [stem]
 ++++
-\large
 \sum_{i=1}^\infty P(\{ X = e_i\}) = 1 \Rightarrow \sum_{i=1}^\infty p_X(e_i) = 1
 ++++
 
@@ -100,7 +94,6 @@ Let stem:[X: \Omega \rightarrow \mathbb{R}] be a discrete random variable taking
 
 [stem]
 ++++
-\large
 F_X(x) = \sum_{i: e_i \leq x} P(\{ X = e_i\}) = \sum_{i: e_i \leq x} p_X(e_i) \, \text{ for all } x \in \mathbb{R}.
 ++++
 
@@ -116,7 +109,6 @@ stem:[X \sim \text{Bernoulli}(p)], stem:[p \in [0,1\]]
 
 [stem]
 ++++
-\large
 E = \{0,1\}, \,\,\,  p_X(x) = \begin{cases}
         p, & x=1,\\
         1-p, & x=0, \\
@@ -134,7 +126,6 @@ stem:[X \sim \text{unif}(\{1,2,\dots,n\})] for some fixed stem:[n \in \mathbb{N}
 
 [stem]
 ++++
-\large
 E = \{1,2,\dots, n\}, \,\,\,  p_X(x) = \begin{cases}
         \frac{1}{n}, & x \in \{1,2,\dots, n\},\\
         0, & \text{otherwise}.
@@ -149,7 +140,6 @@ stem:[X \sim \text{Geometric}(p), \hspace{1cm} p \in (0,1\]]
 
 [stem]
 ++++
-\large
 E = \mathbb{N}, \hspace{1cm}  p_X(x) = \begin{cases}
         p (1-p)^{x-1}, & x \in \mathbb{N},\\
         0, & \text{otherwise}.
@@ -162,7 +152,6 @@ stem:[X \sim \text{Binomial}(n,p)] for some fixed stem:[n \in \mathbb{N} \cup \{
 
 [stem]
 ++++
-\large
 E = \{0,1,\dots,n\}, \hspace{2cm}  p_X(x) = \begin{cases}
         {n \choose x} p^x (1-p)^{n-x}, & x \in \{0,1,\dots,n\},\\
         0, & \text{otherwise}.
@@ -175,7 +164,6 @@ stem:[X \sim \text{Poisson}(\lambda), \hspace{1cm} \lambda>0]
 
 [stem]
 ++++
-\large
 E = \{0,1,2\dots,\}, \hspace{1cm}  p_X(x) = \begin{cases}
         e^{-\lambda} \frac{\lambda^x}{x!}, & x \in \{0,1,2\dots\},\\
         0, & \text{otherwise}.
@@ -189,7 +177,6 @@ Suppose stem:[X] is a discrete random variable defined with respect to stem:[\ma
 
 [stem]
 ++++
-\large
 p_X(100) = 0.65;  \hspace{1cm} p_X(-10) = 0.35
 ++++
 
@@ -203,7 +190,6 @@ And given a function stem:[Y : \Omega \rightarrow \mathbb{R}] defined as stem:[Y
 
 [stem]
 ++++
-\large
 \{\omega \in \Omega: Y(\omega) \leq y\} \in \mathcal{F} \,\,\, \forall y \in \mathbb{R}
 ++++
 
@@ -211,7 +197,6 @@ From given,
 
 [stem]
 ++++
-\large
 \begin{align*}
 \{\omega \in \Omega: Y(\omega) \leq y\} & = \{\omega \in \Omega: \max\{X(\omega),0\} \leq y\} \\
 & = \{\omega \in \Omega: X(\omega) \leq y\} \cap \{\omega \in \Omega: 0 \leq y\} && \text{both elements should be } \leq y
@@ -226,7 +211,6 @@ Hence, stem:[Y] is a random variable. The CDF of stem:[Y] can be derived as:
 
 [stem]
 ++++
-\large
 \begin{align*}
 F_Y(y) & = P(\{Y \leq y\}) \\
 & = P(\{\omega \in \Omega: Y(\omega) \leq y\}) \\

@@ -17,7 +17,6 @@ Define the lower Riemann sum as the total area under the red rectangles. In each
 
 [stem]
 ++++
-\large
 L(f, \mathcal{P}_n) = \sum_{i=1}^n m_i \cdot |x_i - x_{i-1}|
 ++++
 
@@ -25,7 +24,6 @@ Define the upper Riemann sum as the total area under the blue rectangles (from t
 
 [stem]
 ++++
-\large
 U(f, \mathcal{P}_n) = \sum_{i=1}^n M_i \cdot |x_i - x_{i-1}|
 ++++
 
@@ -33,7 +31,6 @@ The lower Riemann sum is smaller than the area under the curve. The upper Rieman
 
 [stem]
 ++++
-\large
 L(f, \mathcal{P}_n) \leq  L(f, \mathcal{P}_{n+1}), \hspace{1cm} U(f, \mathcal{P}_n) \geq  U(f, \mathcal{P}_{n+1})
 ++++
 
@@ -43,7 +40,6 @@ If they both don't meet, there is no notion of area under the curve. The functio
 
 [stem]
 ++++
-\large
 f(x) = \begin{cases}
         1, & x \in \mathbb{Q},\\
         0, & x \notin \mathbb{Q}.
@@ -61,7 +57,6 @@ To build the necessary machinery on Lebesgue's theory of integration, so as to b
 
 [stem]
 ++++
-\large
 \int_A X dP, \hspace{1cm} A \in \mathcal{F}.
 ++++
 
@@ -72,7 +67,6 @@ A random variable stem:[X] is called a simple random variable if it can be expre
 
 [stem]
 ++++
-\large
 X(\omega) = \sum_{i=1}^n a_i \mathbf{1}_{A_i}(\omega), \hspace{1cm} \omega \in \Omega
 ++++
 
@@ -80,7 +74,6 @@ for some stem:[a_1, \dots, a_n \geq 0] and stem:[A_1, \dots, A_n \in \mathcal{F}
 
 [stem]
 ++++
-\large
 \mathbf{1}_{A_i}(\omega) = \begin{cases}
         1, & \omega \in A_i,\\
         0, & \omega \notin A_i.
@@ -102,7 +95,6 @@ Consider stem:[X: \mathbb{R} \rightarrow \mathbb{R}], where stem:[\Omega = \math
 
 [stem]
 ++++
-\large
 X(\omega) = \mathbf{1}_{[0,1]}(\omega) + \frac{3}{2} \mathbf{1}_{[1,3]}(\omega),  \hspace{1cm} \omega \in \Omega
 ++++
 
@@ -112,7 +104,6 @@ X(\omega) = \mathbf{1}_{[0,1]}(\omega) + \frac{3}{2} \mathbf{1}_{[1,3]}(\omega),
 
 [stem]
 ++++
-\large
 X(\omega) = \begin{cases}
         1, & \omega \in [0,1),\\
         \frac{5}{2}, & \omega =1,\\
@@ -125,7 +116,6 @@ There are multiple representations of the same stem:[X]. The above stem:[X] can 
 
 [stem]
 ++++
-\large
 X(\omega) = \mathbf{1}_{[0,3]}(\omega) + \frac{1}{2} \mathbf{1}_{[1,3]}(\omega) + \mathbf{1}_{\{1\}}(\omega),  \hspace{1cm} \omega \in \Omega
 ++++
 
@@ -135,7 +125,6 @@ A simple random variable stem:[X] is said to be in canonical representation if
 
 [stem]
 ++++
-\large
 X(\omega) = \sum_{i=1}^n a_i \mathbf{1}_{A_i}(\omega), \hspace{1cm} \omega \in \Omega
 ++++
 
@@ -143,7 +132,6 @@ Where stem:[a_1, \dots, a_n \geq 0] are distinct, and stem:[A_1, \dots, A_n \in 
 
 [stem]
 ++++
-\large
 X(\omega) = \mathbf{1}_{[0,1)}(\omega) + \frac{5}{2} \mathbf{1}_{\{1\}}(\omega) + \frac{3}{2} \mathbf{1}_{(1,3]}(\omega),  \hspace{1cm} \omega \in \Omega
 ++++
 
@@ -153,7 +141,6 @@ For a simple random variable stem:[X] in its canonical form, we define
 
 [stem]
 ++++
-\large
 \int_\Omega X dP := \sum_{i=1}^n a_i P(A_i).
 ++++
 
@@ -166,7 +153,6 @@ Consider a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[X: \Omeg
 
 [stem]
 ++++
-\large
 \mathcal{S}(X) := \{ q : \Omega \rightarrow \mathbb{R}: q \text{ simple }, q(\omega) \leq X(\omega) \, \, \forall \omega \in \Omega \}
 ++++
 
@@ -180,7 +166,6 @@ Then, the expectation of the non-negative random variable stem:[X] under stem:[P
 
 [stem]
 ++++
-\large
 \mathbb{E}[X] = \int_\Omega X dP := \sup_{q \in \mathcal{S}(X)} \int_\Omega q \, dP.
 ++++
 
@@ -193,7 +178,6 @@ Consider a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[X: \Omeg
 
 [stem]
 ++++
-\large
 X_+ (\omega) := \max \{X(\omega), 0\}, \hspace{1cm} X\_(\omega) := -\min \{X(\omega), 0\}, \, \omega \in \Omega.
 ++++
 
@@ -205,7 +189,6 @@ Clearly, both stem:[X_+] and stem:[X\_] are non-negative random variables with r
 
 [stem]
 ++++
-\large
 \mathbb{E}[X] = \int_\Omega X dP := \mathbb{E}[X_+] - \mathbb{E}[X\_],
 ++++
 
@@ -218,7 +201,6 @@ For any event stem:[A \in \mathcal{F}], we define the abstract integral
 
 [stem]
 ++++
-\large
 \int_A X \, dP = \int_{\Omega} (X \cdot \mathbf{1}_A) \, dP,
 ++++
 
@@ -230,7 +212,6 @@ Let stem:[Y = X \cdot \mathbf{1}_A], i.e., stem:[Y(\omega) = X(\omega) \cdot \ma
 
 [stem]
 ++++
-\large
 Y(\omega) = \begin{cases}
         X(\omega), & \omega \in A,\\
         0, & \omega \in A^c.

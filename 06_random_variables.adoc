@@ -22,7 +22,6 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. A function stem:[X: \Om
 
 [stem]
 ++++
-\large
 \{\omega \in \Omega: X(\omega) \leq x\} \in \mathcal{F} \,\, \forall x \in \mathbb{R}
 ++++
 
@@ -57,7 +56,6 @@ Let's take a constant function, stem:[X(\omega)=c \,\, \forall \omega \in \Omega
 
 [stem]
 ++++
-\large
 \{\omega \in \Omega: X(\omega) \leq x\} = \begin{cases}
         \phi & \text{if } x < c\\
         \Omega & \text{if } x \geq c
@@ -81,7 +79,6 @@ But not necessarily that stem:[c_1 < c_2]. It can also be stem:[c_1 > c_2 \text{
 
 [stem]
 ++++
-\large
 \{\omega \in \Omega: X(\omega) \leq x\} = \begin{cases}
         \phi & \text{if } x < c_1\\
         A & \text{if } c_1 \leq x < c_2 \\
@@ -121,7 +118,6 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Given a random variable
 
 [stem]
 ++++
-\large
 F_X(x) = P\left( \{\omega \in \Omega: X(\omega) \leq x\} \right) = P\left( \{X \leq x\} \right), \, x \in \mathbb{R}
 ++++
 
@@ -142,7 +138,6 @@ To show this, let stem:[\{x_n\}_{n=1}^\infty] be any sequence of real numbers su
 
 [stem]
 ++++
-\large
 \begin{align*}
 \lim_{n \to \infty} F_X(x_n) & = \lim_{n \to \infty} P(\underbrace{\{X \leq x_n\}}_{A_n})  \\
 \end{align*}
@@ -152,7 +147,6 @@ stem:[A_1 =\{X \leq x_1\}, A_2 =\{X \leq x_2\}, \dots  ]. We can see that stem:[
 
 [stem]
 ++++
-\large
 \begin{align*}
 \lim_{n \to \infty} P(A_n) & = P\left(\lim_{n \to \infty} A_n \right) && \text{ by continuity of probability} \\
 & = P \left( \bigcap_{n=1}^\infty A_n \right) \\
@@ -179,7 +173,6 @@ We know that stem:[F_X(x) = P\left( \{\omega \in \Omega: X(\omega) \leq x\} \rig
 
 [stem]
 ++++
-\large
 \begin{align*}
 & \Rightarrow X(\omega_0) \leq x \\
 & \Rightarrow X(\omega_0) \leq y && \text{since } x \leq y \\
@@ -191,7 +184,6 @@ We showed that any stem:[w_o \in \{\omega \in \Omega: X(\omega) \leq x\}] is an 
 
 [stem]
 ++++
-\large
 \begin{align*}
 \{\omega \in \Omega: X(\omega) \leq x\} & \subseteq \{\omega \in \Omega: X(\omega) \leq y\} \\
 \{X \leq x\} & \subseteq \{X \leq y\} \\
@@ -206,7 +198,6 @@ stem:[F_X] is always right-continuous, i.e., for all stem:[x \in \mathbb{R}],
 
 [stem]
 ++++
-\large
 \lim_{\epsilon \downarrow 0} F_X(x + \epsilon) = F_X(x)
 ++++
 
@@ -224,7 +215,6 @@ Let stem:[\{\epsilon_n\}_{n=1}^\infty] be any sequence of non-increasing, non-ne
 
 [stem]
 ++++
-\large
 \lim_{n \to \infty} F_X(x + \epsilon_n) = F_X(x)
 ++++
 
@@ -232,7 +222,6 @@ We know by definition,
 
 [stem]
 ++++
-\large
 \lim_{n \to \infty} F_X(x + \epsilon_n) = \lim_{n \to \infty} P \left( \underbrace{\{ \omega \in \Omega: X(\omega) \leq x + \epsilon_n  \}}_{A_n}\right)
 ++++
 
@@ -242,7 +231,6 @@ image::.\images\cdf_limit_2.png[align='center']
 
 [stem]
 ++++
-\large
 \begin{align*}
 \lim_{n \to \infty} P (A_n) & =  P( \lim_{n \to \infty} A_n) && \text{ by continuity of probability} \\
 & = P \left( \bigcap_{n=1}^\infty A_n \right) \\
@@ -262,7 +250,6 @@ What happens when we approach stem:[x] from left: For any stem:[x \in \mathbb{R}
 
 [stem]
 ++++
-\large
 \lim_{\epsilon \downarrow 0} F_X(x - \epsilon) = P(\{X < x\})
 ++++
 
@@ -272,7 +259,6 @@ Let stem:[\{\epsilon_n\}_{n=1}^\infty] be any sequence of non-increasing, non-ne
 
 [stem]
 ++++
-\large
 \lim_{n \to \infty} F_X(x - \epsilon_n) = \lim_{n \to \infty} P \left( \underbrace{\{ \omega \in \Omega: X(\omega) \leq x - \epsilon_n  \}}_{A_n}\right)
 ++++
 
@@ -280,7 +266,6 @@ stem:[A_1 = \{X \leq x - \epsilon_1\}, A_2 = \{X \leq x - \epsilon_2\}, \dots ].
 
 [stem]
 ++++
-\large
 \begin{align*}
 \lim_{n \to \infty} P (A_n) & =  P( \lim_{n \to \infty} A_n) && \text{ by continuity of probability} \\
 & = P \left( \bigcup_{n=1}^\infty A_n \right) \\
@@ -313,7 +298,6 @@ stem:[F_X] is continuous at a point stem:[x \in \mathbb{R}] if and only if stem:
 +
 [stem]
 ++++
-\large
 \lim_{\epsilon \downarrow 0} F_X(x - \epsilon) = \lim_{\epsilon \downarrow 0} F_X(x + \epsilon) = F_X(x)
 ++++
 +
@@ -321,7 +305,6 @@ From above we know that, stem:[P(\{X < x \}) = P(\{X \leq x \}) = F_X(x)]
 +
 [stem]
 ++++
-\large
 \begin{align*}
 P(\{X \leq x \}) & = P(\{X < x \} \cup \{X =x \}  ) \\
 F_X(x) & = P(\{X < x \}) + P( \{X =x \}  )  &&\text{ as they are disjoint sets} \\
@@ -334,7 +317,6 @@ F_X(x) & = F_X(x) + P( \{X =x \} )  &&\text{by definition } P(\{X < x \}) = F_X(
 +
 [stem]
 ++++
-\large
 \begin{align*}
 F_X(x) & = P(\{X \leq x \}) \\
 F_X(x) & = P(\{X < x \}) + P( \{X =x \}  )  &&\text{ as they are disjoint sets} \\

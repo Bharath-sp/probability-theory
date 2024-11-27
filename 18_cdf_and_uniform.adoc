@@ -13,7 +13,6 @@ Let stem:[X] be a random variable with CDF stem:[F_X]. Let stem:[g_{F_X}:(0,1\] 
 
 [stem]
 ++++
-\large
 g_{F_X}(u) = \min \{ x \in \mathbb{R}: F_X(x) \geq u \}, \hspace{1cm} u \in (0,1]
 ++++
 
@@ -21,7 +20,6 @@ The function stem:[g_{F_X}] is defined on the range of the CDF.
 
 [stem]
 ++++
-\large
 F_X: \mathbb{R} \rightarrow [0,1]; \hspace{1cm} g_{F_X}: (0,1] \rightarrow \mathbb{R} 
 ++++
 
@@ -39,7 +37,6 @@ Let stem:[X] be a discrete random variable, stem:[X \in \{0,1,2,3\}]. The PMF of
 
 [stem]
 ++++
-\large
 p_X(x) = \begin{cases}
         0.1, & x = 0,\\
         0.2, & x = 1,\\
@@ -55,7 +52,6 @@ Now let's define stem:[g_{F_X}(u)]:
 
 [stem]
 ++++
-\large
 g_{F_X}(u) = \begin{cases}
         0, & 0 < u \leq 0.1,\\
         1, & 0.1 < u \leq 0.3,\\
@@ -86,7 +82,6 @@ Let stem:[X \sim \text{Exp}(1)].
 
 [stem]
 ++++
-\large
 f_X(x) = \begin{cases}
         e^{-x}, & x \geq 0,\\
         0, & x < 0
@@ -111,7 +106,6 @@ Let stem:[U \sim \text{Unif([0,1\])}] and stem:[Y=g_{F_X}(U)], where stem:[g_{F_
 
 [stem]
 ++++
-\large
 \begin{align*}
 F_{Y}(x) & = P(\{Y \leq x\}) \\
 & = P(\{g_{F_X}(U) \leq x\}) \\
@@ -143,7 +137,6 @@ Let's find the complementary CDF of stem:[Y] and show that it is the complementa
 
 [stem]
 ++++
-\large
 \begin{align*}
 P(\{Y \geq u\}) & = P(\{F_X(X) \geq u\}) \\
 \end{align*}

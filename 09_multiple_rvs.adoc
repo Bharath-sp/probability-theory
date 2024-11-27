@@ -13,7 +13,6 @@ Given random variables stem:[X: \Omega \rightarrow \mathbb{R}] and stem:[Y: \Ome
 
 [stem]
 ++++
-\large
 F_{X,Y}(x,y) = P(\{X \leq x\} \cap \{Y \leq y\} ), \,\, x,y \in \mathbb{R}
 ++++
 
@@ -39,7 +38,6 @@ Let stem:[X: \Omega \rightarrow \mathbb{R}] and stem:[Y: \Omega \rightarrow \mat
 
 [stem]
 ++++
-\large
 \lim_{x,y \to -\infty} F_{X,Y}(x,y) = 0, \,\,\, \lim_{x,y \to +\infty} F_{X,Y}(x,y) = 1
 ++++
 
@@ -62,7 +60,6 @@ stem:[F_{X,Y}] is always continuous from the right and top, i.e., for all stem:[
 
 [stem]
 ++++
-\large
 \lim_{u \downarrow 0, v \downarrow 0} F_{X,Y}(x + u, y+v) = F_{X,Y}(x,y)
 ++++
 
@@ -74,7 +71,6 @@ As we approach stem:[(x,y)] from the blue space, the joint CDF will be continuou
 
 [stem]
 ++++
-\large
 \begin{align*}
 \lim_{y \to \infty} F_{X,Y}(x,y) & = F_X(x) \text{ for all } x \in \mathbb{R} \\
 \lim_{x \to \infty} F_{X,Y}(x,y) & = F_Y(y) \text{ for all } y \in \mathbb{R}
@@ -89,7 +85,6 @@ Let stem:[\{y_n\}_{n=1}^\infty] be any sequence of real numbers such that stem:[
 
 [stem]
 ++++
-\large
 \begin{align*}
 \lim_{n \to \infty} F_{X,Y}(x,y_n) & = \lim_{n \to \infty} P \left( \underbrace{\{X \leq x\} \cap \{Y \leq y_n\}}_{A_n} \right)  \\
 \end{align*}
@@ -99,7 +94,6 @@ stem:[A_n \subseteq A_{n+1} \text{ for all } n] because stem:[y_n \leq y_{n+1} \
 
 [stem]
 ++++
-\large
 \begin{align*}
 \lim_{n \to \infty} P(A_n) & = P \left(\lim_{n \to \infty} A_n \right) &&\text{by continuity property}\\
 & = P \left(\bigcup_{n=1}^\infty A_n \right) \\
@@ -119,7 +113,6 @@ Fix stem:[n>2], and let stem:[X_1, X_2, \dots, X_n] be random variables with res
 
 [stem]
 ++++
-\large
 F_{X_1, \dots, X_n}(x_1, \dots, x_n) = P\left( \bigcap_{i=1}^n \{X_i \leq x_i\} \right), \,\, x_1, \dots, x_n \in \mathbb{R}
 ++++
 

@@ -11,15 +11,15 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. For any two disjoint se
 
 [stem]
 ++++
-\large
 P(A \cup B) = P(A) + P(B)
 ++++
+
+*Proof:*
 
 All the sets stem:[A, B, A \cup B] are in the stem:[\sigma-] algebra, so we can talk about their probability. Let stem:[A_1=A, A_2 = B, A_i =\phi \, \forall i\geq3]. All these sets are disjoint sets, for example stem:[A_i \cap A_1 = \phi].
 
 [stem]
 ++++
-\large
 \begin{align*}
 \bigcup_{i=1}^\infty A_i & = A \cup B \\
 P \left( \bigcup_{i=1}^\infty A_i \right) & = \sum_{i=1}^\infty P(A_i) && \text{ by axiom 3} \\
@@ -34,20 +34,16 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. For any stem:[n \in \ma
 
 [stem]
 ++++
-\large
 P\left( \bigcup_{i=1}^n B_i \right) = \sum_{i=1}^n P(B_i)
 ++++
 
 All the sets stem:[B_1, B_2, \dots, B_n, \text{ and } \bigcup_{i=1}^n B_i] are in the stem:[\sigma-] algebra, so we can talk about their probability. This is just an extension of the previous result.
-
-When the sets stem:[B_1, B_2, \dots, B_n] are mutually disjoint, every finite subset of them is disjoint (i.e.,) stem:[B_1 \cap B_2 \cap \dots \cap B_n=\phi] for any stem:[n]. 
 
 == Property 3 ==
 Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. For any set stem:[A \in \mathcal{F}],
 
 [stem]
 ++++
-\large
 P(A^c) = 1- P(A)
 ++++
 
@@ -57,7 +53,6 @@ stem:[A] and stem:[A^c] are disjoint sets stem:[A \cap A^c = \phi] and stem:[A \
 
 [stem]
 ++++
-\large
 \begin{align*}
 P(A \cup A^c) & = P(\Omega)  \\
 P(A) + P(A^c) & = 1 && \text{ By property 1 and axiom 2}
@@ -73,7 +68,6 @@ The sets stem:[A] and stem:[B-A] are disjoints from each other, stem:[A \cap (B-
 
 [stem]
 ++++
-\large
 \begin{align*}
 P \left( A \cup (B-A) \right) & = P(B) \\
 P(A) + P(B-A) & = P(B) && \text{ By property 1} \\
@@ -96,7 +90,6 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. For *any* (disjoint, ov
 
 [stem]
 ++++
-\large
 P(A \cup B) = P(A) + P(B) - P(A \cap B)
 ++++
 
@@ -108,7 +101,6 @@ We can write these as three disjoint sets:
 
 [stem]
 ++++
-\large
 \begin{align*}
 (A \cup B) & = \left(A - (A \cap B) \right) \cup (A \cap B) \cup \left(B - (A \cap B) \right) \\
 P(A \cup B) & =  P \bigl( \left(A - (A \cap B) \right) \cup (A \cap B) \cup \left(B - (A \cap B) \right) \bigr) \\
@@ -123,7 +115,6 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. For *any* (disjoint, ov
 
 [stem]
 ++++
-\large
 P\left(\bigcup_{i=1}^n A_i \right) = \sum_{i=1}^n P(A_i) - \sum_{i < j} P(A_i \cap A_j) + \sum_{i < j < k} P(A_i \cap A_j \cap A_k) - \dots + (-1)^{n+1} P\left(\bigcap_{i=1}^n A_i \right)
 ++++
 
@@ -133,7 +124,6 @@ For any 3 sets stem:[A, B, C \in \mathcal{F}],
 
 [stem]
 ++++
-\large
 P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)
 ++++
 
@@ -142,7 +132,6 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. If we take countably in
 
 [stem]
 ++++
-\large
 P\left(\bigcup_{i=1}^\infty A_i \right) = P\left( \lim_{n \rightarrow \infty} A_n \right) = \lim_{n \rightarrow \infty} P(A_n)
 ++++
 
@@ -154,7 +143,6 @@ In general, if we have a sequence of sets stem:[\{A_n\}_{n=1}^\infty] such that 
 
 [stem]
 ++++
-\large
 \lim_{n \rightarrow \infty} A_n = \bigcup_{n=1}^\infty A_n
 ++++
 
@@ -162,7 +150,6 @@ Then by the monotonicity property, stem:[P(A_1) \leq P(A_2) \leq P(A_3) \leq \do
 
 [stem]
 ++++
-\large
 \lim_{n \rightarrow \infty} P(A_n) = P\left( \lim_{n \rightarrow \infty} A_n \right)
 ++++
 
@@ -172,7 +159,6 @@ In general, we say that a function stem:[f] is continuous at stem:[x_0] if for a
 
 [stem]
 ++++
-\large
 \begin{align*}
 \lim_{n \rightarrow \infty} f(x_n)  & = f(x_0) \\
 \lim_{n \rightarrow \infty} f(x_n)  & = f\left(\lim_{n \rightarrow \infty} x_n \right) 
@@ -183,7 +169,6 @@ So when a function is continuous, we can freely pull the limits inside and outsi
 
 [stem]
 ++++
-\large
 P\left( \lim_{n \rightarrow \infty} A_n \right) = \lim_{n \rightarrow \infty} P(A_n)
 ++++
 
@@ -199,7 +184,6 @@ So we can write:
 
 [stem]
 ++++
-\large
 \begin{align*}
 A_1 & = B_1 \\
 A_1 \cup A_2 = A_2 & = B_1 \cup B_2 \\
@@ -224,7 +208,6 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. If we take countably in
 
 [stem]
 ++++
-\large
 P\left(\bigcap_{i=1}^\infty A_i \right) = P\left( \lim_{n \rightarrow \infty} A_n \right) = \lim_{n \rightarrow \infty} P(A_n)
 ++++
 
@@ -242,7 +225,6 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. For any stem:[A_1, A_2,
 
 [stem]
 ++++
-\large
 P\left(\bigcup_{i=1}^\infty A_i \right) \leq \sum_{i=1}^\infty P(A_i)
 ++++
 
@@ -254,7 +236,6 @@ image::.\images\continuity_4.png[align='center']
 
 [stem]
 ++++
-\large
 \begin{align*}
 B_1 & = A_1 \\
 B_2 & = A_2 - A_1 \\
@@ -269,7 +250,6 @@ stem:[B_i]'s are disjoint sets. And even for a collection of arbitrary sets this
 
 [stem]
 ++++
-\large
 \begin{align*}
 \bigcup_{i=1}^\infty A_i  & = \bigcup_{i=1}^\infty B_i  \\
 P\left( \bigcup_{i=1}^\infty A_i \right) & = P\left(\bigcup_{i=1}^\infty B_i \right) \\
@@ -288,7 +268,6 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. For any two sets stem:[
 
 [stem]
 ++++
-\large
 P(A \cup B) \leq P(A) + P(B)
 ++++
 
@@ -296,7 +275,6 @@ More generally, for any stem:[n \in \mathbb{N}] and sets stem:[A_1, A_2, \dots, 
 
 [stem]
 ++++
-\large
 P\left(\bigcup_{i=1}^n A_i \right) \leq \sum_{i=1}^n P(A_i)
 ++++
 
@@ -311,7 +289,6 @@ Given a stem:[\sigma-] algebra, we can assign a number between 0 and 1 (both inc
 +
 [stem]
 ++++
-\large
 \{\phi, \Omega, \{H\}, \{T\}\} \rightarrow \{0,1,p, (1-p)\} \text{ resp.}
 ++++
 +
@@ -331,7 +308,6 @@ TIP: So probability of a set equal to 0 doesn't mean that the set is empty. Simi
 
 [stem]
 ++++
-\large
 \begin{align*}
 P(\phi) & = 0 \\
 P(\Omega) & = 1 \\

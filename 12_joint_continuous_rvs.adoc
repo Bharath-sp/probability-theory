@@ -15,7 +15,6 @@ stem:[X] and stem:[Y] are said to be jointly continuous if there exists a functi
 
 [stem]
 ++++
-\large
 F_{X,Y}(x,y) = \int_{-\infty}^x \int_{-\infty}^y f_{X,Y}(u,v) \,dv \, du \hspace{1cm} \forall x,y \in \mathbb{R}.
 ++++
 
@@ -26,7 +25,7 @@ Since we are integrating a non-negative function, the order of the integrals doe
 *Remarks:*
 
 * Every continuous variable should have a PDF. So when we say stem:[(X,Y)] are jointly continuous, they have a joint PDF.
-* The PDF doesn't have the interpretation of probability. In the case of jointly continuous random variables, only the integration along all the variables has the interpretation of probability. In the case of two jointly random variables, only the double integrals has the interpretation of probability.
+* The PDF doesn't have the interpretation of probability. In the case of jointly continuous random variables, only the integration along all the variables has the interpretation of probability.
 * If stem:[X] and stem:[Y] are individually continuous, then stem:[(X,Y)] doesn't need to be jointly continuous.
 * If the random variables are jointly continuous, then stem:[X] and stem:[Y] should be individually continuous.
 * When given two random variables stem:[X] and stem:[Y], their joint CDF always exists. If they both are discrete, their joint PMF always exists. If they are individually continuous, their joint PDF doesn't exist always. Only when they are jointly continuous, it is guaranteed that they have a joint PDF.
@@ -39,7 +38,6 @@ Since we are integrating a non-negative function, the order of the integrals doe
 +
 [stem]
 ++++
-\large
 \begin{align*}
 \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} f_{X,Y}(u,v) \,dv \, du & = \lim_{x \to \infty} \lim_{y \to \infty} \int_{-\infty}^x \int_{-\infty}^y f_{X,Y}(u,v) \,dv \, du \\
 & = \lim_{x \to \infty} \lim_{y \to \infty} F_{X,Y}(x,y) \\
@@ -55,7 +53,6 @@ This says if stem:[X] and stem:[Y] are jointly continuous, then stem:[X] is a co
 +
 [stem]
 ++++
-\large
 \begin{align*}
 F_{X,Y}(x,y) & = \int_{-\infty}^y \int_{-\infty}^x f_{X,Y}(u,v) \,du \, dv \\
 \lim_{y \to \infty} F_{X,Y}(x,y) & = \lim_{y \to \infty} \int_{-\infty}^y \int_{-\infty}^x f_{X,Y}(u,v) \,du \, dv \\
@@ -68,7 +65,6 @@ On the other hand, we know that,
 +
 [stem]
 ++++
-\large
 \lim_{y \to \infty} F_{X,Y}(x,y) = F_X(x) \text{ for all } x \in \mathbb{R}
 ++++
 +
@@ -76,7 +72,6 @@ Therefore by equating both the equations,
 +
 [stem]
 ++++
-\large
 F_X(x) = \int_{-\infty}^x \int_{-\infty}^\infty f_{X,Y}(u,v) \,dv \, du
 ++++
 +
@@ -84,7 +79,6 @@ Since we are integrating out with respect to stem:[v], the inner integral is a f
 +
 [stem]
 ++++
-\large
 \int_{-\infty}^\infty f_{X,Y}(u,v) \, dv = f_X(u) \text{ for all } u \in \mathbb{R}
 ++++
 +
@@ -108,7 +102,6 @@ We know that the joint CDF is:
 
 [stem]
 ++++
-\large
 \begin{align*}
 F_{X,Y}(x,y) & = P(\{X \leq x\} \cap \{Y \leq y\} ), \,\, x,y \in \mathbb{R} \\
 & = P(\{X \leq x\} \cap \{1-X \leq y\} ) \\
@@ -126,7 +119,6 @@ image::.\images\joint_cdf_exer_01.png[align='center', 500, 300]
 +
 [stem]
 ++++
-\large
 \begin{align*}
 P(\{ 1-y \leq X \leq x\}) = F_X(x) - F_X(1-y) \,\, \forall x,y \in \mathbb{R} \text{ such that } x > 1-y
 \end{align*}
@@ -136,7 +128,6 @@ The CDF of stem:[X] is:
 +
 [stem]
 ++++
-\large
 F_X(x) = \begin{cases}
         0, & x < 0,\\
         x, & 0 \leq x < 1, \\
@@ -162,7 +153,6 @@ The Area is stem:[0 \leq x < 1] and stem:[y>1] such that stem:[y > 1-x].
 +
 [stem]
 ++++
-\large
 \begin{align*}
 P(\{ 1-y \leq X \leq x\}) = F_X(x) - F_X(1-y) = x - 0 = x
 \end{align*}
@@ -174,7 +164,6 @@ The Area is stem:[0 \leq x < 1] and stem:[0 < y \leq 1] such that stem:[y > 1-x]
 +
 [stem]
 ++++
-\large
 \begin{align*}
 P(\{ 1-y \leq X \leq x\}) = F_X(x) - F_X(1-y) = x - (1-y) = x+y-1
 \end{align*}
@@ -186,7 +175,6 @@ The Area is stem:[x \geq 1] and stem:[y > 1] such that stem:[y > 1-x].
 +
 [stem]
 ++++
-\large
 \begin{align*}
 P(\{ 1-y \leq X \leq x\}) = F_X(x) - F_X(1-y) = 1 - 0 = 1
 \end{align*}
@@ -198,7 +186,6 @@ The Area is stem:[x \geq 1] and stem:[0 < y \leq 1] such that stem:[y > 1-x].
 +
 [stem]
 ++++
-\large
 \begin{align*}
 P(\{ 1-y \leq X \leq x\}) = F_X(x) - F_X(1-y) = 1 - (1-y) = y
 \end{align*}
@@ -214,7 +201,6 @@ The joint CDF of stem:[(X,Y)] is:
 +
 [stem]
 ++++
-\large
 F_{X,Y}(x,y) = \begin{cases}
         0, & y \leq 1-x,\\
         0, & x < 0, \, y >1 \\
@@ -255,7 +241,6 @@ Define conditional probability with respect to the event stem:[\{Y \in (y-\epsil
 
 [stem]
 ++++
-\large
 \begin{align*}
 P(\{ X \leq x  \}\,|\, \{Y \in (y-\epsilon, y+\epsilon)\}) & = \frac{P(\{X \leq x\} \cap \{Y \in (y-\epsilon, y+\epsilon)\})}{P(\{Y \in (y-\epsilon, y+\epsilon)\})} \\
 \\
@@ -267,7 +252,6 @@ For a given very small interval around an stem:[x] (the outer integral), the reg
 
 [stem]
 ++++
-\large
 \int_{-\infty}^x \int_{y-\epsilon}^{y+\epsilon} f_{X,Y}(u,v) \, dv \, du = \int_{-\infty}^x f_{X,Y}(u,y) v \bigg|_{y-\epsilon}^{y+\epsilon} \, du = \int_{-\infty}^x f_{X,Y}(u,y) \cdot 2\epsilon \, du
 ++++
 
@@ -275,7 +259,6 @@ The same reasoning can be applied for the denominator as well. Hence, they can b
 
 [stem]
 ++++
-\large
 \begin{align*}
 & \approx \frac{\int_{-\infty}^x f_{X,Y}(u,y) \cdot 2\epsilon \, du}{f_Y(y) \cdot 2\epsilon} = \int_{-\infty}^x \frac{f_{X,Y}(u,y)}{f_Y(y)} \, du
 \end{align*}
@@ -286,7 +269,6 @@ The conditional CDF of stem:[X], conditioned on the event stem:[\{Y=y\}], is the
 
 [stem]
 ++++
-\large
 F_{X\,|\,Y=y}(x) = \int_{-\infty}^x \frac{f_{X,Y}(u,y)}{f_Y(y)} \, du, \hspace{1cm} x \in \mathbb{R},
 ++++
 
@@ -297,7 +279,6 @@ The conditional PDF of stem:[X], conditioned on the event stem:[\{Y=y\}], is the
 
 [stem]
 ++++
-\large
 f_{X\,|\,Y=y}(x) = \frac{f_{X,Y}(x,y)}{f_Y(y)}, \hspace{1cm} x \in \mathbb{R},
 ++++
 
@@ -312,7 +293,6 @@ stem:[X] and stem:[Y] are independent if and only if
 
 [stem]
 ++++
-\large
 f_{X,Y}(x,y) = f_X(x) \cdot f_Y(y) \hspace{1cm} \forall x,y \in \mathbb{R}
 ++++
 
@@ -329,7 +309,6 @@ Given stem:[X \mathrel{\unicode{x2AEB}} Y],
 +
 [stem]
 ++++
-\large
 X \mathrel{\unicode{x2AEB}} Y \Leftrightarrow f_{X | Y=y}(x) = f_X(x) \hspace{1cm} \forall y \text{ such that } f_Y(y) > 0.
 ++++
 

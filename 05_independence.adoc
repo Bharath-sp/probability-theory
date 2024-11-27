@@ -11,7 +11,6 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Events stem:[A, B \in \
 
 [stem]
 ++++
-\large
 P(A \cap B) = P(A) \cdot P(B)
 ++++
 
@@ -57,7 +56,6 @@ We know that stem:[(A^c \cap B) = B - (A \cap B)],
 
 [stem]
 ++++
-\large
 \begin{align*}
 P(A^c \cap B) & = P(B - (A \cap B)) \\
 & = P(B) - P(A \cap B) && (A \cap B) \text{ is a subset of } B \\
@@ -75,7 +73,6 @@ Suppose stem:[A \in \mathcal{F}]. Can stem:[A] and stem:[A^c] be independent?
 
 [stem]
 ++++
-\large
 \begin{align*}
 A \mathrel{\unicode{x2AEB}} A^c  & \Longleftrightarrow P(A \cap A^c)=P(A) \cdot P(A^c) \\
 & \Longleftrightarrow 0 = P(A) (1- P(A)) \\
@@ -91,7 +88,6 @@ Suppose stem:[A \in \mathcal{F}]. Can stem:[A] be independent of itself?
 
 [stem]
 ++++
-\large
 \begin{align*}
 A \mathrel{\unicode{x2AEB}} A  & \Longleftrightarrow P(A \cap A)=P(A) \cdot P(A) \\
 & \Longleftrightarrow P(A) =[P(A)]^2 \\
@@ -121,7 +117,7 @@ P\left(\bigcap_{i \in \mathcal{I}_0} A_i \right) = \prod_{i \in \mathcal{I}_0} P
 
 More generally, let stem:[\mathcal{I}] be an arbitrary index set (it can be a set of natural numbers, whole numbers, or real numbers also). A collection of events stem:[\{A_i: i \in \mathcal{I}\}] is independent if for every finite subset stem:[\mathcal{I}_0 \subseteq \mathcal{I}], the collection of events stem:[\{A_i: i \in \mathcal{I}_0\}] is independent.
 
-NOTE:  A set of events stem:[A_1, A_2, \dots, A_n \in \mathcal{F}] is said to be pairwise independent if ever pair of events is independent, i.e., if and only if for all distinct pairs of indices, stem:[i,j],
+NOTE:  A set of events stem:[A_1, A_2, \dots, A_n \in \mathcal{F}] is said to be pairwise independent if every pair of events is independent, i.e., if and only if for all distinct pairs of indices, stem:[i,j],
 
 [stem]
 ++++

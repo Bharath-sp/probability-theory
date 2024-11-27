@@ -26,7 +26,6 @@ The joint PMF of jointly discrete random variables stem:[X: \Omega \rightarrow \
 
 [stem]
 ++++
-\large
 p_{X,Y}(x,y) = P(\{X=x\} \cap \{Y=y\})  \hspace{1cm} x,y \in \mathbb{R}
 ++++
 
@@ -34,7 +33,6 @@ Note:
 
 [stem]
 ++++
-\large
 \begin{align*}
 P( \{(X,Y) \in E_1 \times E_2\}) & = \sum_{x \in E_1} \sum_{y \in E_2} p_{X,Y}(x,y) = 1 \\
 P( \{(X,Y) \in B\}) & = \sum_{ (x,y) \in B \, \cap \, (E_1 \times E_2)} p_{X,Y}(x,y) \text{  where } B \subseteq \mathbb{R}^2
@@ -64,7 +62,6 @@ The conditional PMF of stem:[X], conditioned on the event stem:[\{Y=y\}], is a f
 
 [stem]
 ++++
-\large
 p_{X | Y =y}(x) = \frac{P(\{X=x\} \cap \{Y=y\})}{P(\{Y=y\})} = \frac{p_{X,Y}(x,y)}{p_Y(y)}  \hspace{1cm} x \in \mathbb{R}
 ++++
 
@@ -82,7 +79,6 @@ Furthermore, for any event stem:[A \in \mathcal{F}],
 
 [stem]
 ++++
-\large
 P(\{X \in A\} \,|\, \{Y=y\}) = \sum_{x \in A} p_{X|Y=y}(x).
 ++++
 
@@ -98,7 +94,6 @@ Let stem:[X: \Omega \rightarrow \mathbb{R}] and stem:[Y: \Omega \rightarrow \mat
 +
 [stem]
 ++++
-\large
 p_{X | Y =y}(x) =  \frac{p_{X,Y}(x,y)}{p_Y(y)} = p_X(x)  \hspace{1cm} \forall x \in \mathbb{R}.
 ++++
 +
@@ -115,7 +110,6 @@ Given stem:[\{X=x\} \mathrel{\unicode{x2AEB}} \{Y=y\}] for all stem:[x,y \in \ma
 
 [stem]
 ++++
-\large
 \begin{align*}
 P( \{X \leq x\} \cap \{Y \leq y\} ) & = \sum_{i: e_i \leq x} \,\, \sum_{j: f_j \leq y} p_{X,Y}(e_i, f_j) \\
 & = \sum_{i: e_i \leq x} \,\, \sum_{j: f_j \leq y} p_X(e_i) \cdot p_Y(f_j) \\

@@ -11,7 +11,6 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Given stem:[B \in \math
 
 [stem]
 ++++
-\large
 P_B: \mathcal{F} \rightarrow [0,1] \text{ via } P_B(A) := \frac{P(A \cap B)}{P(B)} , \, A \in \mathcal{F}
 ++++
 
@@ -27,7 +26,7 @@ NOTE: The intersection of two events is the same as the joint probability, stem:
 
 For any set stem:[A \in \mathcal{F}],
 
-* Lower bound: We know stem:[P(B) > 0] and stem:[P(A \cap B) \geq 0] as it is a probability. So stem:[P_B(A) \geq 0].
+* Lower bound: We know stem:[P(B) > 0] and stem:[P(A \cap B) \geq 0] as they are probabilities. So stem:[P_B(A) \geq 0].
 * Upper bound: We know stem:[(A \cap B)] is a subset of stem:[B], then by monotonicity property, stem:[P(A \cap B) \leq P(B)]. So stem:[P_B(A) \leq 1].
 
 So the number that the conditional probability measure assigns to any event in stem:[\mathcal{F}] will lie in the range stem:[[0,1\]].
@@ -46,7 +45,6 @@ stem:[P_B(\Omega) = \frac{P(\Omega \cap B)}{P(B)} = \frac{P(B)}{P(B)} = 1].
 +
 [stem]
 ++++
-\large
 P_B \left( \bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty P_B(A_i)
 ++++
 +
@@ -54,7 +52,6 @@ P_B \left( \bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty P_B(A_i)
 +
 [stem]
 ++++
-\large
 \begin{align*}
 P_B \left( \bigcup_{i=1}^\infty A_i \right) & = \frac{P\left( (\bigcup_{i=1}^\infty A_i) \cap B \right)}{P(B)} \\
 & = \frac{P\left( \bigcup_{i=1}^\infty (A_i \cap B) \right)}{P(B)} && \text{ (1)} \\
@@ -80,7 +77,6 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Fix stem:[B \in \mathca
 
 [stem]
 ++++
-\large
 P(A) = P(A|B) \cdot P(B) + P(A|B^c) \cdot P(B^c)
 ++++
 
@@ -90,7 +86,6 @@ NOTE: We have mentioned stem:[0 < P(B) <1 \Rightarrow P(B) >0 \text { and } P(B^
 
 [stem]
 ++++
-\large
 \begin{align*}
 & \frac{P(A \cap B)}{P(B)} \cdot P(B) + \frac{P(A \cap B^c)}{P(B^c)} \cdot P(B^c) \\
 & = P(A \cap B) + P(A \cap B^c) \\
@@ -108,7 +103,6 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[B_1, B_2, \do
 
 [stem]
 ++++
-\large
 P(A) = \sum_{i=1}^\infty P(A|B_i) \cdot P(B_i)
 ++++
 
@@ -120,7 +114,6 @@ This kind of break up stem:[P(A|B_4) \cdot P(B_4)] is possible only when stem:[P
 
 [stem]
 ++++
-\large
 \begin{align*}
 & \sum_{i=1}^\infty P(A|B_i) \cdot P(B_i) \\
 & = \sum_{i=1}^\infty \frac{P(A \cap B_i)}{P(B_i)} \cdot P(B_i) \\
@@ -136,7 +129,6 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[B_1, B_2, \do
 
 [stem]
 ++++
-\large
 P(B_i|A) = \frac{P(A|B_i) \cdot P(B_i)}{\sum_{j=1}^\infty P(A|B_j) \cdot P(B_j)}
 ++++
 
@@ -144,7 +136,6 @@ P(B_i|A) = \frac{P(A|B_i) \cdot P(B_i)}{\sum_{j=1}^\infty P(A|B_j) \cdot P(B_j)}
 
 [stem]
 ++++
-\large
 \begin{align*}
 P(B_i|A) & = \frac{P(A|B_i) \cdot P(B_i)}{\sum_{j=1}^\infty P(A|B_j) \cdot P(B_j)} \\
 P(B_i|A) & = \frac{P(A|B_i) \cdot P(B_i)}{P(A)} && \text{ by definition} \\
@@ -160,7 +151,6 @@ Fix a probability space stem:[(\Omega, \mathcal{F}, P)]. Let stem:[A_1, A_2, \do
 
 [stem]
 ++++
-\large
 \begin{align*}
 P\left( \bigcap_{i=1}^\infty A_i \right) & = P(A_1) \cdot P(A_2 |A_1) \cdot P(A_3| A_1 \cap A_2) \dots \\
 & = P(A_1) \cdot \prod_{i=2}^\infty P \left( A_i \,\Bigg| \, \bigcap_{j=1}^{i-1} A_j \right)
@@ -174,7 +164,6 @@ provided each of the conditional probabilities on the right-hand side is defined
 
 [stem]
 ++++
-\large
 \begin{align*}
 \text{For finite sets:  } P\left(\bigcap_{i=1}^n A_i \right) & = P(A_1) \cdot P(A_2 |A_1) \cdot P(A_3 |A_1 \cap A_2) \cdot \dots \cdot P\left( A_n \, \Bigg| \, \bigcap_{i=1}^{n-1} A_i \right) \\
 & = P(A_1) \cdot \prod_{i=2}^n P \left( A_i \,\Bigg| \, \bigcap_{j=1}^{i-1} A_j \right)
@@ -189,7 +178,6 @@ For finite stem:[n] sets: Assume all the conditional probabilities on the right-
 
 [stem]
 ++++
-\large
 \begin{align*}
 & P(A_1) \cdot \frac{P(A_2 \cap A_1)}{P(A_1)} \cdot \frac{P(A_3 \cap A_1 \cap A_2)}{P(A_1 \cap A_2)} \cdot \dots \cdot P\left( A_n \, \Bigg| \, \bigcap_{i=1}^{n-1} A_i \right) \\
 & = P\left(\bigcap_{i=1}^n A_i \right) \, \text{  as terms cancel out}
@@ -200,7 +188,6 @@ For countable infinite sets: Assume all the conditional probabilities on the rig
 
 [stem]
 ++++
-\large
 P\left( \bigcap_{i=1}^\infty A_i \right) = P\left( \lim_{n \to \infty} \bigcap_{i=1}^n A_i \right)
 ++++
 
@@ -208,7 +195,6 @@ Let's define stem:[B_n = \bigcap_{i=1}^n A_i].
 
 [stem]
 ++++
-\large
 \begin{align*}
 B_1 & = A_1 \\
 B_2 & = A_1 \cap A_2 \\
@@ -221,7 +207,6 @@ And we see that stem:[B_1, B_2, \dots] are sets that are shrinking in size (at l
 
 [stem]
 ++++
-\large
 \begin{align*}
 P\left( \lim_{n \to \infty} \bigcap_{i=1}^n A_i \right) & = P\left( \lim_{n \to \infty} B_n \right) \\
 & = \lim_{n \to \infty} P(B_n) && \text{ by continuity of probability property} \\

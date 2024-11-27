@@ -1,0 +1,110 @@
+= Sample Means and Covariances =
+:doctype: book
+:author: Bharath Kumar S P
+:email: bharath030195@gmail.com
+:stem: latexmath
+:eqnums:
+:toc:
+
+== One-dimensional Case ==
+In one-dimensional case, we are given a sample stem:[x_1, \dots, x_N] where stem:[x_n \in \mathbb{R}]. Then the sample mean is
+
+[stem]
+++++
+\bar{x} = \frac{1}{N} \sum_{n=1}^N x_n
+++++
+
+The (unbiased) sample variance is
+
+[stem]
+++++
+s^2 := \frac{1}{N-1} \sum_{n=1}^N (x_n - \bar{x})^2
+++++
+
+== D-dimensional Case ==
+Suppose we have stem:[D] variates stem:[X_1, X_2, \dots, X_D]. And we are given stem:[D] variate sample of size stem:[N], i.e., stem:[\mathbf{x}_1, \dots, \mathbf{x}_N] where stem:[\mathbf{x}_n \in \mathbb{R}^D].
+
+[stem]
+++++
+\mathbf{X} = \begin{bmatrix}
+x_{11} & x_{12} & \dots & x_{1D} \\
+x_{21} & x_{22} & \dots & x_{2D} \\
+\vdots & \vdots & \vdots & \vdots \\
+\underbrace{x_{N1}}_{X_1} & \underbrace{x_{N2}}_{X_2} & \dots & \underbrace{x_{ND}}_{X_D} \\
+\end{bmatrix}
+++++
+
+Each column corresponds to a variate stem:[X_j] and each row corresponds to an observation stem:[\mathbf{x}_n]. For each variate stem:[X_j], we can define the sample mean
+
+[stem]
+++++
+\bar{x}_j = \frac{1}{N} \sum_{n=1}^N x_{nj} \hspace{1cm} j=1,\dots,D
+++++
+
+Then the sample mean vector is defined as
+
+[stem]
+++++
+\bar{\mathbf{x}} := \begin{bmatrix} \bar{x}_1 \\ \bar{x}_2 \\ \vdots \\ \bar{x}_D \end{bmatrix} = 
+\begin{bmatrix} \frac{1}{N} \sum_{n=1}^N x_{n1} \\ \vdots \\ \frac{1}{N} \sum_{n=1}^N x_{nD} \end{bmatrix} = \frac{1}{N} \sum_{n=1}^N \begin{bmatrix} x_{n1} \\ \vdots \\ x_{nD} \end{bmatrix} = \frac{1}{N} \sum_{n=1}^N \mathbf{x}_n
+++++
+
+*Sample Covariance Matrix:*
+
+For each variate stem:[X_j], we define its sample variance as
+
+[stem]
+++++
+s_{jj} = s^2_j := \frac{1}{N-1} \sum_{n=1}^N (x_{nj} - \bar{x}_j)^2 \hspace{1cm} j=1,\dots,D
+++++
+
+and sample covariance between stem:[X_j] and stem:[X_k] as
+
+[stem]
+++++
+s_{jk} = s_{kj} :=  \frac{1}{N-1} \sum_{n=1}^N (x_{nj} - \bar{x}_j) (x_{nk} - \bar{x}_k) \hspace{1cm} 1\leq j,k \leq D \text{ and } j \ne k
+++++
+
+The sample covariance matrix is defined as
+
+[stem]
+++++
+\mathbf{S} = \mathbf{\Sigma} =  \begin{bmatrix}
+s_{11} & s_{12} & \dots & s_{1D} \\
+s_{21} & s_{22} & \dots & s_{2D} \\
+\vdots & \vdots & \vdots & \vdots \\
+s_{D1} & s_{D2} & \dots & s_{DD} \\
+\end{bmatrix}
+++++
+
+Then
+
+[stem]
+++++
+\mathbf{S} = \begin{bmatrix}
+\frac{1}{N-1} \sum_{n=1}^N (x_{n1} - \bar{x}_1)^2 & \dots & \frac{1}{N-1} \sum_{n=1}^N (x_{n1} - \bar{x}_1) (x_{nD} - \bar{x}_D) \\
+\vdots & \vdots & \vdots \\
+\frac{1}{N-1} \sum_{n=1}^N (x_{nD} - \bar{x}_D) (x_{n1} - \bar{x}_1) & \dots & \frac{1}{N-1} \sum_{n=1}^N (x_{nD} - \bar{x}_D)^2 \\
+\end{bmatrix}
+++++
+
+[stem]
+++++
+\begin{align*}
+& = \frac{1}{N-1} \sum_{n=1}^N \begin{bmatrix}
+(x_{n1} - \bar{x}_1)^2 & \dots & (x_{n1} - \bar{x}_1) (x_{nD} - \bar{x}_D) \\
+\vdots & \vdots & \vdots \\
+(x_{nD} - \bar{x}_D) (x_{n1} - \bar{x}_1) & \dots & (x_{nD} - \bar{x}_D)^2 \\
+\end{bmatrix} \\
+\\
+& = \frac{1}{N-1} \sum_{n=1}^N \begin{bmatrix}
+x_{n1} - \bar{x}_1\\
+\vdots \\
+x_{nD} - \bar{x}_D
+\end{bmatrix} \begin{bmatrix} x_{n1} - \bar{x}_1 & \dots & x_{nD} - \bar{x}_D \end{bmatrix} \\
+\\
+& = \frac{1}{N-1} \sum_{n=1}^N (\mathbf{x}_n - \bar{\mathbf{x}}) (\mathbf{x}_n - \bar{\mathbf{x}})^\top \\
+& = \frac{1}{N-1} \mathbf{X}^\top \mathbf{X}
+\end{align*} 
+++++
+
